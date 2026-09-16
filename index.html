@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wil Wortman | Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --accent-color: #4a90e2;
+            --card-bg: #ffffff;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-size: 1.5rem;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+        .project-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 15px;
+        }
+        .project-card h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        .links-list {
+            list-style: none;
+            padding: 0;
+        }
+        .links-list li {
+            margin-bottom: 10px;
+        }
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Wil Wortman</h1>
+            <p class="subtitle">Industrial Engineering Student</p>
+        </header>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hey! I'm Wil. I'm currently studying Industrial Engineering. I enjoy problem-solving, optimizing systems, and working on projects that bridge the gap between engineering and tech.</p>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="project-card">
+                <h3>Engineering Intern</h3>
+                <p><strong>SGL Carbon</strong> | CVD Coating Department</p>
+                <p>Gained hands-on experience analyzing manufacturing processes and improving production workflows.</p>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects & Work</h2>
+            <div class="project-card">
+                <h3>MATLAB Data Analysis</h3>
+                <p>Developed computational tools and scripts in MATLAB to model data trends and analyze vector spans for technical coursework.</p>
+            </div>
+            <div class="project-card">
+                <h3>Circuit Design & Layouts</h3>
+                <p>Designed and built accurate breadboard circuit visuals, working directly with hardware routing setups.</p>
+            </div>
+        </section>
+
+        <section id="links">
+            <h2>Connect</h2>
+            <ul class="links-list">
+                <li>🔗 <a href="https://github.com" target="_blank">GitHub Profile</a></li>
+                <li>💼 <a href="#" target="_blank">LinkedIn</a></li>
+                <li>✉️ <a href="mailto:your-email@example.com">Email Me</a></li>
+            </ul>
+        </section>
+    </div>
+
+</body>
+</html>
