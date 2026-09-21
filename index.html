@@ -3,91 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wilwortman.com | Breaking News</title>
+    <title>Wil Wortman | Official Statement</title>
     <style>
+        :root {
+            --primary: #0d233a; /* Deep Navy */
+            --accent: #d4af37;  /* Athletic Gold */
+            --stinky-green: #556b2f; /* Dark Olive Green */
+            --bg: #f4f6f9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
         body {
-            font-family: 'Impact', 'Arial Black', sans-serif;
+            background-color: var(--bg);
+            color: var(--primary);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #7a5230 0%, #4a2c11 100%);
-            color: #fff;
-            overflow: hidden;
-        }
-        .card {
+            padding: 20px;
             text-align: center;
-            padding: 30px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .container {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
             max-width: 500px;
-            animation: shake 0.5s infinite;
+            width: 100%;
+            border-top: 8px solid var(--accent);
         }
+
         h1 {
-            font-size: 3rem;
+            font-size: 2rem;
+            margin-bottom: 10px;
             text-transform: uppercase;
-            text-shadow: 3px 3px 0 #000;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            color: #ffeb3b;
+            letter-spacing: 1px;
         }
-        .image-container {
-            position: relative;
-            display: inline-block;
-            border: 5px solid #fff;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            border-radius: 10px;
-            overflow: hidden;
-            background: #000;
+
+        .subtitle {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 30px;
         }
-        img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-            transition: transform 0.3s ease;
+
+        .scouting-report {
+            background: #fff8e7;
+            border: 2px dashed var(--accent);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
         }
-        .image-container:hover img {
-            transform: scale(1.1) rotate(5deg);
-        }
-        .caption {
-            font-family: Arial, sans-serif;
+
+        .alert-text {
+            font-size: 1.5rem;
             font-weight: bold;
-            font-size: 1.2rem;
-            margin-top: 15px;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px;
-            border-radius: 5px;
+            color: var(--stinky-green);
+            margin: 15px 0;
         }
-        @keyframes shake {
-            0% { transform: translate(1px, 1px) rotate(0deg); }
-            10% { transform: translate(-1px, -2px) rotate(-1deg); }
-            20% { transform: translate(-3px, 0px) rotate(1deg); }
-            30% { transform: translate(0px, 2px) rotate(0deg); }
-            40% { transform: translate(1px, -1px) rotate(1deg); }
-            50% { transform: translate(-1px, 2px) rotate(-1deg); }
-            60% { transform: translate(-3px, 1px) rotate(0deg); }
-            70% { transform: translate(2px, 1px) rotate(-1deg); }
-            80% { transform: translate(-1px, -1px) rotate(1deg); }
-            90% { transform: translate(2px, 2px) rotate(0deg); }
-            100% { transform: translate(1px, -2px) rotate(-1deg); }
+
+        .emoji {
+            font-size: 3rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        footer {
+            font-size: 0.8rem;
+            color: #999;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>ALERT!</h1>
-        <div class="image-container">
-            <!-- Replace 'image_oIYQju.png' with the actual path/URL to your image file -->
-            <img src="image_oIYQju.png" alt="David Anderson reacting to the smell">
+    <div class="container">
+        <h1>WilWortman.com</h1>
+        <div class="subtitle">Official Athletic & Scouting Updates</div>
+        
+        <div class="scouting-report">
+            <h3>⚠️ URGENT SCOUTING REPORT ⚠️</h3>
+            <p>After thorough film review and locker room analysis, the data is undeniable:</p>
+            
+            <div class="emoji">💩</div>
+            <div class="alert-text">David Anderson smells like poop.</div>
+            
+            <p>Please maintain a mandatory 15-foot safe distance until further notice.</p>
         </div>
-        <div class="caption">
-            ⚠️ Actual live footage of David Anderson realizing he smells like poop.
-        </div>
+
+        <footer>
+            &copy; 2026 WilWortman.com. Verified by science.
+        </footer>
     </div>
 
 </body>
