@@ -3,245 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>William Wortman | Portfolio</title>
+    <title>★★★ Welcome to Wil Wortman's Home Page!!! ★★★</title>
     <style>
-        :root {
-            --bg-color: #f4f6f9;
-            --text-color: #1a202c;
-            --accent-color: #001c48; /* Penn State Dark Blue */
-            --sub-accent: #1e3a8a;
-            --card-bg: #ffffff;
-            --border-color: #e2e8f0;
-            --text-muted: #4a5568;
-        }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
+            background-color: #000080; /* Classic Navy Blue */
+            color: #00FF00; /* Lime Green text */
+            font-family: "Times New Roman", Times, serif;
             margin: 0;
-            padding: 40px 20px;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            padding: 20px;
+            /* Give it that textured 90s background vibe via CSS fallback */
+            background-image: radial-gradient(#111 20%, transparent 20%), radial-gradient(#111 20%, transparent 20%);
+            background-size: 8px 8px;
+            background-position: 0 0, 4px 4px;
         }
-        .container {
-            max-width: 750px;
+
+        header {
+            text-align: center;
+            border: 4px double #FF00FF;
+            background-color: #000000;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #FFFF00; /* Yellow */
+            font-size: 3.5rem;
+            margin: 0;
+            text-shadow: 3px 3px #FF0000;
+            font-family: "Impact", Arial Black, sans-serif;
+        }
+
+        .blink {
+            animation: blinker 1.0s linear infinite;
+            color: #00FFFF;
+            font-weight: bold;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+
+        marquee {
+            background-color: #FF0000;
+            color: #FFFFFF;
+            font-weight: bold;
+            padding: 5px;
+            border: 2px solid #FFFF00;
+            margin-bottom: 30px;
+        }
+
+        main {
+            max-width: 800px;
             margin: 0 auto;
         }
-        header {
-            margin-bottom: 35px;
-            border-bottom: 3px solid var(--accent-color);
-            padding-bottom: 20px;
+
+        .section-table {
+            width: 100%;
+            border: 3px outset #808080;
+            background-color: #C0C0C0; /* Classic Windows 95 Grey */
+            color: #000000;
+            margin-bottom: 30px;
+            border-collapse: separate;
+            border-spacing: 5px;
         }
-        h1 {
-            font-size: 2.8rem;
-            margin: 0 0 10px 0;
-            font-weight: 800;
-            color: var(--accent-color);
-            letter-spacing: -0.5px;
+
+        .table-header {
+            background-color: #000080;
+            color: #FFFFFF;
+            font-weight: bold;
+            padding: 5px;
+            font-size: 1.2rem;
         }
-        .contact-info {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+
+        .table-content {
+            padding: 15px;
+            background-color: #FFFFFF;
+            border: 2px inset #808080;
         }
-        .contact-info span {
-            display: inline-flex;
-            align-items: center;
-        }
-        section {
-            margin-bottom: 35px;
-        }
-        h2 {
-            font-size: 1.4rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent-color);
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        .resume-card {
-            background: var(--card-bg);
-            padding: 24px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-        }
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            margin-bottom: 10px;
-        }
-        .title-block h3 {
-            margin: 0;
-            font-size: 1.25rem;
-            color: var(--accent-color);
-        }
-        .title-block .subtitle {
-            margin: 2px 0 0 0;
-            font-weight: 600;
-            color: var(--sub-accent);
-        }
-        .date-location {
-            text-align: right;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-        .date-location p {
-            margin: 0;
-        }
+
         ul {
-            margin: 10px 0 0 0;
-            padding-left: 20px;
-            color: var(--text-muted);
+            list-style-type: square;
         }
-        li {
-            margin-bottom: 6px;
+
+        /* 90s Web Buttons */
+        .button-zone {
+            text-align: center;
+            margin: 40px 0;
         }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 12px;
-            background: var(--card-bg);
-            padding: 24px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
+
+        .retro-btn {
+            background: outset #808080;
+            background-color: #C0C0C0;
+            border: 3px outset #FFF;
+            color: #000;
+            font-weight: bold;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 2px 2px 5px #000;
         }
-        .skills-category strong {
-            color: var(--accent-color);
-            display: block;
-            margin-bottom: 4px;
+
+        .retro-btn:active {
+            border: 3px inset #FFF;
         }
-        .skills-category p {
-            margin: 0;
-            color: var(--text-muted);
-            font-size: 0.95rem;
+
+        .counter-box {
+            border: 2px inset #FFF;
+            background-color: #000;
+            color: #FF0000;
+            font-family: 'Courier New', monospace;
+            padding: 5px 10px;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            display: inline-block;
         }
-        a {
-            color: var(--sub-accent);
-            text-decoration: none;
-            font-weight: 500;
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            border-top: 2px yellow dashed;
+            padding-top: 20px;
+            color: #FF8C00;
         }
-        a:hover {
-            text-decoration: underline;
-        }
-        @media (max-width: 600px) {
-            .card-header {
-                flex-direction: column;
-            }
-            .date-location {
-                text-align: left;
-                margin-top: 5px;
-            }
+
+        .construction {
+            color: #FF0000;
+            font-weight: bold;
+            text-align: center;
+            margin: 15px 0;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>William Wortman</h1>
-            <div class="contact-info">
-                <span>📍 St. Marys, PA 15857</span>
-                <span>📞 814.594.3926</span>
-                <span>✉️ <a href="mailto:wilwortman@gmail.com">wilwortman@gmail.com</a></span>
-                <span>🔗 <a href="https://github.com" target="_blank">GitHub</a></span>
-            </div>
-        </header>
+    <header>
+        <h1>★ WIL'S CYBER CORNER ★</h1>
+        <p class="blink">⚡ Best viewed in Netscape Navigator 4.0 or higher at 800x600 resolution ⚡</p>
+    </header>
 
-        <section id="education">
-            <h2>Education</h2>
-            <div class="resume-card">
-                <div class="card-header">
-                    <div class="title-block">
-                        <h3>Pennsylvania State University</h3>
-                        <p class="subtitle">Industrial Engineering</p>
-                    </div>
-                    <div class="date-location">
-                        <p><strong>July 2025 - Present</strong></p>
-                        <p>University Park, PA</p>
-                    </div>
-                </div>
-                <p style="margin: 5px 0 0 0;"><strong>GPA:</strong> 3.55</p>
-            </div>
-        </section>
+    <!-- Essential 90s Marquee -->
+    <marquee scrollamount="8" behavior="scroll" direction="left">
+        +++ WELCOME TO THE HYPEST WEB ZONE ON THE INFORMATION SUPERHIGHWAY! +++ LOADS OF COOL STUFF COMING SOON! +++ SIGN MY GUESTBOOK! +++
+    </marquee>
 
-        <section id="experience">
-            <h2>Experience</h2>
+    <main>
+        <!-- Section 1: Bio -->
+        <table class="section-table">
+            <tr>
+                <td class="table-header">👽 Who is Wil Wortman?</td>
+            </tr>
+            <tr>
+                <td class="table-content">
+                    <p>Excellent question. Scientists are still looking into it. Current theories suggest Wil is a carbon-based bipedal entity who enjoys converting caffeine into highly specialized complaints and surfing the World Wide Web.</p>
+                    <p>If you have any information leading to the discovery of what Wil is actually supposed to be doing right now, please page him immediately.</p>
+                    <div class="construction">
+                        ⚠️ WARNING: THIS SITE IS PERMANENTLY UNDER CONSTRUCTION ⚠️
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Section 2: Skills -->
+        <table class="section-table">
+            <tr>
+                <td class="table-header">💾 Top Cyber Skills</td>
+            </tr>
+            <tr>
+                <td class="table-content">
+                    <ul>
+                        <li><strong>Surfing the Web:</strong> Can open 47 tabs simultaneously and crash the browser instantly.</li>
+                        <li><strong>Napping:</strong> Olympic levels of dedication and stamina.</li>
+                        <li><strong>HTML 3.2:</strong> Utilizing heavy table structures instead of modern layout techniques.</li>
+                        <li><strong>Dial-Up Screaming:</strong> Able to perfectly mimic the sound of a 56k modem connecting.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Section 3: FAQ -->
+        <table class="section-table">
+            <tr>
+                <td class="table-header">❓ Frequently Unasked Questions</td>
+            </tr>
+            <tr>
+                <td class="table-content">
+                    <p><strong>Q: Is this a real homepage?</strong><br>
+                    A: Yes. Accept no imitations. Bookmark this page now (Ctrl+D)!</p>
+                    
+                    <p><strong>Q: How do I contact Wil?</strong><br>
+                    A: Drop a line in the guestbook or send an electronic mail message. Response times may vary depending on phone line availability.</p>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Interactive Prank Button Zone -->
+        <div class="button-zone">
+            <button id="panic-btn" class="retro-btn" style="position: relative;">Click here to fix Wil's life</button>
+        </div>
+
+        <!-- Visitor Counter -->
+        <div style="text-align: center; margin-top: 30px;">
+            <p style="color: #FFF; margin-bottom: 5px;">You are awesome cyber-visitor number:</p>
+            <div class="counter-box" id="visitor-counter">001337</div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Copyright © 1997-2026 wilwortman.com. All rights reserved. Created with pure notepad magic.</p>
+        <p>
+            <small>Graphics optimization courtesy of the Cyber Dream Team.</small>
+        </p>
+    </footer>
+
+    <script>
+        const button = document.getElementById('panic-btn');
+        const container = button.parentElement;
+
+        // Runaway button script
+        function runAway() {
+            const maxX = 200;
+            const maxY = 50;
             
-            <div class="resume-card">
-                <div class="card-header">
-                    <div class="title-block">
-                        <h3>Penn State Applied Research Lab</h3>
-                        <p class="subtitle">Research Assistant</p>
-                    </div>
-                    <div class="date-location">
-                        <p><strong>January 2026 - Present</strong></p>
-                        <p>State College, PA</p>
-                    </div>
-                </div>
-                <ul>
-                    <li>Prepare precise ratios of micro and nanopowders for experimental testing.</li>
-                    <li>Pressed powders into pellets to then be tested for radiation shielding capabilities.</li>
-                    <li>Analyze data related to particle dispersion and particle size.</li>
-                    <li>Operated an X-Ray Diffractometer (XRD) (Empyrean).</li>
-                    <li>Operated a Scanning Electron Microscope (SEM) (Axia).</li>
-                </ul>
-            </div>
+            const randomX = Math.floor((Math.random() * maxX) - (maxX / 2));
+            const randomY = Math.floor((Math.random() * maxY) - (maxY / 2)); 
 
-            <div class="resume-card">
-                <div class="card-header">
-                    <div class="title-block">
-                        <h3>SGL Carbon</h3>
-                        <p class="subtitle">Engineering Intern</p>
-                    </div>
-                    <div class="date-location">
-                        <p><strong>May 2026 - August 2026</strong></p>
-                        <p>St. Marys, PA</p>
-                    </div>
-                </div>
-                <ul>
-                    <li>Designed and developed a system to improve tracking of Up/Down time for a group of CVD Reactors.</li>
-                    <li>Tracked internal reactor processes to characterize reactor performance.</li>
-                    <li>Designed and constructed a replacement fan for a purification furnace.</li>
-                    <li>Completed Process Audits to verify compliance with operating standards.</li>
-                    <li>Reviewed defects as part of the daily nonconformance review team.</li>
-                </ul>
-            </div>
-        </section>
+            button.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            
+            const taunts = [
+                "Too slow!",
+                "Error 404",
+                "Try harder!",
+                "Bad Gateway",
+                "Abort / Retry?",
+                "Access Denied"
+            ];
+            button.innerText = taunts[Math.floor(Math.random() * taunts.length)];
+        }
 
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="skills-grid">
-                <div class="skills-category">
-                    <strong>Software & Tools</strong>
-                    <p>Microsoft Excel, Word, PowerPoint</p>
-                </div>
-                <div class="skills-category">
-                    <strong>Design & CAD</strong>
-                    <p>AutoCAD, Autodesk Fusion, Inventor, CAD Modeling</p>
-                </div>
-                <div class="skills-category">
-                    <strong>Analysis & Systems</strong>
-                    <p>Data Analysis, Process Improvement, MATLAB</p>
-                </div>
-            </div>
-        </section>
+        button.addEventListener('mouseenter', runAway);
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            runAway();
+        });
 
-        <section id="awards">
-            <h2>Awards</h2>
-            <div class="resume-card" style="padding: 20px;">
-                <ul style="margin: 0; padding-left: 15px;">
-                    <li>🏆 <strong>Kreckel Enterprise Student of the Year</strong> (2025)</li>
-                    <li>🏅 <strong>Rotary Club Student of the Month</strong> (January 2025)</li>
-                </ul>
-            </div>
-        </section>
-    </div>
-
+        // Slow spinning fake visitor counter incrementer for extra realism
+        setInterval(() => {
+            const counter = document.getElementById('visitor-counter');
+            let count = parseInt(counter.innerText) + 1;
+            counter.innerText = String(count).padStart(6, '0');
+        }, 8000);
+    </script>
 </body>
 </html>
-
