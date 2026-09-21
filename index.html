@@ -3,32 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wilwortman.com</title>
+    <title>wilwortman.com | Breaking News</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Impact', 'Arial Black', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            background-color: #f4f4f9;
+            background: linear-gradient(135deg, #7a5230 0%, #4a2c11 100%);
+            color: #fff;
+            overflow: hidden;
         }
-        .container {
+        .card {
             text-align: center;
-            padding: 20px;
-            border-radius: 8px;
-            background: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            max-width: 500px;
+            animation: shake 0.5s infinite;
         }
         h1 {
-            color: #333;
+            font-size: 3rem;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 0 #000;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            color: #ffeb3b;
+        }
+        .image-container {
+            position: relative;
+            display: inline-block;
+            border: 5px solid #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .image-container:hover img {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .caption {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(0px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(2px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(2px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>David Anderson smells like poop.</h1>
+
+    <div class="card">
+        <h1>ALERT!</h1>
+        <div class="image-container">
+            <!-- Replace 'image_oIYQju.png' with the actual path/URL to your image file -->
+            <img src="image_oIYQju.png" alt="David Anderson reacting to the smell">
+        </div>
+        <div class="caption">
+            ⚠️ Actual live footage of David Anderson realizing he smells like poop.
+        </div>
     </div>
+
 </body>
 </html>
