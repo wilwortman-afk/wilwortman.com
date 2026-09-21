@@ -3,189 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wilwortman.com | The Official Internet Zone</title>
+    <title>wilwortman.com</title>
     <style>
-        :root {
-            --bg-color: #f4f4f9;
-            --text-color: #2b2b2b;
-            --accent-color: #ff5722;
-            --card-bg: #ffffff;
-        }
-
         body {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        header {
-            text-align: center;
-            margin-top: 40px;
-            margin-bottom: 40px;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            color: var(--text-color);
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            font-style: italic;
-            color: #666;
-        }
-
-        main {
-            max-width: 600px;
-            width: 100%;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 3px solid var(--text-color);
-            box-shadow: 8px 8px 0px var(--text-color);
-            padding: 20px;
-            margin-bottom: 30px;
-            border-radius: 4px;
-        }
-
-        .card h2 {
-            margin-top: 0;
-            border-bottom: 2px dashed var(--text-color);
-            padding-bottom: 10px;
-        }
-
-        .btn-container {
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
-            margin: 40px 0;
-            position: relative;
-            height: 60px;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
         }
-
-        .btn {
-            background-color: var(--accent-color);
-            color: white;
-            border: 2px solid var(--text-color);
-            padding: 12px 24px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 4px 4px 0px var(--text-color);
-            font-family: inherit;
-            transition: transform 0.1s;
-        }
-
-        .btn:active {
-            transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0px var(--text-color);
-        }
-
-        #panic-btn {
-            position: absolute;
-        }
-
-        footer {
-            margin-top: 60px;
+        .container {
             text-align: center;
-            font-size: 0.8rem;
-            color: #888;
+            padding: 20px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 8px;
+        h1 {
+            color: #333;
         }
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>WIL WORTMAN</h1>
-        <div class="subtitle">Now with 100% more website than before.</div>
-    </header>
-
-    <main>
-        <section class="card">
-            <h2>Who is Wil Wortman?</h2>
-            <p>Excellent question. Scientists are still looking into it. Current theories suggest Wil is a human being who enjoys breathing oxygen, converting caffeine into highly specialized complaints, and occasionally browsing the internet.</p>
-            <p>If you have any information leading to the discovery of what Wil is actually supposed to be doing right now, please keep it to yourself.</p>
-        </section>
-
-        <section class="card">
-            <h2>Core Skills & Expertises</h2>
-            <ul>
-                <li><strong>Napping:</strong> Olympic levels of commitment.</li>
-                <li><strong>Web Browsing:</strong> Can open 47 tabs and experience intense decision paralysis within 3 minutes.</li>
-                <li><strong>JavaScript:</strong> Knowing just enough to make a button do something mildly annoying.</li>
-                <li><strong>Parallel Parking:</strong> Only if absolutely no one is watching.</li>
-            </ul>
-        </section>
-
-        <section class="card">
-            <h2>Frequently Unasked Questions</h2>
-            <p><strong>Q: Is this the real website for Wil Wortman?</strong><br>
-            A: Yes. Accept no imitations. Or do accept them, they might have better graphics.</p>
-            
-            <p><strong>Q: How do I contact Wil?</strong><br>
-            A: Try opening your window and whispering your message into the evening breeze. Alternatively, send an email, but the breeze option has a similar response rate.</p>
-        </section>
-
-        <!-- The Interactive Prank Button -->
-        <div class="btn-container">
-            <button id="panic-btn" class="btn">Click here to fix Wil's life</button>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 wilwortman.com. All rights reserved. Do not copy this code, it is structural load-bearing nonsense.</p>
-    </footer>
-
-    <script>
-        const button = document.getElementById('panic-btn');
-        const container = button.parentElement;
-
-        // Make the button run away when hovered or clicked
-        function runAway() {
-            const containerRect = container.getBoundingClientRect();
-            const btnRect = button.getBoundingClientRect();
-
-            // Calculate random max bounds within a reasonable runaway radius
-            const maxX = containerRect.width - btnRect.width;
-            // Allow it to hop slightly up or down outside the container for extra chaos
-            const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor((Math.random() * 120) - 60); 
-
-            button.style.left = randomX + 'px';
-            button.style.top = randomY + 'px';
-            
-            // Change the text randomly to mock the user
-            const taunts = [
-                "Too slow!",
-                "Nope.",
-                "Try harder.",
-                "Not happening.",
-                "Error: Motivation not found.",
-                "Clicking won't save you."
-            ];
-            button.innerText = taunts[Math.floor(Math.random() * taunts.length)];
-        }
-
-        button.addEventListener('mouseenter', runAway);
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            runAway();
-        });
-    </script>
+    <div class="container">
+        <h1>David Anderson smells like poop.</h1>
+    </div>
 </body>
 </html>
