@@ -3,239 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>★★★ Welcome to Wil Wortman's Home Page!!! ★★★</title>
+    <title>wilwortman.com | The Official Internet Zone</title>
     <style>
+        :root {
+            --bg-color: #f4f4f9;
+            --text-color: #2b2b2b;
+            --accent-color: #ff5722;
+            --card-bg: #ffffff;
+        }
+
         body {
-            background-color: #000080; /* Classic Navy Blue */
-            color: #00FF00; /* Lime Green text */
-            font-family: "Times New Roman", Times, serif;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
             margin: 0;
             padding: 20px;
-            /* Give it that textured 90s background vibe via CSS fallback */
-            background-image: radial-gradient(#111 20%, transparent 20%), radial-gradient(#111 20%, transparent 20%);
-            background-size: 8px 8px;
-            background-position: 0 0, 4px 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         header {
             text-align: center;
-            border: 4px double #FF00FF;
-            background-color: #000000;
-            padding: 20px;
-            margin-bottom: 20px;
+            margin-top: 40px;
+            margin-bottom: 40px;
         }
 
         h1 {
-            color: #FFFF00; /* Yellow */
-            font-size: 3.5rem;
-            margin: 0;
-            text-shadow: 3px 3px #FF0000;
-            font-family: "Impact", Arial Black, sans-serif;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
         }
 
-        .blink {
-            animation: blinker 1.0s linear infinite;
-            color: #00FFFF;
-            font-weight: bold;
-        }
-
-        @keyframes blinker {
-            50% { opacity: 0; }
-        }
-
-        marquee {
-            background-color: #FF0000;
-            color: #FFFFFF;
-            font-weight: bold;
-            padding: 5px;
-            border: 2px solid #FFFF00;
-            margin-bottom: 30px;
+        .subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #666;
         }
 
         main {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .section-table {
+            max-width: 600px;
             width: 100%;
-            border: 3px outset #808080;
-            background-color: #C0C0C0; /* Classic Windows 95 Grey */
-            color: #000000;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 3px solid var(--text-color);
+            box-shadow: 8px 8px 0px var(--text-color);
+            padding: 20px;
             margin-bottom: 30px;
-            border-collapse: separate;
-            border-spacing: 5px;
+            border-radius: 4px;
         }
 
-        .table-header {
-            background-color: #000080;
-            color: #FFFFFF;
-            font-weight: bold;
-            padding: 5px;
-            font-size: 1.2rem;
+        .card h2 {
+            margin-top: 0;
+            border-bottom: 2px dashed var(--text-color);
+            padding-bottom: 10px;
         }
 
-        .table-content {
-            padding: 15px;
-            background-color: #FFFFFF;
-            border: 2px inset #808080;
-        }
-
-        ul {
-            list-style-type: square;
-        }
-
-        /* 90s Web Buttons */
-        .button-zone {
-            text-align: center;
+        .btn-container {
+            display: flex;
+            justify-content: center;
             margin: 40px 0;
+            position: relative;
+            height: 60px;
         }
 
-        .retro-btn {
-            background: outset #808080;
-            background-color: #C0C0C0;
-            border: 3px outset #FFF;
-            color: #000;
-            font-weight: bold;
-            padding: 10px 20px;
-            cursor: pointer;
+        .btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: 2px solid var(--text-color);
+            padding: 12px 24px;
             font-size: 1.1rem;
-            box-shadow: 2px 2px 5px #000;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px var(--text-color);
+            font-family: inherit;
+            transition: transform 0.1s;
         }
 
-        .retro-btn:active {
-            border: 3px inset #FFF;
+        .btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--text-color);
         }
 
-        .counter-box {
-            border: 2px inset #FFF;
-            background-color: #000;
-            color: #FF0000;
-            font-family: 'Courier New', monospace;
-            padding: 5px 10px;
-            font-size: 1.5rem;
-            letter-spacing: 3px;
-            display: inline-block;
+        #panic-btn {
+            position: absolute;
         }
 
         footer {
-            margin-top: 50px;
+            margin-top: 60px;
             text-align: center;
-            border-top: 2px yellow dashed;
-            padding-top: 20px;
-            color: #FF8C00;
+            font-size: 0.8rem;
+            color: #888;
         }
 
-        .construction {
-            color: #FF0000;
-            font-weight: bold;
-            text-align: center;
-            margin: 15px 0;
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>★ WIL'S CYBER CORNER ★</h1>
-        <p class="blink">⚡ Best viewed in Netscape Navigator 4.0 or higher at 800x600 resolution ⚡</p>
+        <h1>WIL WORTMAN</h1>
+        <div class="subtitle">Now with 100% more website than before.</div>
     </header>
 
-    <!-- Essential 90s Marquee -->
-    <marquee scrollamount="8" behavior="scroll" direction="left">
-        +++ WELCOME TO THE HYPEST WEB ZONE ON THE INFORMATION SUPERHIGHWAY! +++ LOADS OF COOL STUFF COMING SOON! +++ SIGN MY GUESTBOOK! +++
-    </marquee>
-
     <main>
-        <!-- Section 1: Bio -->
-        <table class="section-table">
-            <tr>
-                <td class="table-header">👽 Who is Wil Wortman?</td>
-            </tr>
-            <tr>
-                <td class="table-content">
-                    <p>Excellent question. Scientists are still looking into it. Current theories suggest Wil is a carbon-based bipedal entity who enjoys converting caffeine into highly specialized complaints and surfing the World Wide Web.</p>
-                    <p>If you have any information leading to the discovery of what Wil is actually supposed to be doing right now, please page him immediately.</p>
-                    <div class="construction">
-                        ⚠️ WARNING: THIS SITE IS PERMANENTLY UNDER CONSTRUCTION ⚠️
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <section class="card">
+            <h2>Who is Wil Wortman?</h2>
+            <p>Excellent question. Scientists are still looking into it. Current theories suggest Wil is a human being who enjoys breathing oxygen, converting caffeine into highly specialized complaints, and occasionally browsing the internet.</p>
+            <p>If you have any information leading to the discovery of what Wil is actually supposed to be doing right now, please keep it to yourself.</p>
+        </section>
 
-        <!-- Section 2: Skills -->
-        <table class="section-table">
-            <tr>
-                <td class="table-header">💾 Top Cyber Skills</td>
-            </tr>
-            <tr>
-                <td class="table-content">
-                    <ul>
-                        <li><strong>Surfing the Web:</strong> Can open 47 tabs simultaneously and crash the browser instantly.</li>
-                        <li><strong>Napping:</strong> Olympic levels of dedication and stamina.</li>
-                        <li><strong>HTML 3.2:</strong> Utilizing heavy table structures instead of modern layout techniques.</li>
-                        <li><strong>Dial-Up Screaming:</strong> Able to perfectly mimic the sound of a 56k modem connecting.</li>
-                    </ul>
-                </td>
-            </tr>
-        </table>
+        <section class="card">
+            <h2>Core Skills & Expertises</h2>
+            <ul>
+                <li><strong>Napping:</strong> Olympic levels of commitment.</li>
+                <li><strong>Web Browsing:</strong> Can open 47 tabs and experience intense decision paralysis within 3 minutes.</li>
+                <li><strong>JavaScript:</strong> Knowing just enough to make a button do something mildly annoying.</li>
+                <li><strong>Parallel Parking:</strong> Only if absolutely no one is watching.</li>
+            </ul>
+        </section>
 
-        <!-- Section 3: FAQ -->
-        <table class="section-table">
-            <tr>
-                <td class="table-header">❓ Frequently Unasked Questions</td>
-            </tr>
-            <tr>
-                <td class="table-content">
-                    <p><strong>Q: Is this a real homepage?</strong><br>
-                    A: Yes. Accept no imitations. Bookmark this page now (Ctrl+D)!</p>
-                    
-                    <p><strong>Q: How do I contact Wil?</strong><br>
-                    A: Drop a line in the guestbook or send an electronic mail message. Response times may vary depending on phone line availability.</p>
-                </td>
-            </tr>
-        </table>
+        <section class="card">
+            <h2>Frequently Unasked Questions</h2>
+            <p><strong>Q: Is this the real website for Wil Wortman?</strong><br>
+            A: Yes. Accept no imitations. Or do accept them, they might have better graphics.</p>
+            
+            <p><strong>Q: How do I contact Wil?</strong><br>
+            A: Try opening your window and whispering your message into the evening breeze. Alternatively, send an email, but the breeze option has a similar response rate.</p>
+        </section>
 
-        <!-- Interactive Prank Button Zone -->
-        <div class="button-zone">
-            <button id="panic-btn" class="retro-btn" style="position: relative;">Click here to fix Wil's life</button>
-        </div>
-
-        <!-- Visitor Counter -->
-        <div style="text-align: center; margin-top: 30px;">
-            <p style="color: #FFF; margin-bottom: 5px;">You are awesome cyber-visitor number:</p>
-            <div class="counter-box" id="visitor-counter">001337</div>
+        <!-- The Interactive Prank Button -->
+        <div class="btn-container">
+            <button id="panic-btn" class="btn">Click here to fix Wil's life</button>
         </div>
     </main>
 
     <footer>
-        <p>Copyright © 1997-2026 wilwortman.com. All rights reserved. Created with pure notepad magic.</p>
-        <p>
-            <small>Graphics optimization courtesy of the Cyber Dream Team.</small>
-        </p>
+        <p>&copy; 2026 wilwortman.com. All rights reserved. Do not copy this code, it is structural load-bearing nonsense.</p>
     </footer>
 
     <script>
         const button = document.getElementById('panic-btn');
         const container = button.parentElement;
 
-        // Runaway button script
+        // Make the button run away when hovered or clicked
         function runAway() {
-            const maxX = 200;
-            const maxY = 50;
-            
-            const randomX = Math.floor((Math.random() * maxX) - (maxX / 2));
-            const randomY = Math.floor((Math.random() * maxY) - (maxY / 2)); 
+            const containerRect = container.getBoundingClientRect();
+            const btnRect = button.getBoundingClientRect();
 
-            button.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            // Calculate random max bounds within a reasonable runaway radius
+            const maxX = containerRect.width - btnRect.width;
+            // Allow it to hop slightly up or down outside the container for extra chaos
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor((Math.random() * 120) - 60); 
+
+            button.style.left = randomX + 'px';
+            button.style.top = randomY + 'px';
             
+            // Change the text randomly to mock the user
             const taunts = [
                 "Too slow!",
-                "Error 404",
-                "Try harder!",
-                "Bad Gateway",
-                "Abort / Retry?",
-                "Access Denied"
+                "Nope.",
+                "Try harder.",
+                "Not happening.",
+                "Error: Motivation not found.",
+                "Clicking won't save you."
             ];
             button.innerText = taunts[Math.floor(Math.random() * taunts.length)];
         }
@@ -245,13 +186,6 @@
             e.preventDefault();
             runAway();
         });
-
-        // Slow spinning fake visitor counter incrementer for extra realism
-        setInterval(() => {
-            const counter = document.getElementById('visitor-counter');
-            let count = parseInt(counter.innerText) + 1;
-            counter.innerText = String(count).padStart(6, '0');
-        }, 8000);
     </script>
 </body>
 </html>
