@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wil Wortman | Coming Soon</title>
+
     <!-- Importing a clean, modern font -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
     <style>
         /* --- CSS Reset & Variables --- */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         :root {
             --bg-color: #0b0f19;
             --text-color: #f3f4f6;
@@ -23,6 +26,7 @@
             --accent-hover: #4f46e5;
             --muted-color: #9ca3af;
         }
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-color);
@@ -31,6 +35,7 @@
         }
 
         /* --- Scrollytelling Section 1: Welcome --- */
+
         .welcome-section {
             height: 100vh;
             width: 100%;
@@ -42,6 +47,7 @@
             padding: 2rem;
             position: relative;
         }
+
         .welcome-section h1 {
             font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 700;
@@ -51,6 +57,7 @@
             transform: translateY(20px);
             animation: fadeInUp 1s ease forwards;
         }
+
         .welcome-section p {
             font-size: clamp(1rem, 2vw, 1.25rem);
             color: var(--muted-color);
@@ -59,6 +66,7 @@
             transform: translateY(20px);
             animation: fadeInUp 1s ease forwards 0.3s;
         }
+
         .scroll-indicator {
             position: absolute;
             bottom: 2rem;
@@ -72,9 +80,11 @@
             opacity: 0;
             animation: fadeIn 1s ease forwards 0.6s;
         }
+
         .scroll-indicator span {
             margin-bottom: 0.5rem;
         }
+
         .mouse-icon {
             width: 24px;
             height: 40px;
@@ -82,6 +92,7 @@
             border-radius: 12px;
             position: relative;
         }
+
         .mouse-icon::before {
             content: '';
             width: 4px;
@@ -96,6 +107,7 @@
         }
 
         /* --- Scrollytelling Section 2: Core Site --- */
+
         .main-content {
             min-height: 100vh;
             width: 100%;
@@ -105,15 +117,22 @@
             align-items: center;
             text-align: center;
             padding: 4rem 2rem;
-            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.05) 0%, rgba(11, 15, 25, 0) 70%);
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(99, 102, 241, 0.05) 0%,
+                    rgba(11, 15, 25, 0) 70%
+                );
         }
-        
+
         /* Reveal animation on scroll classes */
+
         .reveal {
             opacity: 0;
             transform: translateY(40px);
             transition: all 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
         }
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
@@ -123,6 +142,7 @@
             font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 1.5rem;
         }
+
         .main-content p {
             color: var(--muted-color);
             max-width: 500px;
@@ -131,10 +151,12 @@
         }
 
         /* --- Interactive Boredom Button --- */
+
         .interactive-container {
             margin-bottom: 4rem;
             position: relative;
         }
+
         .bored-btn {
             background-color: transparent;
             border: 2px solid var(--accent-color);
@@ -149,20 +171,24 @@
             overflow: hidden;
             transition: all 0.3s ease;
         }
+
         .bored-btn:hover {
             background-color: var(--accent-color);
             box-shadow: 0 0 25px rgba(99, 102, 241, 0.4);
             transform: scale(1.02);
         }
+
         .bored-btn:active {
             transform: scale(0.98);
         }
+
         .click-counter {
             margin-top: 1rem;
             font-size: 0.875rem;
             color: var(--muted-color);
             min-height: 20px;
         }
+
         .particle {
             position: absolute;
             background-color: var(--accent-color);
@@ -173,10 +199,12 @@
         }
 
         /* --- Social Links --- */
+
         .social-links {
             display: flex;
             gap: 2rem;
         }
+
         .social-link {
             color: var(--text-color);
             text-decoration: none;
@@ -186,6 +214,7 @@
             padding-bottom: 4px;
             transition: color 0.3s ease;
         }
+
         .social-link::after {
             content: '';
             position: absolute;
@@ -196,146 +225,328 @@
             background-color: var(--accent-color);
             transition: width 0.3s ease;
         }
+
         .social-link:hover {
             color: var(--accent-color);
         }
+
         .social-link:hover::after {
             width: 100%;
         }
 
         /* --- Keyframe Animations --- */
+
         @keyframes fadeInUp {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
         @keyframes fadeIn {
-            to { opacity: 1; }
+            to {
+                opacity: 1;
+            }
         }
+
         @keyframes scrollWheel {
-            0% { opacity: 1; transform: translate(-50%, 0); }
-            100% { opacity: 0; transform: translate(-50%, 15px); }
+            0% {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(-50%, 15px);
+            }
         }
+
         @keyframes popOut {
-            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-            100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(var(--x), var(--y)) scale(0);
+                opacity: 0;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- SECTION 1: The Screen-Filling Entry -->
+
     <section class="welcome-section">
+
         <h1>Wil Wortman</h1>
+
         <p>Something is cooking.</p>
-        
+
         <div class="scroll-indicator">
             <span>Scroll Down</span>
             <div class="mouse-icon"></div>
         </div>
+
     </section>
+
 
     <!-- SECTION 2: The Core Reveal -->
+
     <section class="main-content">
-        <h2 class="reveal">Things are coming soon.</h2>
-        <p class="reveal">I'm currently building out a brand new digital space. Until then, you can stick around and click this button out of absolute boredom, or hit me up below.</p>
-        
+
+        <h2 class="reveal">
+            Things are coming soon.
+        </h2>
+
+        <p class="reveal">
+            I'm currently building out a brand new digital space.
+            Until then, you can stick around and click this button
+            out of absolute boredom, or hit me up below.
+        </p>
+
         <!-- Interactive Elements Block -->
+
         <div class="interactive-container reveal">
-            <button class="bored-btn" id="boredBtn">I'm bored</button>
-            <div class="click-counter" id="counterText">Button clicked 0 times</div>
+
+            <button class="bored-btn" id="boredBtn">
+                I'm bored
+            </button>
+
+            <div class="click-counter" id="counterText">
+                Button clicked 0 times
+            </div>
+
         </div>
+
 
         <!-- Social Connections -->
+
         <div class="social-links reveal">
-            <!-- Replace the '#' symbols with your actual profile links -->
-            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link">Instagram</a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-link">LinkedIn</a>
+
+            <!-- Replace these with your actual profile links -->
+
+            <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener"
+                class="social-link"
+            >
+                Instagram
+            </a>
+
+            <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener"
+                class="social-link"
+            >
+                LinkedIn
+            </a>
+
         </div>
+
     </section>
 
+
+    <!-- JAVASCRIPT GOES BELOW -->
     <script>
-        // --- Scrollytelling Reveal Logic ---
+
+        // ==========================================
+        // SCROLL REVEAL LOGIC
+        // ==========================================
+
         function revealElements() {
+
             const reveals = document.querySelectorAll('.reveal');
+
             reveals.forEach(element => {
+
                 const windowHeight = window.innerHeight;
                 const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 100; // Trigger point
+
+                const elementVisible = 100;
 
                 if (elementTop < windowHeight - elementVisible) {
                     element.classList.add('active');
                 }
+
             });
+
         }
+
+
+        // Check when the user scrolls
+
         window.addEventListener('scroll', revealElements);
-        // Initial check on load
+
+
+        // Check immediately when the page loads
+
         revealElements();
 
-        // --- Boredom Button Interaction & Particle Logic ---
+
+        // ==========================================
+        // BOREDOM BUTTON
+        // ==========================================
+
         const btn = document.getElementById('boredBtn');
         const counterText = document.getElementById('counterText');
+
         let count = 0;
 
+
+        // Different messages depending on click count
+
         const dynamicPhrases = [
+
             "Button clicked {n} times",
+
             "Still clicked {n} times",
+
             "Okay, {n} times is a lot",
+
             "Are you trying to break it? ({n})",
+
             "Fine, you win. It's exactly {n} clicks.",
+
             "Legendary status unlocked: {n} clicks!"
+
         ];
 
+
+        // ==========================================
+        // BUTTON CLICK EVENT
+        // ==========================================
+
         btn.addEventListener('click', (e) => {
+
+            // Increase click counter
+
             count++;
-            
-            // Update counter text dynamically based on scale
+
+
+            // Update counter text
+
             if (count < 5) {
-                counterText.innerText = dynamicPhrases[0].replace("{n}", count);
-            } else if (count < 15) {
-                counterText.innerText = dynamicPhrases[1].replace("{n}", count);
-            } else if (count < 30) {
-                counterText.innerText = dynamicPhrases[2].replace("{n}", count);
-            } else if (count < 50) {
-counterText.innerText = dynamicPhrases[3].replace("{n}", count);
-} else if (count < 100) {
-  counterText.innerText = dynamicPhrases[4].replace("{n}", count);
-} else {
-  counterText.innerText = dynamicPhrases[5].replace("{n}", count);
-}
 
-// Create Clean Burst Particles
-const rect = btn.getBoundingClientRect();
-const container = btn.parentElement;
+                counterText.innerText =
+                    dynamicPhrases[0].replace("{n}", count);
 
-for (let i = 0; i < 12; i++) {
-  const particle = document.createElement('div');
-  particle.classList.add('particle');
-  
-  // Size variation
-  const size = Math.random() * 6 + 4;
-  particle.style.width = `${size}px`;
-  particle.style.height = `${size}px`;
-  
-  // Set random paths for the explosion effect
-  const angle = Math.random() * Math.PI * 2;
-  const distance = Math.random() * 80 + 40;
-  const x = Math.cos(angle) * distance;
-  const y = Math.sin(angle) * distance;
-  
-  particle.style.setProperty('--x', `${x}px`);
-  particle.style.setProperty('--y', `${y}px`);
-  
-  // Positioning particles relative to the container
-  particle.style.left = `${e.clientX - rect.left}px`;
-  particle.style.top = `${e.clientY - rect.top}px`;
-  
-  container.appendChild(particle);
-  
-  // Cleanup elements
-  setTimeout(() => {
-    particle.remove();
-  }, 600);
-}
-});
+            }
+
+            else if (count < 15) {
+
+                counterText.innerText =
+                    dynamicPhrases[1].replace("{n}", count);
+
+            }
+
+            else if (count < 30) {
+
+                counterText.innerText =
+                    dynamicPhrases[2].replace("{n}", count);
+
+            }
+
+            else if (count < 50) {
+
+                counterText.innerText =
+                    dynamicPhrases[3].replace("{n}", count);
+
+            }
+
+            else if (count < 100) {
+
+                counterText.innerText =
+                    dynamicPhrases[4].replace("{n}", count);
+
+            }
+
+            else {
+
+                counterText.innerText =
+                    dynamicPhrases[5].replace("{n}", count);
+
+            }
+
+
+            // ==========================================
+            // CREATE PARTICLES
+            // ==========================================
+
+            const rect = btn.getBoundingClientRect();
+
+            const container = btn.parentElement;
+
+
+            for (let i = 0; i < 12; i++) {
+
+                const particle = document.createElement('div');
+
+                particle.classList.add('particle');
+
+
+                // Random particle size
+
+                const size = Math.random() * 6 + 4;
+
+                particle.style.width = `${size}px`;
+
+                particle.style.height = `${size}px`;
+
+
+                // Random explosion direction
+
+                const angle = Math.random() * Math.PI * 2;
+
+                const distance = Math.random() * 80 + 40;
+
+                const x = Math.cos(angle) * distance;
+
+                const y = Math.sin(angle) * distance;
+
+
+                particle.style.setProperty(
+                    '--x',
+                    `${x}px`
+                );
+
+                particle.style.setProperty(
+                    '--y',
+                    `${y}px`
+                );
+
+
+                // Position particle where mouse clicked
+
+                particle.style.left =
+                    `${e.clientX - rect.left}px`;
+
+                particle.style.top =
+                    `${e.clientY - rect.top}px`;
+
+
+                // Add particle to container
+
+                container.appendChild(particle);
+
+
+                // Remove particle after animation
+
+                setTimeout(() => {
+
+                    particle.remove();
+
+                }, 600);
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
