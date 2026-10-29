@@ -2,1462 +2,968 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#111111">
-  <meta name="description" content="Wortman/Darling HVAC — heating and cooling service that comes out swinging.">
-  <title>Wortman/Darling HVAC | Comfort in Your Corner</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --red: #ed302b;
-      --dark: #111111;
-      --gray: #191919;
-      --muted: #a6a6a6;
-      --white: #f7f6f2;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 85px;
-    }
-
-    body {
-      background: var(--white);
-      color: var(--dark);
-      font-family: "DM Sans", sans-serif;
-      overflow-x: hidden;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button, input, textarea, select {
-      font: inherit;
-    }
-
-    button, a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .topbar {
-      background: var(--red);
-      color: white;
-      text-align: center;
-      padding: 9px 15px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    header {
-      background: var(--dark);
-      color: white;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid #303030;
-    }
-
-    .nav {
-      max-width: 1240px;
-      min-height: 80px;
-      padding: 14px 28px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .logo-mark {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border: 2px solid var(--red);
-      color: white;
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 19px;
-      font-weight: 900;
-      transform: skew(-5deg);
-    }
-
-    .logo-name {
-      font-family: "Barlow Condensed", sans-serif;
-      font-weight: 800;
-      font-size: 23px;
-      line-height: 1;
-      letter-spacing: .5px;
-    }
-
-    .logo-name span {
-      color: var(--red);
-    }
-
-    .logo-sub {
-      display: block;
-      font-size: 9px;
-      letter-spacing: 3px;
-      color: #aaa;
-      margin-top: 6px;
-      font-weight: 700;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 27px;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .nav-links a:not(.nav-cta):hover {
-      color: var(--red);
-    }
-
-    .nav-cta, .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--red);
-      color: white;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 12px;
-      padding: 15px 22px;
-      border: 0;
-      cursor: pointer;
-      transition: .2s ease;
-    }
-
-    .nav-cta:hover, .btn:hover {
-      background: white;
-      color: var(--dark);
-      transform: translateY(-2px);
-    }
-
-    .menu-toggle {
-      display: none;
-      border: 1px solid #555;
-      background: transparent;
-      color: white;
-      padding: 9px 12px;
-      cursor: pointer;
-    }
-
-    /* HERO */
-
-    .hero {
-      position: relative;
-      min-height: 690px;
-      display: flex;
-      align-items: center;
-      background: #111;
-      color: white;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, #111 2%, rgba(17,17,17,.95) 37%, rgba(17,17,17,.48) 100%),
-        url("https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=2000&q=85")
-        center 45% / cover no-repeat;
-      opacity: .85;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        120deg,
-        transparent 0,
-        transparent 75px,
-        rgba(255,255,255,.025) 76px,
-        rgba(255,255,255,.025) 78px
-      );
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      width: 100%;
-      max-width: 1240px;
-      margin: auto;
-      padding: 90px 28px 110px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--red);
-      text-transform: uppercase;
-      font-weight: 800;
-      letter-spacing: 3px;
-      font-size: 11px;
-      margin-bottom: 25px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      height: 3px;
-      width: 35px;
-      background: var(--red);
-    }
-
-    h1, h2, h3 {
-      font-family: "Barlow Condensed", sans-serif;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      font-size: clamp(65px, 9.4vw, 125px);
-      font-weight: 900;
-      line-height: .83;
-      letter-spacing: -2px;
-      max-width: 800px;
-    }
-
-    h1 .outline {
-      color: transparent;
-      -webkit-text-stroke: 1.5px white;
-    }
-
-    h1 .red {
-      color: var(--red);
-    }
-
-    .hero-copy {
-      margin-top: 28px;
-      color: #c6c6c6;
-      max-width: 480px;
-      line-height: 1.8;
-      font-size: 15px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 13px;
-      margin-top: 32px;
-      flex-wrap: wrap;
-    }
-
-    .btn-outline {
-      border: 1px solid #777;
-      color: white;
-      background: transparent;
-    }
-
-    .btn-outline:hover {
-      background: white;
-      color: var(--dark);
-    }
-
-    .hero-note {
-      margin-top: 32px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      color: #aaa;
-      font-size: 11px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .hero-note strong {
-      color: white;
-    }
-
-    .hero-note span {
-      color: var(--red);
-      font-size: 18px;
-    }
-
-    .hero-stamp {
-      position: absolute;
-      z-index: 3;
-      right: 8%;
-      bottom: 65px;
-      width: 145px;
-      height: 145px;
-      border: 2px solid rgba(237,48,43,.8);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      color: white;
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 18px;
-      line-height: 1.1;
-      font-weight: 800;
-      transform: rotate(12deg);
-      background: rgba(17,17,17,.45);
-    }
-
-    .hero-stamp span {
-      color: var(--red);
-    }
-
-    /* FIGHT STRIP */
-
-    .fight-strip {
-      background: var(--red);
-      color: white;
-      padding: 17px 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .ticker {
-      display: flex;
-      width: max-content;
-      animation: ticker 30s linear infinite;
-    }
-
-    .ticker span {
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 21px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      padding: 0 28px;
-    }
-
-    .ticker b {
-      color: #171717;
-      margin-right: 28px;
-    }
-
-    @keyframes ticker {
-      to { transform: translateX(-50%); }
-    }
-
-    /* TRUST BAR */
-
-    .trust-bar {
-      background: #1a1a1a;
-      color: white;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      padding: 25px max(28px, calc((100% - 1184px) / 2));
-      gap: 20px;
-    }
-
-    .trust-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 13px;
-      padding: 7px;
-    }
-
-    .trust-icon {
-      color: var(--red);
-      font-size: 24px;
-    }
-
-    .trust-item strong {
-      display: block;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-    }
-
-    .trust-item small {
-      display: block;
-      color: #aaa;
-      font-size: 11px;
-      margin-top: 4px;
-    }
-
-    /* GENERAL SECTIONS */
-
-    .section {
-      max-width: 1240px;
-      padding: 100px 28px;
-      margin: auto;
-    }
-
-    .section-heading {
-      max-width: 720px;
-      margin-bottom: 45px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(43px, 6vw, 69px);
-      line-height: .94;
-      font-weight: 900;
-      margin-bottom: 18px;
-    }
-
-    .section-heading h2 span {
-      color: var(--red);
-    }
-
-    .section-heading p {
-      color: #686868;
-      font-size: 14px;
-      line-height: 1.8;
-      max-width: 590px;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .service-card {
-      border: 1px solid #deded9;
-      background: white;
-      padding: 30px;
-      position: relative;
-      overflow: hidden;
-      transition: .25s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--red);
-      box-shadow: 0 15px 40px #0000000c;
-    }
-
-    .service-number {
-      position: absolute;
-      right: 20px;
-      top: 12px;
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 70px;
-      color: #f1f0ec;
-      font-weight: 900;
-    }
-
-    .service-icon {
-      font-size: 34px;
-      margin-bottom: 35px;
-      position: relative;
-    }
-
-    .service-card h3 {
-      font-size: 28px;
-      margin-bottom: 12px;
-      position: relative;
-    }
-
-    .service-card p {
-      color: #777;
-      font-size: 13px;
-      line-height: 1.8;
-      min-height: 70px;
-    }
-
-    .service-link {
-      display: inline-block;
-      margin-top: 22px;
-      color: var(--red);
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* BOXING SECTION */
-
-    .boxing {
-      background: var(--dark);
-      color: white;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .boxing-inner {
-      max-width: 1240px;
-      padding: 100px 28px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 70px;
-    }
-
-    .boxing-art {
-      min-height: 440px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background:
-        linear-gradient(135deg, rgba(237,48,43,.14), transparent 65%),
-        #191919;
-      border: 1px solid #333;
-      overflow: hidden;
-    }
-
-    .boxing-art::before,
-    .boxing-art::after {
-      content: "";
-      position: absolute;
-      width: 290px;
-      height: 290px;
-      border: 1px solid #ffffff12;
-      border-radius: 50%;
-    }
-
-    .boxing-art::after {
-      width: 390px;
-      height: 390px;
-    }
-
-    .glove {
-      font-size: clamp(100px, 14vw, 180px);
-      filter: grayscale(1);
-      transform: rotate(-20deg);
-      z-index: 1;
-      text-shadow: 10px 15px 0 #ed302b;
-    }
-
-    .round-label {
-      position: absolute;
-      left: 24px;
-      bottom: 24px;
-      color: #aaa;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      z-index: 2;
-    }
-
-    .round-label strong {
-      color: var(--red);
-    }
-
-    .boxing-copy h2 {
-      font-size: clamp(48px, 6vw, 77px);
-      line-height: .9;
-      margin-bottom: 25px;
-    }
-
-    .boxing-copy h2 span {
-      color: var(--red);
-    }
-
-    .boxing-copy p {
-      color: #aaa;
-      font-size: 14px;
-      line-height: 1.9;
-      margin-bottom: 17px;
-    }
-
-    .boxing-quote {
-      margin-top: 28px;
-      border-left: 3px solid var(--red);
-      padding: 10px 0 10px 20px;
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 25px;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    /* PROCESS */
-
-    .process {
-      background: #ecebe6;
-    }
-
-    .process-inner {
-      max-width: 1240px;
-      padding: 85px 28px;
-      margin: auto;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 35px;
-    }
-
-    .step {
-      border-top: 3px solid var(--red);
-      padding-top: 20px;
-    }
-
-    .step-num {
-      font-family: "Barlow Condensed", sans-serif;
-      color: #bdbdb7;
-      font-size: 45px;
-      font-weight: 900;
-    }
-
-    .step h3 {
-      font-size: 25px;
-      margin: 10px 0;
-    }
-
-    .step p {
-      color: #686868;
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    /* CONTACT */
-
-    .contact {
-      background: white;
-    }
-
-    .contact-inner {
-      max-width: 1240px;
-      padding: 100px 28px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 80px;
-    }
-
-    .contact-copy h2 {
-      font-size: clamp(50px, 6vw, 75px);
-      line-height: .9;
-      margin-bottom: 25px;
-    }
-
-    .contact-copy h2 span {
-      color: var(--red);
-    }
-
-    .contact-copy > p {
-      color: #777;
-      font-size: 14px;
-      line-height: 1.8;
-      margin-bottom: 30px;
-    }
-
-    .contact-detail {
-      padding: 17px 0;
-      border-top: 1px solid #e3e3df;
-    }
-
-    .contact-detail small {
-      color: #888;
-      text-transform: uppercase;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 2px;
-    }
-
-    .contact-detail p {
-      margin-top: 6px;
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .contact-form {
-      padding: 35px;
-      background: #f5f4f0;
-    }
-
-    .contact-form h3 {
-      font-size: 33px;
-      margin-bottom: 8px;
-    }
-
-    .form-intro {
-      font-size: 12px;
-      color: #777;
-      margin-bottom: 25px;
-      line-height: 1.7;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      margin-bottom: 16px;
-    }
-
-    .field.full {
-      grid-column: 1 / -1;
-    }
-
-    .field label {
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .field input,
-    .field select,
-    .field textarea {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #d8d8d2;
-      background: white;
-      color: #222;
-      border-radius: 0;
-      outline: none;
-      font-size: 13px;
-    }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
-      border-color: var(--red);
-    }
-
-    .field textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    .contact-form .btn {
-      width: 100%;
-    }
-
-    .form-status {
-      margin-top: 15px;
-      font-size: 12px;
-      line-height: 1.7;
-    }
-
-    /* FOOTER */
-
-    footer {
-      background: #111;
-      color: white;
-      padding: 40px 28px;
-    }
-
-    .footer-inner {
-      max-width: 1184px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 25px;
-    }
-
-    .footer-tagline {
-      color: #999;
-      font-size: 11px;
-      margin-top: 9px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      font-size: 11px;
-      color: #bbb;
-    }
-
-    .footer-links a:hover {
-      color: var(--red);
-    }
-
-    .copyright {
-      max-width: 1184px;
-      margin: 30px auto 0;
-      border-top: 1px solid #303030;
-      padding-top: 20px;
-      color: #777;
-      font-size: 10px;
-      line-height: 1.8;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .65s ease, transform .65s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    @media (max-width: 850px) {
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #111;
-        padding: 22px 28px 28px;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 22px;
-        border-bottom: 1px solid #333;
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .hero {
-        min-height: 620px;
-      }
-
-      .hero-stamp {
-        right: 5%;
-        bottom: 24px;
-        width: 105px;
-        height: 105px;
-        font-size: 14px;
-      }
-
-      .trust-bar {
-        grid-template-columns: 1fr;
-        padding: 20px 28px;
-      }
-
-      .trust-item {
-        justify-content: flex-start;
-      }
-
-      .services {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .boxing-inner,
-      .contact-inner {
-        grid-template-columns: 1fr;
-        gap: 45px;
-      }
-
-      .boxing-art {
-        min-height: 320px;
-      }
-
-      .steps {
-        gap: 22px;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .nav {
-        padding: 12px 18px;
-      }
-
-      .logo-name {
-        font-size: 20px;
-      }
-
-      .hero-inner {
-        padding: 75px 20px 125px;
-      }
-
-      h1 {
-        font-size: clamp(57px, 15vw, 83px);
-      }
-
-      .hero-copy {
-        font-size: 14px;
-      }
-
-      .section,
-      .boxing-inner,
-      .process-inner,
-      .contact-inner {
-        padding: 70px 20px;
-      }
-
-      .services,
-      .steps {
-        grid-template-columns: 1fr;
-      }
-
-      .service-card p {
-        min-height: auto;
-      }
-
-      .boxing-art {
-        min-height: 260px;
-      }
-
-      .contact-form {
-        padding: 23px 18px;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-
-      .field.full {
-        grid-column: auto;
-      }
-
-      .hero-stamp {
-        display: none;
-      }
-
-      .footer-inner {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wil Wortman | St. Marys, PA Legend</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800;900&display=swap');
+
+:root {
+  --red: #ff3434;
+  --black: #101010;
+  --white: #f5f3ed;
+  --gray: #202020;
+  --muted: #a7a7a7;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: Inter, sans-serif;
+  overflow-x: hidden;
+}
+
+button, a { font: inherit; }
+button { cursor: pointer; }
+
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  opacity: .07;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 7%;
+  border-bottom: 1px solid #333;
+  position: relative;
+  z-index: 20;
+}
+
+.logo {
+  font-family: Anton, sans-serif;
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+.logo span { color: var(--red); }
+
+.nav-right {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.nav-right a {
+  color: #bbb;
+  font-size: 12px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.nav-right a:hover { color: var(--red); }
+
+.pill {
+  background: var(--red);
+  color: white !important;
+  padding: 12px 17px;
+  border: none;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.hero {
+  min-height: 680px;
+  padding: 90px 7% 80px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 82% 45%, #681818 0, transparent 36%),
+    linear-gradient(120deg, #111 40%, #1a1010 100%);
+}
+
+.hero::before {
+  content: "W";
+  position: absolute;
+  right: 1%;
+  top: -120px;
+  font-family: Anton, sans-serif;
+  font-size: 690px;
+  line-height: 1;
+  color: #ffffff06;
+  transform: rotate(-8deg);
+}
+
+.hero-content {
+  max-width: 850px;
+  position: relative;
+  z-index: 2;
+}
+
+.kicker {
+  color: var(--red);
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin-bottom: 25px;
+}
+
+h1, h2, h3, .big {
+  font-family: Anton, Impact, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(75px, 12vw, 155px);
+  line-height: .82;
+  letter-spacing: -2px;
+}
+
+h1 .red { color: var(--red); }
+
+h1 .stroke {
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+}
+
+.hero-description {
+  max-width: 480px;
+  color: #bcbcbc;
+  font-size: 15px;
+  line-height: 1.8;
+  margin-top: 30px;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 16px 22px;
+  background: var(--red);
+  border: 1px solid var(--red);
+  color: white;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  transition: .2s;
+}
+
+.btn:hover {
+  background: white;
+  border-color: white;
+  color: black;
+  transform: translateY(-3px);
+}
+
+.btn.secondary {
+  background: transparent;
+  border-color: #555;
+}
+
+.btn.secondary:hover { background: white; }
+
+.hero-stamp {
+  position: absolute;
+  right: 11%;
+  bottom: 95px;
+  transform: rotate(10deg);
+  border: 3px solid var(--red);
+  padding: 22px;
+  width: 145px;
+  height: 145px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-family: Anton, sans-serif;
+  font-size: 22px;
+  line-height: 1;
+  z-index: 2;
+}
+
+.hero-stamp span { color: var(--red); }
+
+.ticker {
+  background: var(--red);
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 15px 0;
+  font-family: Anton, sans-serif;
+  font-size: 22px;
+  letter-spacing: 2px;
+}
+
+.ticker-inner {
+  display: inline-block;
+  animation: move 28s linear infinite;
+}
+
+.ticker-inner span { margin: 0 25px; }
+
+@keyframes move {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.section {
+  padding: 95px 7%;
+  max-width: 1500px;
+  margin: auto;
+}
+
+.section-heading { margin-bottom: 40px; }
+
+.section-heading h2 {
+  font-size: clamp(45px, 7vw, 85px);
+  line-height: .94;
+}
+
+.section-heading h2 span { color: var(--red); }
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 570px;
+  margin-top: 20px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid #333;
+}
+
+.stat {
+  padding: 30px 24px;
+  border-right: 1px solid #333;
+}
+
+.stat:last-child { border-right: none; }
+
+.stat-number {
+  font-family: Anton, sans-serif;
+  color: var(--red);
+  font-size: 48px;
+}
+
+.stat p {
+  margin-top: 8px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #aaa;
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.card {
+  background: var(--gray);
+  border: 1px solid #333;
+  padding: 28px;
+  min-height: 220px;
+  transition: .2s;
+}
+
+.card:hover {
+  border-color: var(--red);
+  transform: translateY(-5px);
+}
+
+.card .emoji { font-size: 32px; margin-bottom: 24px; }
+
+.card h3 { font-size: 27px; margin-bottom: 12px; }
+
+.card p {
+  color: #aaa;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.card .label {
+  color: var(--red);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.interactive {
+  background: var(--white);
+  color: var(--black);
+  max-width: none;
+}
+
+.interactive-inner {
+  max-width: 1280px;
+  margin: auto;
+}
+
+.interactive .section-heading p { color: #666; }
+
+.play-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.play-card {
+  background: white;
+  padding: 32px;
+  border: 1px solid #ddd;
+  min-width: 0;
+}
+
+.play-card h3 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.play-card > p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.result {
+  background: #f1f0ec;
+  border-left: 4px solid var(--red);
+  padding: 22px;
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.8;
+  min-height: 90px;
+}
+
+.roast-button {
+  background: var(--black);
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.roast-button:hover { background: var(--red); }
+
+.fight-arena {
+  background: #171717;
+  color: white;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid #333;
+}
+
+.fighter {
+  font-size: 75px;
+  margin: 15px;
+  display: inline-block;
+  transition: .2s;
+}
+
+.fighter.hit { animation: punch .25s ease; }
+
+@keyframes punch {
+  0% { transform: translateX(0) rotate(0); }
+  50% { transform: translateX(24px) rotate(18deg); }
+  100% { transform: translateX(0) rotate(0); }
+}
+
+.health-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin: 20px 0 8px;
+}
+
+.health {
+  background: #444;
+  height: 13px;
+  overflow: hidden;
+}
+
+.health-fill {
+  height: 100%;
+  width: 100%;
+  background: var(--red);
+  transition: width .3s;
+}
+
+.fight-message {
+  margin: 18px 0;
+  min-height: 40px;
+  color: #ddd;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.lore-box {
+  margin-top: 24px;
+  border: 1px solid #333;
+  padding: 35px;
+  background:
+    radial-gradient(circle at 100% 0%, #5b1414, transparent 45%),
+    #171717;
+}
+
+.lore-box h3 {
+  font-size: 34px;
+  margin-bottom: 15px;
+}
+
+.lore-box p {
+  font-size: 14px;
+  color: #bbb;
+  line-height: 1.9;
+  max-width: 750px;
+}
+
+.lore-box .btn { margin-top: 24px; }
+
+.quote-section {
+  text-align: center;
+  padding: 100px 7%;
+  background: var(--red);
+}
+
+.quote-section p {
+  font-family: Anton, sans-serif;
+  font-size: clamp(35px, 6vw, 75px);
+  line-height: 1;
+  max-width: 1050px;
+  margin: auto;
+}
+
+.quote-section small {
+  display: block;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin-top: 25px;
+}
+
+footer {
+  padding: 40px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  color: #888;
+  font-size: 11px;
+}
+
+footer strong {
+  color: white;
+  font-family: Anton, sans-serif;
+  font-size: 21px;
+  letter-spacing: 1px;
+}
+
+footer span { color: var(--red); }
+
+#toast {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translate(-50%, 150px);
+  background: var(--red);
+  color: white;
+  padding: 15px 22px;
+  font-size: 12px;
+  font-weight: 900;
+  z-index: 100;
+  transition: transform .3s;
+  text-align: center;
+  width: max-content;
+  max-width: 90%;
+}
+
+#toast.show { transform: translate(-50%, 0); }
+
+@media(max-width: 850px) {
+  .hero { min-height: 600px; }
+  .hero-stamp { right: 6%; bottom: 35px; width: 110px; height: 110px; font-size: 17px; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat:nth-child(2) { border-right: none; }
+  .stat:nth-child(-n+2) { border-bottom: 1px solid #333; }
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media(max-width: 580px) {
+  nav { padding: 20px; }
+  .nav-right a:not(.pill) { display: none; }
+  .hero { padding: 85px 22px 120px; min-height: 650px; }
+  h1 { font-size: clamp(65px, 16vw, 95px); }
+  .hero-stamp { display: none; }
+  .section { padding: 70px 22px; }
+  .grid, .play-grid { grid-template-columns: 1fr; }
+  .stat { padding: 20px 15px; }
+  .stat-number { font-size: 39px; }
+  .play-card { padding: 24px; }
+  .quote-section { padding: 75px 22px; }
+}
+</style>
 </head>
-
 <body>
 
-  <div class="topbar">
-    The comfort fight starts here. Wortman/Darling HVAC.
+<div class="noise"></div>
+
+<nav>
+  <a href="#home" class="logo" style="text-decoration:none;color:white">
+    WIL<span>™</span> WORTMAN
+  </a>
+  <div class="nav-right">
+    <a href="#stats">Stats</a>
+    <a href="#lore">The Lore</a>
+    <a href="#games" class="pill">Enter the Arena ↗</a>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="hero-content">
+    <div class="kicker">Independent legend · St. Marys, Pennsylvania</div>
+    <h1>
+      NOT YOUR<br>
+      <span class="stroke">AVERAGE</span><br>
+      <span class="red">WIL.</span>
+    </h1>
+    <p class="hero-description">
+      Some people make history. Others make questionable decisions
+      and somehow become local legends. Welcome to the unofficial
+      Wil Wortman experience.
+    </p>
+    <div class="buttons">
+      <a class="btn" href="#lore" style="text-decoration:none">Discover the Lore ↓</a>
+      <a class="btn secondary" href="#games" style="text-decoration:none">Challenge Wil 🥊</a>
+    </div>
+  </div>
+  <div class="hero-stamp">ST. MARYS<br><span>HALL OF</span><br>FAME*</div>
+</header>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>WIL WORTMAN</span> ✦ <span>SMETHPORT? NEVER HEARD OF IT.</span> ✦
+    <span>ST. MARYS ENERGY</span> ✦ <span>BUILT DIFFERENT™</span> ✦
+    <span>WIL WORTMAN</span> ✦ <span>SMETHPORT? NEVER HEARD OF IT.</span> ✦
+    <span>ST. MARYS ENERGY</span> ✦ <span>BUILT DIFFERENT™</span> ✦
+  </div>
+</div>
+
+<section class="section" id="stats">
+  <div class="section-heading">
+    <div class="kicker">Character select</div>
+    <h2>THE <span>WIL</span> PROFILE.</h2>
+    <p>
+      A completely unofficial character sheet. These stats are
+      for entertainment, not scientific measurement.
+    </p>
   </div>
 
-  <header>
-    <nav class="nav" aria-label="Main navigation">
-      <a class="logo" href="#home" aria-label="Wortman Darling HVAC home">
-        <div class="logo-mark">W/D</div>
-        <div>
-          <div class="logo-name">WORTMAN<span>/</span>DARLING</div>
-          <span class="logo-sub">HEATING · COOLING · HVAC</span>
-        </div>
-      </a>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-number" data-count="99">0</div>
+      <p>Hometown Aura</p>
+    </div>
+    <div class="stat">
+      <div class="stat-number" data-count="87">0</div>
+      <p>Main Character Energy</p>
+    </div>
+    <div class="stat">
+      <div class="stat-number" data-count="100">0</div>
+      <p>Confidence</p>
+    </div>
+    <div class="stat">
+      <div class="stat-number" data-count="???">0</div>
+      <p>Unpredictability</p>
+    </div>
+  </div>
+</section>
 
-      <button class="menu-toggle" id="menuToggle"
-        aria-label="Toggle navigation" aria-expanded="false">
-        MENU ☰
-      </button>
+<section class="section" id="lore">
+  <div class="section-heading">
+    <div class="kicker">Previously undocumented history</div>
+    <h2>THE <span>LORE.</span></h2>
+    <p>
+      Every legend has a backstory. The details below are a
+      fictional, interactive tribute to the Wil cinematic universe.
+    </p>
+  </div>
 
-      <div class="nav-links" id="navLinks">
-        <a href="#services">Services</a>
-        <a href="#about">Our Approach</a>
-        <a href="#process">How It Works</a>
-        <a href="#contact" class="nav-cta">Get an Estimate ↗</a>
-      </div>
-    </nav>
-  </header>
+  <div class="grid">
+    <article class="card">
+      <div class="emoji">📍</div>
+      <div class="label">ORIGIN STORY</div>
+      <h3>St. Marys, PA</h3>
+      <p>
+        Forged in Pennsylvania. Powered by small-town energy.
+        Allegedly capable of turning a five-minute errand into
+        a full afternoon adventure.
+      </p>
+    </article>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-bg"></div>
+    <article class="card">
+      <div class="emoji">🥊</div>
+      <div class="label">FIGHTING SPIRIT</div>
+      <h3>First Round Ready</h3>
+      <p>
+        The gloves are metaphorical unless Wil actually steps
+        into a boxing gym. This website does not provide an
+        official fight record.
+      </p>
+    </article>
 
-      <div class="hero-inner">
-        <div class="eyebrow">Your home. Our corner.</div>
+    <article class="card">
+      <div class="emoji">🧠</div>
+      <div class="label">SPECIAL ABILITY</div>
+      <h3>Unmatched Lore</h3>
+      <p>
+        Can generate a completely unnecessary side quest out
+        of an otherwise ordinary Tuesday. Cooldown: unknown.
+      </p>
+    </article>
+  </div>
 
-        <h1>
-          DON'T LET<br>
-          THE HEAT<br>
-          <span class="outline">WIN.</span><br>
-          <span class="red">FIGHT BACK.</span>
-        </h1>
+  <div class="lore-box" style="margin-top:18px">
+    <div class="kicker">Press the button. Discover your fate.</div>
+    <h3>THE WIL LORE GENERATOR</h3>
+    <p id="loreOutput">
+      There are stories that have yet to be told. Click below
+      to uncover a randomly generated chapter of the Wil saga.
+    </p>
+    <button class="btn" id="loreButton">Generate New Lore ↗</button>
+  </div>
+</section>
 
-        <p class="hero-copy">
-          When your heating or cooling goes down, you need a team
-          that comes out swinging. Wortman/Darling HVAC is here to
-          help you get comfortable and keep your home ready for
-          whatever the weather throws your way.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#contact" class="btn">Request an Estimate ↗</a>
-          <a href="#services" class="btn btn-outline">Explore Services</a>
-        </div>
-
-        <div class="hero-note">
-          <span>✦</span>
-          <strong>Comfort in your corner.</strong>
-          <span>✦</span>
-          <span style="color:#aaa;font-size:10px">
-            Every season. Every round.
-          </span>
-        </div>
-      </div>
-
-      <div class="hero-stamp">
-        BUILT TO<br>
-        <span>GO THE</span><br>
-        DISTANCE
-      </div>
-    </section>
-
-    <div class="fight-strip" aria-label="Our promise">
-      <div class="ticker">
-        <span>Comfort is the name of the game <b>✦</b></span>
-        <span>Heat doesn't stand a chance <b>✦</b></span>
-        <span>Ready for every round <b>✦</b></span>
-        <span>Comfort is the name of the game <b>✦</b></span>
-        <span>Heat doesn't stand a chance <b>✦</b></span>
-        <span>Ready for every round <b>✦</b></span>
-      </div>
+<section class="section interactive" id="games">
+  <div class="interactive-inner">
+    <div class="section-heading">
+      <div class="kicker">Interactive entertainment division</div>
+      <h2>WELCOME TO <span>THE ARENA.</span></h2>
+      <p>
+        Test your luck. Roast the legend. Enter the ring.
+        Please remember: this is all for fun.
+      </p>
     </div>
 
-    <div class="trust-bar">
-      <div class="trust-item">
-        <span class="trust-icon">⚙</span>
-        <div>
-          <strong>Heating & Cooling</strong>
-          <small>Solutions for year-round comfort</small>
-        </div>
-      </div>
-
-      <div class="trust-item">
-        <span class="trust-icon">⌁</span>
-        <div>
-          <strong>Focused on the Fix</strong>
-          <small>Practical solutions for your space</small>
-        </div>
-      </div>
-
-      <div class="trust-item">
-        <span class="trust-icon">✦</span>
-        <div>
-          <strong>In Your Corner</strong>
-          <small>Service with your comfort in mind</small>
-        </div>
-      </div>
-    </div>
-
-    <section class="section" id="services">
-      <div class="section-heading reveal">
-        <div class="eyebrow">Step into the ring</div>
-        <h2>WE HANDLE THE<br><span>HEAVY HEATING.</span></h2>
+    <div class="play-grid">
+      <div class="play-card">
+        <h3>🎤 The Roast Machine</h3>
         <p>
-          Whether your system needs attention or you're planning
-          an upgrade, explore our HVAC services and tell us what
-          you need. We'll help you determine the next step.
+          Generate a playful roast of Wil. No two clicks need
+          to produce the same result.
         </p>
-      </div>
-
-      <div class="services">
-        <article class="service-card reveal">
-          <span class="service-number">01</span>
-          <div class="service-icon">❄</div>
-          <h3>Air Conditioning</h3>
-          <p>
-            Keep your cool when temperatures climb. Ask us about
-            AC troubleshooting, maintenance, repairs, and new
-            system options.
-          </p>
-          <a class="service-link" href="#contact">Get in touch ↗</a>
-        </article>
-
-        <article class="service-card reveal">
-          <span class="service-number">02</span>
-          <div class="service-icon">♨</div>
-          <h3>Heating Systems</h3>
-          <p>
-            Don't let the cold get the upper hand. Get in touch
-            about heating system issues, upkeep, repairs, and
-            replacement options.
-          </p>
-          <a class="service-link" href="#contact">Get in touch ↗</a>
-        </article>
-
-        <article class="service-card reveal">
-          <span class="service-number">03</span>
-          <div class="service-icon">⚙</div>
-          <h3>Maintenance</h3>
-          <p>
-            A little preparation can go a long way. Ask about
-            routine system maintenance and ways to keep your
-            equipment running efficiently.
-          </p>
-          <a class="service-link" href="#contact">Get in touch ↗</a>
-        </article>
-
-        <article class="service-card reveal">
-          <span class="service-number">04</span>
-          <div class="service-icon">⌂</div>
-          <h3>New Installations</h3>
-          <p>
-            Thinking about a new heating or cooling system?
-            Let's discuss your space, comfort needs, and
-            installation options.
-          </p>
-          <a class="service-link" href="#contact">Get in touch ↗</a>
-        </article>
-
-        <article class="service-card reveal">
-          <span class="service-number">05</span>
-          <div class="service-icon">◎</div>
-          <h3>Troubleshooting</h3>
-          <p>
-            Strange noises, inconsistent temperatures, or a
-            system that won't cooperate? Tell us what's going
-            on so we can discuss the right next step.
-          </p>
-          <a class="service-link" href="#contact">Get in touch ↗</a>
-        </article>
-
-        <article class="service-card reveal">
-          <span class="service-number">06</span>
-          <div class="service-icon">✦</div>
-          <h3>Your Comfort</h3>
-          <p>
-            Every home is different. We'll work with you to
-            understand your priorities and explore a solution
-            that fits your needs.
-          </p>
-          <a class="service-link" href="#contact">Get in touch ↗</a>
-        </article>
-      </div>
-    </section>
-
-    <section class="boxing" id="about">
-      <div class="boxing-inner">
-        <div class="boxing-art reveal">
-          <div class="glove" aria-label="Boxing glove" role="img">🥊</div>
-          <div class="round-label">
-            <strong>W/D HVAC</strong> — READY FOR THE NEXT ROUND
-          </div>
-        </div>
-
-        <div class="boxing-copy reveal">
-          <div class="eyebrow">A little fight in everything we do</div>
-          <h2>WE DON'T<br>BACK DOWN.<br><span>WE SHOW UP.</span></h2>
-
-          <p>
-            Boxing teaches you to stay focused, prepare for the
-            challenge, and keep working when the pressure is on.
-            HVAC isn't much different.
-          </p>
-
-          <p>
-            When your house is freezing in January or your AC
-            quits in July, you want people who take the problem
-            seriously. That's the attitude behind Wortman/Darling:
-            put in the work, focus on the details, and keep your
-            comfort in the corner.
-          </p>
-
-          <div class="boxing-quote">
-            "THE ONLY THING WE WANT TO SEE GET KNOCKED OUT
-            IS YOUR HVAC PROBLEM."
-          </div>
-
-          <div style="margin-top:30px">
-            <a href="#contact" class="btn">Let's Talk HVAC ↗</a>
-          </div>
+        <button class="roast-button" id="roastButton">
+          Roast Wil 🔥
+        </button>
+        <div class="result" id="roastOutput">
+          Wil has entered the chat. His reputation has not.
         </div>
       </div>
-    </section>
 
-    <section class="process" id="process">
-      <div class="process-inner">
-        <div class="section-heading reveal">
-          <div class="eyebrow">No unnecessary rounds</div>
-          <h2>THREE STEPS.<br><span>ONE GAME PLAN.</span></h2>
-          <p>
-            Getting started shouldn't be complicated. Here's
-            how to begin working with Wortman/Darling HVAC.
-          </p>
-        </div>
-
-        <div class="steps">
-          <article class="step reveal">
-            <div class="step-num">01 / FIRST ROUND</div>
-            <h3>Tell Us What's Wrong</h3>
-            <p>
-              Describe your heating or cooling issue, your
-              project, or what you'd like to improve.
-            </p>
-          </article>
-
-          <article class="step reveal">
-            <div class="step-num">02 / THE GAME PLAN</div>
-            <h3>Discuss Your Options</h3>
-            <p>
-              We'll discuss your needs and the appropriate
-              next steps, including an estimate when available.
-            </p>
-          </article>
-
-          <article class="step reveal">
-            <div class="step-num">03 / FIGHT FOR COMFORT</div>
-            <h3>Get Back to Comfortable</h3>
-            <p>
-              Once the scope and details are agreed upon,
-              the goal is simple: get your comfort back on track.
-            </p>
-          </article>
+      <div class="play-card">
+        <h3>🎲 Wil's Luck Test</h3>
+        <p>
+          Click to roll for your current standing in the
+          totally fictional Wil universe.
+        </p>
+        <button class="roast-button" id="luckButton">
+          Roll the Dice 🎲
+        </button>
+        <div class="result" id="luckOutput">
+          Your destiny is loading. Probably.
         </div>
       </div>
-    </section>
 
-    <section class="contact" id="contact">
-      <div class="contact-inner">
-        <div class="contact-copy reveal">
-          <div class="eyebrow">Your next move</div>
-          <h2>LET'S GET<br>YOU BACK<br><span>IN COMFORT.</span></h2>
+      <div class="play-card" style="grid-column:1/-1">
+        <h3>🥊 WIL VS. THE HEAVYWEIGHT BUG</h3>
+        <p>
+          A completely fictional arcade battle. Tap the punch
+          button to reduce the opponent's health. No real
+          fighting skills or real-world records are implied.
+        </p>
 
-          <p>
-            Have a question, need HVAC work, or want to discuss
-            a new system? Send us a message with a few details
-            about your project.
-          </p>
-
-          <div class="contact-detail">
-            <small>Company</small>
-            <p>Wortman/Darling HVAC</p>
+        <div class="fight-arena">
+          <div style="font-size:10px;letter-spacing:3px;color:#ff3434;font-weight:900">
+            MAIN EVENT · ST. MARYS ARENA
           </div>
 
-          <div class="contact-detail">
-            <small>Phone</small>
-            <p>PHONE NUMBER GOES HERE</p>
-          </div>
-
-          <div class="contact-detail">
-            <small>Service Area</small>
-            <p>ADD YOUR SERVICE AREA HERE</p>
-          </div>
-
-          <p style="font-size:11px;margin-top:20px">
-            Call or message us to discuss availability and
-            the services offered in your area.
-          </p>
-        </div>
-
-        <form class="contact-form reveal" id="estimateForm">
-          <h3>GET IN OUR CORNER.</h3>
-          <p class="form-intro">
-            Tell us a little about the job. We'll need your
-            actual contact details configured before this form
-            can deliver messages.
-          </p>
-
-          <div class="form-grid">
-            <div class="field">
-              <label for="name">Your Name *</label>
-              <input id="name" name="name" required
-                autocomplete="name" placeholder="John Smith">
-            </div>
-
-            <div class="field">
-              <label for="phone">Phone Number *</label>
-              <input id="phone" name="phone" required
-                type="tel" autocomplete="tel"
-                placeholder="(555) 555-5555">
-            </div>
-
-            <div class="field full">
-              <label for="email">Email Address</label>
-              <input id="email" name="email" type="email"
-                autocomplete="email" placeholder="you@example.com">
-            </div>
-
-            <div class="field full">
-              <label for="service">What Do You Need? *</label>
-              <select id="service" name="service" required>
-                <option value="">Choose a service</option>
-                <option>Air conditioning</option>
-                <option>Heating</option>
-                <option>Maintenance</option>
-                <option>New installation</option>
-                <option>Troubleshooting / repair</option>
-                <option>Other / not sure yet</option>
-              </select>
-            </div>
-
-            <div class="field full">
-              <label for="details">Tell Us About the Job</label>
-              <textarea id="details" name="details"
-                placeholder="What's going on with your system?"></textarea>
-            </div>
-          </div>
-
-          <button type="submit" class="btn">
-            Prepare My Request ↗
-          </button>
-
-          <p class="form-status" id="formStatus" aria-live="polite"></p>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-      <div>
-        <a class="logo" href="#home">
-          <div class="logo-mark">W/D</div>
           <div>
-            <div class="logo-name">WORTMAN<span>/</span>DARLING</div>
-            <span class="logo-sub">HEATING · COOLING · HVAC</span>
+            <span class="fighter" id="wilFighter">🥊</span>
+            <span style="font-family:Anton,sans-serif;font-size:35px">VS</span>
+            <span class="fighter" id="opponent">🤖</span>
           </div>
-        </a>
-        <p class="footer-tagline">
-          Comfort in your corner. Ready for every round.
+
+          <div class="health-label">
+            <span>HEAVYWEIGHT BUG</span>
+            <span id="healthNumber">100 HP</span>
+          </div>
+          <div class="health">
+            <div class="health-fill" id="healthFill"></div>
+          </div>
+
+          <div class="fight-message" id="fightMessage">
+            The bell hasn't rung. Wil is adjusting his imaginary gloves.
+          </div>
+
+          <button class="btn" id="punchButton">THROW A PUNCH 👊</button>
+          <button class="btn secondary" id="resetFight">REMATCH ↻</button>
+        </div>
+      </div>
+
+      <div class="play-card" style="grid-column:1/-1">
+        <h3>🏆 The Official Wil-O-Meter</h3>
+        <p>
+          How much Wil energy are you operating on today?
+          Move the slider to find out.
         </p>
-      </div>
-
-      <div class="footer-links">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#about">Our Approach</a>
-        <a href="#contact">Contact</a>
+        <input id="wilSlider" type="range" min="0" max="100" value="50"
+          style="width:100%;accent-color:#ff3434;cursor:pointer">
+        <div class="result" id="meterOutput">
+          50% Wil energy. A respectable amount of questionable potential.
+        </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="copyright">
-      © <span id="year"></span> Wortman/Darling HVAC. All rights reserved.
-      <br>
-      Please verify company details, service offerings, and contact
-      information before publishing.
-    </div>
-  </footer>
+<section class="quote-section">
+  <p>"YOU CAN TAKE THE MAN OUT OF ST. MARYS, BUT YOU CAN'T TAKE THE ST. MARYS OUT OF THE MAN."</p>
+  <small>— THE UNOFFICIAL WIL WORTMAN MOTTO</small>
+</section>
 
-  <script>
-    // Mobile navigation
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
+<footer>
+  <div>
+    <strong>WIL<span>™</span> WORTMAN</strong>
+    <p style="margin-top:8px">A website of questionable historical significance.</p>
+  </div>
+  <div>Made for laughs · St. Marys, Pennsylvania</div>
+</footer>
 
-    menuToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.textContent = isOpen ? "CLOSE ✕" : "MENU ☰";
-    });
+<div id="toast" role="status" aria-live="polite"></div>
 
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.textContent = "MENU ☰";
-      });
-    });
+<script>
+const $ = id => document.getElementById(id);
 
-    // Reveal sections as they enter the screen
-    const revealItems = document.querySelectorAll(".reveal");
+// Animate character stats when the section is visible
+const statObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
 
-    if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12 });
+    const el = entry.target;
+    const target = el.dataset.count;
 
-      revealItems.forEach(item => observer.observe(item));
+    if (target === "???") {
+      el.textContent = "???";
     } else {
-      revealItems.forEach(item => item.classList.add("visible"));
+      let current = 0;
+      const end = Number(target);
+      const timer = setInterval(() => {
+        current += 5;
+        if (current >= end) {
+          current = end;
+          clearInterval(timer);
+        }
+        el.textContent = current;
+      }, 25);
     }
 
-    // Automatic copyright year
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+    statObserver.unobserve(el);
+  });
+}, { threshold: 0.5 });
 
-    // Demo form: prepare an email draft rather than pretending
-    // a message was delivered to the business.
-    document.getElementById("estimateForm").addEventListener("submit", event => {
-      event.preventDefault();
+document.querySelectorAll("[data-count]").forEach(el => {
+  statObserver.observe(el);
+});
 
-      const form = event.currentTarget;
-      const data = new FormData(form);
+// Random lore generator
+const lore = [
+  "Legend says Wil once opened the refrigerator, stared into the abyss, and closed it without taking anything. The abyss has never recovered.",
+  "At 2:17 PM on a random Tuesday, Wil unlocked a level of productivity previously thought unavailable to residents of Elk County.",
+  "A mysterious figure was reportedly seen walking through St. Marys with the confidence of someone who had already read the ending.",
+  "Wil's imaginary boxing entrance music has a bigger budget than most independent films.",
+  "Scientists attempted to measure Wil's hometown aura. Their equipment returned a message reading: 'bro, what is this.'",
+  "Wil once considered going to bed early. Historians still debate whether this was a genuine event.",
+  "The local side quest economy reportedly increased by 14% after Wil decided to leave the house.",
+  "In an alternate universe, Wil is the final boss. The health bar takes up the entire screen.",
+  "Some people follow the map. Wil follows the plot, even when there clearly isn't one.",
+  "A legendary St. Marys resident was asked to keep it low-key. The request is still under review."
+];
 
-      const name = data.get("name");
-      const phone = data.get("phone");
-      const email = data.get("email") || "Not provided";
-      const service = data.get("service");
-      const details = data.get("details") || "No additional details";
+$("loreButton").addEventListener("click", () => {
+  $("loreOutput").textContent =
+    lore[Math.floor(Math.random() * lore.length)];
+  toast("NEW LORE UNLOCKED 📜");
+});
 
-      const subject = encodeURIComponent(
-        "HVAC Request - " + service
-      );
+// Roast generator
+const roastOpeners = [
+  "Wil has the confidence of",
+  "Wil moves through life like",
+  "If Wil were a software update, he'd be",
+  "Wil's personal brand is basically",
+  "Wil could turn a simple errand into",
+  "Wil's GPS doesn't give directions. It gives up because"
+];
 
-      const body = encodeURIComponent(
-        "Wortman/Darling HVAC website inquiry\n\n" +
-        "Name: " + name + "\n" +
-        "Phone: " + phone + "\n" +
-        "Email: " + email + "\n" +
-        "Service: " + service + "\n" +
-        "Details: " + details
-      );
+const roastEndings = [
+  "a final boss with a 2% battery.",
+  "a side quest nobody remembers accepting.",
+  "a loading screen with excellent self-esteem.",
+  "a group project where he appointed himself CEO.",
+  "a motivational speech delivered by a shopping cart.",
+  "the director's cut of a movie that never got filmed.",
+  "an NPC who somehow unlocked administrator privileges.",
+  "a plot twist that even the writer didn't plan."
+];
 
-      const status = document.getElementById("formStatus");
+$("roastButton").addEventListener("click", () => {
+  const opener = roastOpeners[Math.floor(Math.random() * roastOpeners.length)];
+  const ending = roastEndings[Math.floor(Math.random() * roastEndings.length)];
 
-      status.textContent =
-        "Your email app should open with your request prepared. " +
-        "If it doesn't, contact the company directly.";
+  $("roastOutput").textContent = opener + " " + ending;
+  toast("FRIENDLY FIRE 🔥");
+});
 
-      // Replace this address with the real business email.
-      const businessEmail = "REPLACE_WITH_BUSINESS_EMAIL";
+// Luck test
+const luckResults = [
+  "LEGENDARY: You have achieved maximum side-quest energy.",
+  "RARE: A suspiciously productive day. Don't question it.",
+  "UNCOMMON: Your aura is acceptable by local standards.",
+  "COMMON: You have unlocked the ability to forget why you entered a room.",
+  "MYTHIC: Every traffic light is green. You are the chosen one.",
+  "CURSED: You open the fridge and discover the same three ingredients.",
+  "EPIC: Your playlist hits perfectly on every single drive.",
+  "CHAOTIC: You have 37 tabs open in your brain and none are responding."
+];
 
-      if (businessEmail.includes("@")) {
-        window.location.href =
-          "mailto:" + businessEmail +
-          "?subject=" + subject +
-          "&body=" + body;
-      } else {
-        const text = [
-          "Wortman/Darling HVAC website inquiry",
-          "Name: " + name,
-          "Phone: " + phone,
-          "Email: " + email,
-          "Service: " + service,
-          "Details: " + details
-        ].join("\n");
+$("luckButton").addEventListener("click", () => {
+  $("luckOutput").textContent =
+    luckResults[Math.floor(Math.random() * luckResults.length)];
+});
 
-        const blob = new Blob([text], { type: "text/plain" });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = "hvac-request.txt";
-        link.click();
-        URL.revokeObjectURL(url);
+// Boxing arcade game
+let health = 100;
+let roundOver = false;
 
-        status.textContent =
-          "A request file was downloaded. This demo does not send " +
-          "the inquiry to the company.";
-      }
-    });
-  </script>
+function updateFight() {
+  $("healthFill").style.width = health + "%";
+  $("healthNumber").textContent = health + " HP";
+}
+
+$("punchButton").addEventListener("click", () => {
+  if (roundOver) {
+    $("fightMessage").textContent =
+      "The round is over. Hit REMATCH to start again.";
+    return;
+  }
+
+  const damage = Math.floor(Math.random() * 19) + 9;
+  health = Math.max(0, health - damage);
+
+  $("wilFighter").classList.remove("hit");
+  void $("wilFighter").offsetWidth;
+  $("wilFighter").classList.add("hit");
+
+  const messages = [
+    "A clean hit! The crowd goes absolutely mild.",
+    "Wil lands a combo. The robot has requested a software patch.",
+    "Direct hit! Somebody in the audience dropped their nachos.",
+    "That one registered on the fictional Richter scale.",
+    "A devastating punch to the opponent's imaginary confidence."
+  ];
+
+  if (health === 0) {
+    $("fightMessage").textContent =
+      "KNOCKOUT! Wil defeats the Heavyweight Bug. The robot will be filing a complaint.";
+    $("opponent").textContent = "💥";
+    $("punchButton").textContent = "ROUND OVER";
+    roundOver = true;
+    toast("WIL WINS THE MAIN EVENT 🏆");
+  } else {
+    $("fightMessage").textContent =
+      messages[Math.floor(Math.random() * messages.length)] +
+      " Damage dealt: " + damage + ".";
+  }
+
+  updateFight();
+});
+
+$("resetFight").addEventListener("click", () => {
+  health = 100;
+  roundOver = false;
+  $("opponent").textContent = "🤖";
+  $("punchButton").textContent = "THROW A PUNCH 👊";
+  $("fightMessage").textContent =
+    "The bell rings again. The robot has made questionable career choices.";
+  updateFight();
+  toast("REMATCH STARTED 🥊");
+});
+
+// Wil energy slider
+const meterMessages = [
+  "You are currently a houseplant. Hydrate and reconsider.",
+  "Casual Wil energy. You might answer a text today.",
+  "Respectable levels. Capable of a spontaneous Sheetz run.",
+  "High-level hometown aura. Side quests are appearing everywhere.",
+  "MAXIMUM WIL. The laws of Pennsylvania are merely suggestions to your aura."
+];
+
+$("wilSlider").addEventListener("input", event => {
+  const value = Number(event.target.value);
+  const index = Math.min(4, Math.floor(value / 20));
+
+  $("meterOutput").textContent =
+    value + "% Wil energy. " + meterMessages[index];
+});
+
+// Toast notifications
+let toastTimer;
+
+function toast(message) {
+  const el = $("toast");
+  el.textContent = message;
+  el.classList.add("show");
+
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    el.classList.remove("show");
+  }, 1800);
+}
+</script>
 
 </body>
 </html>
-
 
