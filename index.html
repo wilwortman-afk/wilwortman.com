@@ -4,16 +4,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wil Wortman | St. Marys, PA Legend</title>
+<title>Iian Darling — The Barrington Files</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800;900&display=swap');
 
 :root {
-  --red: #ff3434;
+  --red: #ff3c35;
   --black: #101010;
-  --white: #f5f3ed;
-  --gray: #202020;
-  --muted: #a7a7a7;
+  --panel: #1b1b1b;
+  --white: #f5f3ee;
+  --gray: #aaa;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,17 +27,10 @@ body {
   overflow-x: hidden;
 }
 
-button, a { font: inherit; }
+button, input { font: inherit; }
 button { cursor: pointer; }
 
-.noise {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  pointer-events: none;
-  opacity: .07;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
-}
+a { color: inherit; text-decoration: none; }
 
 nav {
   display: flex;
@@ -45,111 +38,107 @@ nav {
   align-items: center;
   padding: 22px 7%;
   border-bottom: 1px solid #333;
-  position: relative;
-  z-index: 20;
 }
 
-.logo {
-  font-family: Anton, sans-serif;
-  font-size: 24px;
+.brand {
+  font: 29px Anton, sans-serif;
   letter-spacing: 1px;
 }
 
-.logo span { color: var(--red); }
+.brand span { color: var(--red); }
 
-.nav-right {
+.navlinks {
   display: flex;
-  gap: 22px;
+  gap: 24px;
   align-items: center;
 }
 
-.nav-right a {
+.navlinks a {
+  font-size: 11px;
   color: #bbb;
-  font-size: 12px;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: 800;
-}
-
-.nav-right a:hover { color: var(--red); }
-
-.pill {
-  background: var(--red);
-  color: white !important;
-  padding: 12px 17px;
-  border: none;
   font-weight: 900;
   text-transform: uppercase;
-  font-size: 11px;
+}
+
+.navlinks a:hover { color: var(--red); }
+
+.tag {
+  display: inline-block;
+  background: var(--red);
+  color: white;
+  padding: 12px 16px;
+  font-weight: 900;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: none;
 }
 
 .hero {
-  min-height: 680px;
-  padding: 90px 7% 80px;
-  position: relative;
+  min-height: 660px;
+  padding: 95px 7%;
   display: flex;
   align-items: center;
+  position: relative;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 82% 45%, #681818 0, transparent 36%),
-    linear-gradient(120deg, #111 40%, #1a1010 100%);
+    radial-gradient(ellipse at 80% 50%, #631818 0%, transparent 35%),
+    linear-gradient(120deg, #111 40%, #1d1010);
 }
 
-.hero::before {
-  content: "W";
+.hero::after {
+  content: "ID";
   position: absolute;
-  right: 1%;
-  top: -120px;
-  font-family: Anton, sans-serif;
-  font-size: 690px;
-  line-height: 1;
-  color: #ffffff06;
-  transform: rotate(-8deg);
+  right: 3%;
+  top: -140px;
+  font: 700px/.95 Anton, sans-serif;
+  color: #ffffff05;
+  transform: rotate(-9deg);
 }
 
 .hero-content {
-  max-width: 850px;
   position: relative;
   z-index: 2;
+  max-width: 900px;
 }
 
 .kicker {
   color: var(--red);
-  text-transform: uppercase;
-  font-size: 11px;
-  font-weight: 900;
+  font-size: 10px;
   letter-spacing: 4px;
-  margin-bottom: 25px;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin-bottom: 24px;
 }
 
-h1, h2, h3, .big {
+h1, h2, h3 {
   font-family: Anton, Impact, sans-serif;
   font-weight: 400;
   text-transform: uppercase;
 }
 
 h1 {
-  font-size: clamp(75px, 12vw, 155px);
-  line-height: .82;
+  font-size: clamp(76px, 13vw, 155px);
+  line-height: .81;
   letter-spacing: -2px;
 }
 
-h1 .red { color: var(--red); }
+.red { color: var(--red); }
 
-h1 .stroke {
+.stroke {
   color: transparent;
   -webkit-text-stroke: 2px white;
 }
 
-.hero-description {
-  max-width: 480px;
-  color: #bcbcbc;
-  font-size: 15px;
-  line-height: 1.8;
+.hero p {
+  color: #bbb;
+  max-width: 500px;
+  font-size: 14px;
+  line-height: 1.9;
   margin-top: 30px;
 }
 
-.buttons {
+.actions {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
@@ -157,14 +146,14 @@ h1 .stroke {
 }
 
 .btn {
-  padding: 16px 22px;
+  padding: 16px 21px;
   background: var(--red);
   border: 1px solid var(--red);
   color: white;
-  text-transform: uppercase;
-  font-size: 11px;
-  font-weight: 900;
+  font-size: 10px;
   letter-spacing: 1px;
+  font-weight: 900;
+  text-transform: uppercase;
   transition: .2s;
 }
 
@@ -175,78 +164,68 @@ h1 .stroke {
   transform: translateY(-3px);
 }
 
-.btn.secondary {
+.btn.alt {
   background: transparent;
   border-color: #555;
 }
 
-.btn.secondary:hover { background: white; }
-
-.hero-stamp {
+.stamp {
   position: absolute;
-  right: 11%;
-  bottom: 95px;
-  transform: rotate(10deg);
+  z-index: 3;
+  right: 10%;
+  bottom: 70px;
+  width: 140px;
+  height: 140px;
   border: 3px solid var(--red);
-  padding: 22px;
-  width: 145px;
-  height: 145px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   text-align: center;
-  font-family: Anton, sans-serif;
-  font-size: 22px;
-  line-height: 1;
-  z-index: 2;
+  font: 23px/1 Anton, sans-serif;
+  transform: rotate(12deg);
 }
 
-.hero-stamp span { color: var(--red); }
+.stamp span { color: var(--red); }
 
 .ticker {
-  background: var(--red);
-  color: white;
   overflow: hidden;
   white-space: nowrap;
+  background: var(--red);
   padding: 15px 0;
-  font-family: Anton, sans-serif;
-  font-size: 22px;
+  font: 22px Anton, sans-serif;
   letter-spacing: 2px;
 }
 
-.ticker-inner {
+.ticker-track {
   display: inline-block;
-  animation: move 28s linear infinite;
+  animation: scroll 25s linear infinite;
 }
 
-.ticker-inner span { margin: 0 25px; }
+.ticker-track span { margin: 0 25px; }
 
-@keyframes move {
-  from { transform: translateX(0); }
+@keyframes scroll {
   to { transform: translateX(-50%); }
 }
 
 .section {
-  padding: 95px 7%;
-  max-width: 1500px;
+  max-width: 1400px;
   margin: auto;
+  padding: 90px 7%;
 }
 
-.section-heading { margin-bottom: 40px; }
+.heading { margin-bottom: 40px; }
 
-.section-heading h2 {
-  font-size: clamp(45px, 7vw, 85px);
-  line-height: .94;
+.heading h2 {
+  font-size: clamp(48px, 7vw, 83px);
+  line-height: .93;
 }
 
-.section-heading h2 span { color: var(--red); }
-
-.section-heading p {
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.8;
+.heading p {
+  margin-top: 18px;
+  color: var(--gray);
   max-width: 570px;
-  margin-top: 20px;
+  font-size: 13px;
+  line-height: 1.9;
 }
 
 .stats {
@@ -256,147 +235,160 @@ h1 .stroke {
 }
 
 .stat {
-  padding: 30px 24px;
+  padding: 25px;
   border-right: 1px solid #333;
 }
 
-.stat:last-child { border-right: none; }
+.stat:last-child { border-right: 0; }
 
-.stat-number {
-  font-family: Anton, sans-serif;
+.stat strong {
+  display: block;
   color: var(--red);
-  font-size: 48px;
+  font: 48px Anton, sans-serif;
 }
 
-.stat p {
+.stat small {
+  display: block;
   margin-top: 8px;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 1px;
   color: #aaa;
+  font-size: 9px;
+  letter-spacing: 1px;
   text-transform: uppercase;
+  font-weight: 900;
 }
 
-.grid {
+.cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 15px;
 }
 
 .card {
-  background: var(--gray);
+  background: var(--panel);
   border: 1px solid #333;
   padding: 28px;
-  min-height: 220px;
-  transition: .2s;
+  transition: .25s;
 }
 
 .card:hover {
-  border-color: var(--red);
   transform: translateY(-5px);
+  border-color: var(--red);
 }
 
-.card .emoji { font-size: 32px; margin-bottom: 24px; }
+.emoji { font-size: 32px; margin-bottom: 22px; }
 
-.card h3 { font-size: 27px; margin-bottom: 12px; }
+.card h3 {
+  font-size: 27px;
+  margin-bottom: 12px;
+}
 
 .card p {
   color: #aaa;
-  font-size: 13px;
-  line-height: 1.8;
+  font-size: 12px;
+  line-height: 1.9;
 }
 
-.card .label {
-  color: var(--red);
+.label {
   font-size: 9px;
+  color: var(--red);
   font-weight: 900;
   letter-spacing: 2px;
   margin-bottom: 12px;
 }
 
-.interactive {
-  background: var(--white);
-  color: var(--black);
+.games {
+  background: #f3f2ed;
+  color: #111;
   max-width: none;
 }
 
-.interactive-inner {
-  max-width: 1280px;
+.games-inner {
+  max-width: 1250px;
   margin: auto;
 }
 
-.interactive .section-heading p { color: #666; }
+.games .heading p { color: #666; }
 
-.play-grid {
+.game-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 17px;
 }
 
-.play-card {
+.game {
+  padding: 28px;
   background: white;
-  padding: 32px;
   border: 1px solid #ddd;
   min-width: 0;
 }
 
-.play-card h3 {
-  font-size: 32px;
-  margin-bottom: 12px;
+.game h3 {
+  font-size: 31px;
+  margin-bottom: 10px;
 }
 
-.play-card > p {
-  font-size: 13px;
-  line-height: 1.8;
+.game > p {
+  font-size: 12px;
+  line-height: 1.9;
   color: #666;
   margin-bottom: 20px;
 }
 
 .result {
-  background: #f1f0ec;
+  background: #f0efeb;
   border-left: 4px solid var(--red);
-  padding: 22px;
+  padding: 20px;
   margin-top: 20px;
-  font-weight: 700;
-  font-size: 14px;
+  min-height: 88px;
+  font-size: 13px;
   line-height: 1.8;
-  min-height: 90px;
+  font-weight: 700;
 }
 
-.roast-button {
-  background: var(--black);
+.game-button {
+  background: #111;
   color: white;
-  border: none;
-  padding: 15px 20px;
-  text-transform: uppercase;
-  font-size: 11px;
+  border: 0;
+  padding: 14px 18px;
+  font-size: 10px;
   font-weight: 900;
   letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-.roast-button:hover { background: var(--red); }
+.game-button:hover { background: var(--red); }
 
-.fight-arena {
-  background: #171717;
+.arena {
+  grid-column: 1 / -1;
+  background: #161616;
   color: white;
   padding: 30px;
   text-align: center;
-  border: 1px solid #333;
 }
 
-.fighter {
-  font-size: 75px;
-  margin: 15px;
-  display: inline-block;
-  transition: .2s;
+.arena .result {
+  color: #111;
+  text-align: left;
 }
 
-.fighter.hit { animation: punch .25s ease; }
+.fighters {
+  font-size: 68px;
+  margin: 25px 0;
+}
 
-@keyframes punch {
-  0% { transform: translateX(0) rotate(0); }
-  50% { transform: translateX(24px) rotate(18deg); }
-  100% { transform: translateX(0) rotate(0); }
+.fighters span { display: inline-block; }
+
+.bar {
+  height: 12px;
+  background: #444;
+  margin: 10px 0;
+}
+
+.bar-fill {
+  height: 100%;
+  width: 100%;
+  background: var(--red);
+  transition: width .25s;
 }
 
 .health-label {
@@ -404,563 +396,499 @@ h1 .stroke {
   justify-content: space-between;
   font-size: 10px;
   font-weight: 900;
-  letter-spacing: 1px;
-  margin: 20px 0 8px;
 }
 
-.health {
-  background: #444;
-  height: 13px;
-  overflow: hidden;
+#fightMessage {
+  font-size: 12px;
+  color: #ccc;
+  line-height: 1.8;
+  margin: 20px 0;
+  min-height: 42px;
 }
 
-.health-fill {
-  height: 100%;
-  width: 100%;
-  background: var(--red);
-  transition: width .3s;
-}
-
-.fight-message {
-  margin: 18px 0;
-  min-height: 40px;
-  color: #ddd;
-  font-size: 13px;
-  line-height: 1.7;
-}
-
-.lore-box {
-  margin-top: 24px;
+.lore {
+  margin-top: 18px;
+  padding: 32px;
   border: 1px solid #333;
-  padding: 35px;
-  background:
-    radial-gradient(circle at 100% 0%, #5b1414, transparent 45%),
-    #171717;
+  background: radial-gradient(circle at 100% 0%, #581414, transparent 45%), #191919;
 }
 
-.lore-box h3 {
-  font-size: 34px;
-  margin-bottom: 15px;
-}
+.lore h3 { font-size: 34px; margin-bottom: 12px; }
 
-.lore-box p {
-  font-size: 14px;
+.lore p {
   color: #bbb;
+  font-size: 13px;
   line-height: 1.9;
-  max-width: 750px;
 }
 
-.lore-box .btn { margin-top: 24px; }
+.lore button { margin-top: 20px; }
 
-.quote-section {
-  text-align: center;
-  padding: 100px 7%;
+.quote {
   background: var(--red);
+  padding: 90px 7%;
+  text-align: center;
 }
 
-.quote-section p {
-  font-family: Anton, sans-serif;
-  font-size: clamp(35px, 6vw, 75px);
-  line-height: 1;
-  max-width: 1050px;
+.quote p {
+  font: clamp(38px, 6vw, 75px)/1 Anton, sans-serif;
+  max-width: 1000px;
   margin: auto;
 }
 
-.quote-section small {
+.quote small {
   display: block;
   font-size: 10px;
   font-weight: 900;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   margin-top: 25px;
 }
 
 footer {
-  padding: 40px 7%;
+  padding: 38px 7%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
   gap: 20px;
-  color: #888;
+  flex-wrap: wrap;
   font-size: 11px;
+  color: #888;
 }
 
 footer strong {
   color: white;
-  font-family: Anton, sans-serif;
-  font-size: 21px;
-  letter-spacing: 1px;
+  font: 25px Anton, sans-serif;
 }
 
-footer span { color: var(--red); }
+footer strong span { color: var(--red); }
 
 #toast {
   position: fixed;
-  bottom: 25px;
+  bottom: 22px;
   left: 50%;
-  transform: translate(-50%, 150px);
+  transform: translate(-50%, 120px);
   background: var(--red);
+  padding: 14px 20px;
   color: white;
-  padding: 15px 22px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 900;
-  z-index: 100;
-  transition: transform .3s;
-  text-align: center;
-  width: max-content;
+  transition: transform .25s;
+  z-index: 50;
   max-width: 90%;
+  text-align: center;
 }
 
 #toast.show { transform: translate(-50%, 0); }
 
-@media(max-width: 850px) {
-  .hero { min-height: 600px; }
-  .hero-stamp { right: 6%; bottom: 35px; width: 110px; height: 110px; font-size: 17px; }
+@media(max-width: 750px) {
+  .hero { min-height: 600px; padding: 75px 22px 110px; }
+  .stamp { right: 5%; bottom: 20px; width: 100px; height: 100px; font-size: 17px; }
+  .section { padding: 70px 22px; }
   .stats { grid-template-columns: 1fr 1fr; }
   .stat:nth-child(2) { border-right: none; }
   .stat:nth-child(-n+2) { border-bottom: 1px solid #333; }
-  .grid { grid-template-columns: 1fr 1fr; }
+  .cards { grid-template-columns: 1fr 1fr; }
+  .game-grid { grid-template-columns: 1fr; }
+  .arena { grid-column: auto; }
 }
 
-@media(max-width: 580px) {
-  nav { padding: 20px; }
-  .nav-right a:not(.pill) { display: none; }
-  .hero { padding: 85px 22px 120px; min-height: 650px; }
-  h1 { font-size: clamp(65px, 16vw, 95px); }
-  .hero-stamp { display: none; }
-  .section { padding: 70px 22px; }
-  .grid, .play-grid { grid-template-columns: 1fr; }
-  .stat { padding: 20px 15px; }
-  .stat-number { font-size: 39px; }
-  .play-card { padding: 24px; }
-  .quote-section { padding: 75px 22px; }
+@media(max-width: 500px) {
+  nav { padding: 18px; }
+  .navlinks { gap: 12px; }
+  .navlinks a:not(.tag) { display: none; }
+  h1 { font-size: 75px; }
+  .stamp { display: none; }
+  .cards { grid-template-columns: 1fr; }
+  .game { padding: 22px; }
 }
 </style>
 </head>
+
 <body>
 
-<div class="noise"></div>
-
 <nav>
-  <a href="#home" class="logo" style="text-decoration:none;color:white">
-    WIL<span>™</span> WORTMAN
-  </a>
-  <div class="nav-right">
-    <a href="#stats">Stats</a>
-    <a href="#lore">The Lore</a>
-    <a href="#games" class="pill">Enter the Arena ↗</a>
+  <a class="brand" href="#home">IIAN<span>™</span> DARLING</a>
+  <div class="navlinks">
+    <a href="#profile">Profile</a>
+    <a href="#lore">Lore</a>
+    <a class="tag" href="#games">Enter the Game ↗</a>
   </div>
 </nav>
 
 <header class="hero" id="home">
   <div class="hero-content">
-    <div class="kicker">Independent legend · St. Marys, Pennsylvania</div>
+    <div class="kicker">The Barrington files · Illinois</div>
     <h1>
-      NOT YOUR<br>
-      <span class="stroke">AVERAGE</span><br>
-      <span class="red">WIL.</span>
+      MEET<br>
+      <span class="stroke">THE</span><br>
+      <span class="red">DARRLING.</span>
     </h1>
-    <p class="hero-description">
-      Some people make history. Others make questionable decisions
-      and somehow become local legends. Welcome to the unofficial
-      Wil Wortman experience.
+    <p>
+      Welcome to the unofficial Iian Darling experience.
+      Part character profile, part arcade machine, part completely
+      unnecessary investigation into the lore of a man from Barrington.
     </p>
-    <div class="buttons">
-      <a class="btn" href="#lore" style="text-decoration:none">Discover the Lore ↓</a>
-      <a class="btn secondary" href="#games" style="text-decoration:none">Challenge Wil 🥊</a>
+    <div class="actions">
+      <a href="#profile" class="btn">Inspect the Character ↓</a>
+      <a href="#games" class="btn alt">Start a Challenge 🎮</a>
     </div>
   </div>
-  <div class="hero-stamp">ST. MARYS<br><span>HALL OF</span><br>FAME*</div>
+  <div class="stamp">BARRINGTON<br><span>CLASSIFIED</span><br>ISH</div>
 </header>
 
 <div class="ticker">
-  <div class="ticker-inner">
-    <span>WIL WORTMAN</span> ✦ <span>SMETHPORT? NEVER HEARD OF IT.</span> ✦
-    <span>ST. MARYS ENERGY</span> ✦ <span>BUILT DIFFERENT™</span> ✦
-    <span>WIL WORTMAN</span> ✦ <span>SMETHPORT? NEVER HEARD OF IT.</span> ✦
-    <span>ST. MARYS ENERGY</span> ✦ <span>BUILT DIFFERENT™</span> ✦
+  <div class="ticker-track">
+    <span>IIAN DARLING</span> ✦ <span>BARRINGTON ENERGY</span> ✦
+    <span>THE LORE NEVER ENDS</span> ✦ <span>MAIN CHARACTER?</span> ✦
+    <span>IIAN DARLING</span> ✦ <span>BARRINGTON ENERGY</span> ✦
+    <span>THE LORE NEVER ENDS</span> ✦ <span>MAIN CHARACTER?</span> ✦
   </div>
 </div>
 
-<section class="section" id="stats">
-  <div class="section-heading">
-    <div class="kicker">Character select</div>
-    <h2>THE <span>WIL</span> PROFILE.</h2>
+<section class="section" id="profile">
+  <div class="heading">
+    <div class="kicker">Character selection screen</div>
+    <h2>THE <span class="red">PROFILE.</span></h2>
     <p>
-      A completely unofficial character sheet. These stats are
-      for entertainment, not scientific measurement.
+      These are fictional video-game stats created purely for laughs.
+      They are not factual measurements of Iian's personality or abilities.
     </p>
   </div>
 
   <div class="stats">
-    <div class="stat">
-      <div class="stat-number" data-count="99">0</div>
-      <p>Hometown Aura</p>
-    </div>
-    <div class="stat">
-      <div class="stat-number" data-count="87">0</div>
-      <p>Main Character Energy</p>
-    </div>
-    <div class="stat">
-      <div class="stat-number" data-count="100">0</div>
-      <p>Confidence</p>
-    </div>
-    <div class="stat">
-      <div class="stat-number" data-count="???">0</div>
-      <p>Unpredictability</p>
-    </div>
+    <div class="stat"><strong data-target="96">0</strong><small>Barrington Aura</small></div>
+    <div class="stat"><strong data-target="88">0</strong><small>Main Character Energy</small></div>
+    <div class="stat"><strong data-target="99">0</strong><small>Confidence Level</small></div>
+    <div class="stat"><strong data-target="???">0</strong><small>Unexplained Lore</small></div>
+  </div>
+
+  <div class="cards" style="margin-top:18px">
+    <article class="card">
+      <div class="emoji">📍</div>
+      <div class="label">ORIGIN STORY</div>
+      <h3>Barrington, Illinois</h3>
+      <p>
+        Suburban origins. Mysterious aura. A cinematic universe
+        that definitely did not need its own website, yet here we are.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="emoji">🎮</div>
+      <div class="label">SPECIAL ABILITY</div>
+      <h3>Side Quest</h3>
+      <p>
+        Allegedly capable of turning a normal day into a story
+        that requires at least three follow-up questions.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="emoji">🕶️</div>
+      <div class="label">CHARACTER CLASS</div>
+      <h3>Unknown Build</h3>
+      <p>
+        Stats are still loading. The developers have declined to
+        explain the current meta.
+      </p>
+    </article>
   </div>
 </section>
 
 <section class="section" id="lore">
-  <div class="section-heading">
-    <div class="kicker">Previously undocumented history</div>
-    <h2>THE <span>LORE.</span></h2>
+  <div class="heading">
+    <div class="kicker">Restricted access</div>
+    <h2>THE <span class="red">DARLING FILES.</span></h2>
     <p>
-      Every legend has a backstory. The details below are a
-      fictional, interactive tribute to the Wil cinematic universe.
+      The following stories are made-up comedy lore. Press the
+      button to unlock a randomly generated episode.
     </p>
   </div>
 
-  <div class="grid">
-    <article class="card">
-      <div class="emoji">📍</div>
-      <div class="label">ORIGIN STORY</div>
-      <h3>St. Marys, PA</h3>
-      <p>
-        Forged in Pennsylvania. Powered by small-town energy.
-        Allegedly capable of turning a five-minute errand into
-        a full afternoon adventure.
-      </p>
-    </article>
-
-    <article class="card">
-      <div class="emoji">🥊</div>
-      <div class="label">FIGHTING SPIRIT</div>
-      <h3>First Round Ready</h3>
-      <p>
-        The gloves are metaphorical unless Wil actually steps
-        into a boxing gym. This website does not provide an
-        official fight record.
-      </p>
-    </article>
-
-    <article class="card">
-      <div class="emoji">🧠</div>
-      <div class="label">SPECIAL ABILITY</div>
-      <h3>Unmatched Lore</h3>
-      <p>
-        Can generate a completely unnecessary side quest out
-        of an otherwise ordinary Tuesday. Cooldown: unknown.
-      </p>
-    </article>
-  </div>
-
-  <div class="lore-box" style="margin-top:18px">
-    <div class="kicker">Press the button. Discover your fate.</div>
-    <h3>THE WIL LORE GENERATOR</h3>
+  <div class="lore">
+    <div class="kicker">New evidence discovered</div>
+    <h3>THE IIAN ARCHIVES</h3>
     <p id="loreOutput">
-      There are stories that have yet to be told. Click below
-      to uncover a randomly generated chapter of the Wil saga.
+      The archive is sealed. Nobody knows why. Click below to
+      unlock a brand-new entry from the fictional Darling universe.
     </p>
-    <button class="btn" id="loreButton">Generate New Lore ↗</button>
+    <button class="btn" id="loreBtn">Unlock a File ↗</button>
   </div>
 </section>
 
-<section class="section interactive" id="games">
-  <div class="interactive-inner">
-    <div class="section-heading">
-      <div class="kicker">Interactive entertainment division</div>
-      <h2>WELCOME TO <span>THE ARENA.</span></h2>
+<section class="section games" id="games">
+  <div class="games-inner">
+    <div class="heading">
+      <div class="kicker">Interactive entertainment department</div>
+      <h2>CHOOSE YOUR <span class="red">DESTINY.</span></h2>
       <p>
-        Test your luck. Roast the legend. Enter the ring.
-        Please remember: this is all for fun.
+        Three games. Zero practical benefits. Potentially
+        unreasonable amounts of entertainment.
       </p>
     </div>
 
-    <div class="play-grid">
-      <div class="play-card">
-        <h3>🎤 The Roast Machine</h3>
+    <div class="game-grid">
+      <div class="game">
+        <h3>🔥 Roast Generator</h3>
         <p>
-          Generate a playful roast of Wil. No two clicks need
-          to produce the same result.
+          A lighthearted roast machine for the main character
+          of today's completely unofficial documentary.
         </p>
-        <button class="roast-button" id="roastButton">
-          Roast Wil 🔥
-        </button>
-        <div class="result" id="roastOutput">
-          Wil has entered the chat. His reputation has not.
+        <button class="game-button" id="roastBtn">Roast Iian</button>
+        <div class="result" id="roastResult">
+          The roast is warming up. This could get mildly disrespectful.
         </div>
       </div>
 
-      <div class="play-card">
-        <h3>🎲 Wil's Luck Test</h3>
+      <div class="game">
+        <h3>🎲 Fate Simulator</h3>
         <p>
-          Click to roll for your current standing in the
-          totally fictional Wil universe.
+          Roll the dice to find out what kind of energy you're
+          bringing to the fictional Barrington leaderboard.
         </p>
-        <button class="roast-button" id="luckButton">
-          Roll the Dice 🎲
-        </button>
-        <div class="result" id="luckOutput">
-          Your destiny is loading. Probably.
+        <button class="game-button" id="rollBtn">Roll for Destiny</button>
+        <div class="result" id="rollResult">
+          Destiny is buffering. Please stand by.
         </div>
       </div>
 
-      <div class="play-card" style="grid-column:1/-1">
-        <h3>🥊 WIL VS. THE HEAVYWEIGHT BUG</h3>
+      <div class="game arena">
+        <div class="kicker">Main event · Arcade mode</div>
+        <h3>IIAN VS. THE FINAL BOSS</h3>
         <p>
-          A completely fictional arcade battle. Tap the punch
-          button to reduce the opponent's health. No real
-          fighting skills or real-world records are implied.
+          A fictional boss fight. Reduce the boss's health to
+          zero to win. No real combat skills are involved.
         </p>
 
-        <div class="fight-arena">
-          <div style="font-size:10px;letter-spacing:3px;color:#ff3434;font-weight:900">
-            MAIN EVENT · ST. MARYS ARENA
-          </div>
-
-          <div>
-            <span class="fighter" id="wilFighter">🥊</span>
-            <span style="font-family:Anton,sans-serif;font-size:35px">VS</span>
-            <span class="fighter" id="opponent">🤖</span>
-          </div>
-
-          <div class="health-label">
-            <span>HEAVYWEIGHT BUG</span>
-            <span id="healthNumber">100 HP</span>
-          </div>
-          <div class="health">
-            <div class="health-fill" id="healthFill"></div>
-          </div>
-
-          <div class="fight-message" id="fightMessage">
-            The bell hasn't rung. Wil is adjusting his imaginary gloves.
-          </div>
-
-          <button class="btn" id="punchButton">THROW A PUNCH 👊</button>
-          <button class="btn secondary" id="resetFight">REMATCH ↻</button>
+        <div class="fighters">
+          <span id="heroFighter">🕶️</span>
+          <span style="font:35px Anton,sans-serif">VS</span>
+          <span id="bossFighter">👾</span>
         </div>
+
+        <div class="health-label">
+          <span>THE BARRINGTON BOSS</span>
+          <span id="healthNumber">100 HP</span>
+        </div>
+        <div class="bar"><div class="bar-fill" id="healthFill"></div></div>
+
+        <div id="fightMessage">
+          The boss has appeared. The soundtrack is suspiciously dramatic.
+        </div>
+
+        <button class="btn" id="attackBtn">ATTACK 👊</button>
+        <button class="btn alt" id="resetBtn">REMATCH ↻</button>
       </div>
 
-      <div class="play-card" style="grid-column:1/-1">
-        <h3>🏆 The Official Wil-O-Meter</h3>
+      <div class="game" style="grid-column:1/-1">
+        <h3>📊 The Darling Meter</h3>
         <p>
-          How much Wil energy are you operating on today?
-          Move the slider to find out.
+          Adjust the slider to determine the current level of
+          fictional Iian energy in the room.
         </p>
-        <input id="wilSlider" type="range" min="0" max="100" value="50"
-          style="width:100%;accent-color:#ff3434;cursor:pointer">
-        <div class="result" id="meterOutput">
-          50% Wil energy. A respectable amount of questionable potential.
+        <input id="meter" type="range" min="0" max="100" value="50"
+          style="width:100%;accent-color:#ff3c35">
+        <div class="result" id="meterResult">
+          50% — A respectable amount of unexplained main-character energy.
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="quote-section">
-  <p>"YOU CAN TAKE THE MAN OUT OF ST. MARYS, BUT YOU CAN'T TAKE THE ST. MARYS OUT OF THE MAN."</p>
-  <small>— THE UNOFFICIAL WIL WORTMAN MOTTO</small>
+<section class="quote">
+  <p>"SOME PEOPLE HAVE A BACKSTORY. IIAN HAS AN ENTIRE FRANCHISE."</p>
+  <small>THE UNOFFICIAL BARRINGTON MOTTO</small>
 </section>
 
 <footer>
   <div>
-    <strong>WIL<span>™</span> WORTMAN</strong>
-    <p style="margin-top:8px">A website of questionable historical significance.</p>
+    <strong>IIAN<span style="color:#ff3c35">™</span> DARLING</strong>
+    <p style="margin-top:7px">The files remain unofficial.</p>
   </div>
-  <div>Made for laughs · St. Marys, Pennsylvania</div>
+  <div>Built for laughs · Barrington, Illinois</div>
 </footer>
 
 <div id="toast" role="status" aria-live="polite"></div>
 
 <script>
-const $ = id => document.getElementById(id);
-
-// Animate character stats when the section is visible
+// Animate profile stats when the profile is visible.
 const statObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
 
     const el = entry.target;
-    const target = el.dataset.count;
+    const target = el.dataset.target;
 
     if (target === "???") {
       el.textContent = "???";
     } else {
-      let current = 0;
-      const end = Number(target);
+      const max = Number(target);
+      let value = 0;
       const timer = setInterval(() => {
-        current += 5;
-        if (current >= end) {
-          current = end;
+        value += 4;
+        if (value >= max) {
+          value = max;
           clearInterval(timer);
         }
-        el.textContent = current;
-      }, 25);
+        el.textContent = value;
+      }, 22);
     }
 
     statObserver.unobserve(el);
   });
 }, { threshold: 0.5 });
 
-document.querySelectorAll("[data-count]").forEach(el => {
+document.querySelectorAll("[data-target]").forEach(el => {
   statObserver.observe(el);
 });
 
-// Random lore generator
-const lore = [
-  "Legend says Wil once opened the refrigerator, stared into the abyss, and closed it without taking anything. The abyss has never recovered.",
-  "At 2:17 PM on a random Tuesday, Wil unlocked a level of productivity previously thought unavailable to residents of Elk County.",
-  "A mysterious figure was reportedly seen walking through St. Marys with the confidence of someone who had already read the ending.",
-  "Wil's imaginary boxing entrance music has a bigger budget than most independent films.",
-  "Scientists attempted to measure Wil's hometown aura. Their equipment returned a message reading: 'bro, what is this.'",
-  "Wil once considered going to bed early. Historians still debate whether this was a genuine event.",
-  "The local side quest economy reportedly increased by 14% after Wil decided to leave the house.",
-  "In an alternate universe, Wil is the final boss. The health bar takes up the entire screen.",
-  "Some people follow the map. Wil follows the plot, even when there clearly isn't one.",
-  "A legendary St. Marys resident was asked to keep it low-key. The request is still under review."
+// Lore generator.
+const loreEntries = [
+  "FILE 001: Iian allegedly entered a room with the confidence of a man who already knew the Wi-Fi password.",
+  "FILE 002: A suburban side quest began at an ordinary hour. Nobody knows when it ended.",
+  "FILE 003: The developers attempted to assign Iian a character class. The game crashed.",
+  "FILE 004: A mysterious Barrington weather event was reported. It was later determined to be dramatic background music.",
+  "FILE 005: Rumors suggest the final boss has been avoiding Iian's character selection screen.",
+  "FILE 006: Iian's fictional aura was measured at 98%. The remaining 2% is currently under investigation.",
+  "FILE 007: The prophecy states that one day, someone will explain all the lore. That day is not today.",
+  "FILE 008: A side quest appeared. It offered no reward, no directions, and an unnecessarily complicated backstory."
 ];
 
-$("loreButton").addEventListener("click", () => {
-  $("loreOutput").textContent =
-    lore[Math.floor(Math.random() * lore.length)];
-  toast("NEW LORE UNLOCKED 📜");
+document.getElementById("loreBtn").addEventListener("click", () => {
+  document.getElementById("loreOutput").textContent =
+    loreEntries[Math.floor(Math.random() * loreEntries.length)];
+  toast("ARCHIVE FILE UNLOCKED 📁");
 });
 
-// Roast generator
-const roastOpeners = [
-  "Wil has the confidence of",
-  "Wil moves through life like",
-  "If Wil were a software update, he'd be",
-  "Wil's personal brand is basically",
-  "Wil could turn a simple errand into",
-  "Wil's GPS doesn't give directions. It gives up because"
+// Roast generator.
+const roastStarts = [
+  "Iian has the energy of",
+  "Iian's character build is basically",
+  "If Iian were a loading screen, he'd be",
+  "Iian walks into a room like",
+  "The Iian cinematic universe has the budget of",
+  "Iian's special move is"
 ];
 
-const roastEndings = [
-  "a final boss with a 2% battery.",
-  "a side quest nobody remembers accepting.",
-  "a loading screen with excellent self-esteem.",
-  "a group project where he appointed himself CEO.",
-  "a motivational speech delivered by a shopping cart.",
-  "the director's cut of a movie that never got filmed.",
-  "an NPC who somehow unlocked administrator privileges.",
-  "a plot twist that even the writer didn't plan."
+const roastEnds = [
+  "a side quest that somehow became the main story.",
+  "a software update nobody remembers agreeing to.",
+  "an NPC who accidentally became the final boss.",
+  "a group project with no agenda and maximum confidence.",
+  "a director's cut of a movie that was never released.",
+  "a GPS that says 'good luck, bro' and logs off.",
+  "a loading bar that stops at 99% for dramatic effect.",
+  "a PowerPoint presentation with 74 slides and no conclusion."
 ];
 
-$("roastButton").addEventListener("click", () => {
-  const opener = roastOpeners[Math.floor(Math.random() * roastOpeners.length)];
-  const ending = roastEndings[Math.floor(Math.random() * roastEndings.length)];
+document.getElementById("roastBtn").addEventListener("click", () => {
+  const start = roastStarts[Math.floor(Math.random() * roastStarts.length)];
+  const end = roastEnds[Math.floor(Math.random() * roastEnds.length)];
 
-  $("roastOutput").textContent = opener + " " + ending;
+  document.getElementById("roastResult").textContent = start + " " + end;
   toast("FRIENDLY FIRE 🔥");
 });
 
-// Luck test
-const luckResults = [
-  "LEGENDARY: You have achieved maximum side-quest energy.",
-  "RARE: A suspiciously productive day. Don't question it.",
-  "UNCOMMON: Your aura is acceptable by local standards.",
-  "COMMON: You have unlocked the ability to forget why you entered a room.",
-  "MYTHIC: Every traffic light is green. You are the chosen one.",
-  "CURSED: You open the fridge and discover the same three ingredients.",
-  "EPIC: Your playlist hits perfectly on every single drive.",
-  "CHAOTIC: You have 37 tabs open in your brain and none are responding."
+// Fate simulator.
+const fates = [
+  "LEGENDARY: The soundtrack changes when you enter the room.",
+  "RARE: You have unlocked the ability to turn one errand into five.",
+  "EPIC: Every traffic light turns green. The universe has selected you.",
+  "COMMON: You forgot why you opened the refrigerator.",
+  "MYTHIC: Your group chat messages are being studied by future historians.",
+  "CURSED: Your phone is at 2%, and your charger is in another dimension.",
+  "UNCOMMON: The side quest has found you. You cannot decline.",
+  "CHAOTIC: You have 38 browser tabs open in your brain."
 ];
 
-$("luckButton").addEventListener("click", () => {
-  $("luckOutput").textContent =
-    luckResults[Math.floor(Math.random() * luckResults.length)];
+document.getElementById("rollBtn").addEventListener("click", () => {
+  document.getElementById("rollResult").textContent =
+    fates[Math.floor(Math.random() * fates.length)];
+  toast("FATE HAS BEEN ROLLED 🎲");
 });
 
-// Boxing arcade game
-let health = 100;
-let roundOver = false;
+// Final boss battle.
+let bossHealth = 100;
+let battleOver = false;
 
-function updateFight() {
-  $("healthFill").style.width = health + "%";
-  $("healthNumber").textContent = health + " HP";
+function renderHealth() {
+  document.getElementById("healthFill").style.width = bossHealth + "%";
+  document.getElementById("healthNumber").textContent = bossHealth + " HP";
 }
 
-$("punchButton").addEventListener("click", () => {
-  if (roundOver) {
-    $("fightMessage").textContent =
+document.getElementById("attackBtn").addEventListener("click", () => {
+  if (battleOver) {
+    document.getElementById("fightMessage").textContent =
       "The round is over. Hit REMATCH to start again.";
     return;
   }
 
-  const damage = Math.floor(Math.random() * 19) + 9;
-  health = Math.max(0, health - damage);
-
-  $("wilFighter").classList.remove("hit");
-  void $("wilFighter").offsetWidth;
-  $("wilFighter").classList.add("hit");
+  const damage = Math.floor(Math.random() * 20) + 10;
+  bossHealth = Math.max(0, bossHealth - damage);
 
   const messages = [
-    "A clean hit! The crowd goes absolutely mild.",
-    "Wil lands a combo. The robot has requested a software patch.",
-    "Direct hit! Somebody in the audience dropped their nachos.",
-    "That one registered on the fictional Richter scale.",
-    "A devastating punch to the opponent's imaginary confidence."
+    "Direct hit! The boss has reconsidered its career.",
+    "Critical damage! The imaginary crowd has gone wild.",
+    "A devastating combo. Somewhere, a keyboard has been slammed.",
+    "The boss is losing confidence. Its health insurance does not cover this.",
+    "Clean strike! The soundtrack just got 40% more dramatic."
   ];
 
-  if (health === 0) {
-    $("fightMessage").textContent =
-      "KNOCKOUT! Wil defeats the Heavyweight Bug. The robot will be filing a complaint.";
-    $("opponent").textContent = "💥";
-    $("punchButton").textContent = "ROUND OVER";
-    roundOver = true;
-    toast("WIL WINS THE MAIN EVENT 🏆");
+  if (bossHealth <= 0) {
+    document.getElementById("bossFighter").textContent = "💥";
+    document.getElementById("fightMessage").textContent =
+      "VICTORY! Iian defeats the Barrington Boss. The sequel has been greenlit.";
+    document.getElementById("attackBtn").textContent = "VICTORY";
+    battleOver = true;
+    toast("BOSS DEFEATED 🏆");
   } else {
-    $("fightMessage").textContent =
+    document.getElementById("fightMessage").textContent =
       messages[Math.floor(Math.random() * messages.length)] +
-      " Damage dealt: " + damage + ".";
+      " Damage: " + damage + ".";
   }
 
-  updateFight();
+  renderHealth();
 });
 
-$("resetFight").addEventListener("click", () => {
-  health = 100;
-  roundOver = false;
-  $("opponent").textContent = "🤖";
-  $("punchButton").textContent = "THROW A PUNCH 👊";
-  $("fightMessage").textContent =
-    "The bell rings again. The robot has made questionable career choices.";
-  updateFight();
-  toast("REMATCH STARTED 🥊");
+document.getElementById("resetBtn").addEventListener("click", () => {
+  bossHealth = 100;
+  battleOver = false;
+  document.getElementById("bossFighter").textContent = "👾";
+  document.getElementById("attackBtn").textContent = "ATTACK 👊";
+  document.getElementById("fightMessage").textContent =
+    "The rematch begins. The boss has been training in a fictional gym.";
+  renderHealth();
+  toast("REMATCH STARTED");
 });
 
-// Wil energy slider
+// Interactive energy meter.
 const meterMessages = [
-  "You are currently a houseplant. Hydrate and reconsider.",
-  "Casual Wil energy. You might answer a text today.",
-  "Respectable levels. Capable of a spontaneous Sheetz run.",
-  "High-level hometown aura. Side quests are appearing everywhere.",
-  "MAXIMUM WIL. The laws of Pennsylvania are merely suggestions to your aura."
+  "You are currently a screensaver. Please reboot.",
+  "Casual energy. A side quest may appear.",
+  "Respectable aura. The soundtrack has started.",
+  "High-level protagonist behavior. The plot is thickening.",
+  "MAXIMUM DARLING ENERGY. The developers have lost control."
 ];
 
-$("wilSlider").addEventListener("input", event => {
+document.getElementById("meter").addEventListener("input", event => {
   const value = Number(event.target.value);
   const index = Math.min(4, Math.floor(value / 20));
 
-  $("meterOutput").textContent =
-    value + "% Wil energy. " + meterMessages[index];
+  document.getElementById("meterResult").textContent =
+    value + "% — " + meterMessages[index];
 });
 
-// Toast notifications
+// Temporary pop-up notifications.
 let toastTimer;
 
 function toast(message) {
-  const el = $("toast");
+  const el = document.getElementById("toast");
   el.textContent = message;
   el.classList.add("show");
 
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => {
     el.classList.remove("show");
-  }, 1800);
+  }, 1700);
 }
 </script>
 
