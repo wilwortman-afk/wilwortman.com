@@ -1,553 +1,1463 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wil Wortman | Coming Soon</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Wortman/Darling HVAC — heating and cooling service that comes out swinging.">
+  <title>Wortman/Darling HVAC | Comfort in Your Corner</title>
 
-    <!-- Importing a clean, modern font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        /* --- CSS Reset & Variables --- */
+  <style>
+    :root {
+      --red: #ed302b;
+      --dark: #111111;
+      --gray: #191919;
+      --muted: #a6a6a6;
+      --white: #f7f6f2;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        :root {
-            --bg-color: #0b0f19;
-            --text-color: #f3f4f6;
-            --accent-color: #6366f1;
-            --accent-hover: #4f46e5;
-            --muted-color: #9ca3af;
-        }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            overflow-x: hidden;
-        }
+    body {
+      background: var(--white);
+      color: var(--dark);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
 
-        /* --- Scrollytelling Section 1: Welcome --- */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-        .welcome-section {
-            height: 100vh;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-        }
+    button, input, textarea, select {
+      font: inherit;
+    }
 
-        .welcome-section h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease forwards;
-        }
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
 
-        .welcome-section p {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: var(--muted-color);
-            margin-bottom: 3rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease forwards 0.3s;
-        }
+    .topbar {
+      background: var(--red);
+      color: white;
+      text-align: center;
+      padding: 9px 15px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: var(--muted-color);
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            opacity: 0;
-            animation: fadeIn 1s ease forwards 0.6s;
-        }
+    header {
+      background: var(--dark);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #303030;
+    }
 
-        .scroll-indicator span {
-            margin-bottom: 0.5rem;
-        }
+    .nav {
+      max-width: 1240px;
+      min-height: 80px;
+      padding: 14px 28px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-        .mouse-icon {
-            width: 24px;
-            height: 40px;
-            border: 2px solid var(--muted-color);
-            border-radius: 12px;
-            position: relative;
-        }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
 
-        .mouse-icon::before {
-            content: '';
-            width: 4px;
-            height: 8px;
-            background-color: var(--muted-color);
-            position: absolute;
-            top: 6px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-            animation: scrollWheel 1.5s infinite;
-        }
+    .logo-mark {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--red);
+      color: white;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 19px;
+      font-weight: 900;
+      transform: skew(-5deg);
+    }
 
-        /* --- Scrollytelling Section 2: Core Site --- */
+    .logo-name {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 800;
+      font-size: 23px;
+      line-height: 1;
+      letter-spacing: .5px;
+    }
 
-        .main-content {
-            min-height: 100vh;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 4rem 2rem;
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(99, 102, 241, 0.05) 0%,
-                    rgba(11, 15, 25, 0) 70%
-                );
-        }
+    .logo-name span {
+      color: var(--red);
+    }
 
-        /* Reveal animation on scroll classes */
+    .logo-sub {
+      display: block;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: #aaa;
+      margin-top: 6px;
+      font-weight: 700;
+    }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
-        }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .nav-links a:not(.nav-cta):hover {
+      color: var(--red);
+    }
 
-        .main-content h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 1.5rem;
-        }
+    .nav-cta, .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--red);
+      color: white;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 12px;
+      padding: 15px 22px;
+      border: 0;
+      cursor: pointer;
+      transition: .2s ease;
+    }
 
-        .main-content p {
-            color: var(--muted-color);
-            max-width: 500px;
-            margin-bottom: 3rem;
-            line-height: 1.6;
-        }
+    .nav-cta:hover, .btn:hover {
+      background: white;
+      color: var(--dark);
+      transform: translateY(-2px);
+    }
 
-        /* --- Interactive Boredom Button --- */
+    .menu-toggle {
+      display: none;
+      border: 1px solid #555;
+      background: transparent;
+      color: white;
+      padding: 9px 12px;
+      cursor: pointer;
+    }
 
-        .interactive-container {
-            margin-bottom: 4rem;
-            position: relative;
-        }
+    /* HERO */
 
-        .bored-btn {
-            background-color: transparent;
-            border: 2px solid var(--accent-color);
-            color: var(--text-color);
-            padding: 1rem 2.5rem;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            position: relative;
-            z-index: 10;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
+    .hero {
+      position: relative;
+      min-height: 690px;
+      display: flex;
+      align-items: center;
+      background: #111;
+      color: white;
+      overflow: hidden;
+    }
 
-        .bored-btn:hover {
-            background-color: var(--accent-color);
-            box-shadow: 0 0 25px rgba(99, 102, 241, 0.4);
-            transform: scale(1.02);
-        }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, #111 2%, rgba(17,17,17,.95) 37%, rgba(17,17,17,.48) 100%),
+        url("https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=2000&q=85")
+        center 45% / cover no-repeat;
+      opacity: .85;
+    }
 
-        .bored-btn:active {
-            transform: scale(0.98);
-        }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        120deg,
+        transparent 0,
+        transparent 75px,
+        rgba(255,255,255,.025) 76px,
+        rgba(255,255,255,.025) 78px
+      );
+      pointer-events: none;
+    }
 
-        .click-counter {
-            margin-top: 1rem;
-            font-size: 0.875rem;
-            color: var(--muted-color);
-            min-height: 20px;
-        }
+    .hero-inner {
+      width: 100%;
+      max-width: 1240px;
+      margin: auto;
+      padding: 90px 28px 110px;
+      position: relative;
+      z-index: 2;
+    }
 
-        .particle {
-            position: absolute;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 5;
-            animation: popOut 0.6s ease-out forwards;
-        }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--red);
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 3px;
+      font-size: 11px;
+      margin-bottom: 25px;
+    }
 
-        /* --- Social Links --- */
+    .eyebrow::before {
+      content: "";
+      height: 3px;
+      width: 35px;
+      background: var(--red);
+    }
 
-        .social-links {
-            display: flex;
-            gap: 2rem;
-        }
+    h1, h2, h3 {
+      font-family: "Barlow Condensed", sans-serif;
+      text-transform: uppercase;
+    }
 
-        .social-link {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            position: relative;
-            padding-bottom: 4px;
-            transition: color 0.3s ease;
-        }
+    h1 {
+      font-size: clamp(65px, 9.4vw, 125px);
+      font-weight: 900;
+      line-height: .83;
+      letter-spacing: -2px;
+      max-width: 800px;
+    }
 
-        .social-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-color);
-            transition: width 0.3s ease;
-        }
+    h1 .outline {
+      color: transparent;
+      -webkit-text-stroke: 1.5px white;
+    }
 
-        .social-link:hover {
-            color: var(--accent-color);
-        }
+    h1 .red {
+      color: var(--red);
+    }
 
-        .social-link:hover::after {
-            width: 100%;
-        }
+    .hero-copy {
+      margin-top: 28px;
+      color: #c6c6c6;
+      max-width: 480px;
+      line-height: 1.8;
+      font-size: 15px;
+    }
 
-        /* --- Keyframe Animations --- */
+    .hero-actions {
+      display: flex;
+      gap: 13px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .btn-outline {
+      border: 1px solid #777;
+      color: white;
+      background: transparent;
+    }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
+    .btn-outline:hover {
+      background: white;
+      color: var(--dark);
+    }
 
-        @keyframes scrollWheel {
-            0% {
-                opacity: 1;
-                transform: translate(-50%, 0);
-            }
+    .hero-note {
+      margin-top: 32px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      color: #aaa;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
 
-            100% {
-                opacity: 0;
-                transform: translate(-50%, 15px);
-            }
-        }
+    .hero-note strong {
+      color: white;
+    }
 
-        @keyframes popOut {
-            0% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 1;
-            }
+    .hero-note span {
+      color: var(--red);
+      font-size: 18px;
+    }
 
-            100% {
-                transform: translate(var(--x), var(--y)) scale(0);
-                opacity: 0;
-            }
-        }
-    </style>
+    .hero-stamp {
+      position: absolute;
+      z-index: 3;
+      right: 8%;
+      bottom: 65px;
+      width: 145px;
+      height: 145px;
+      border: 2px solid rgba(237,48,43,.8);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: white;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 18px;
+      line-height: 1.1;
+      font-weight: 800;
+      transform: rotate(12deg);
+      background: rgba(17,17,17,.45);
+    }
+
+    .hero-stamp span {
+      color: var(--red);
+    }
+
+    /* FIGHT STRIP */
+
+    .fight-strip {
+      background: var(--red);
+      color: white;
+      padding: 17px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker {
+      display: flex;
+      width: max-content;
+      animation: ticker 30s linear infinite;
+    }
+
+    .ticker span {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 21px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 0 28px;
+    }
+
+    .ticker b {
+      color: #171717;
+      margin-right: 28px;
+    }
+
+    @keyframes ticker {
+      to { transform: translateX(-50%); }
+    }
+
+    /* TRUST BAR */
+
+    .trust-bar {
+      background: #1a1a1a;
+      color: white;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 25px max(28px, calc((100% - 1184px) / 2));
+      gap: 20px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      padding: 7px;
+    }
+
+    .trust-icon {
+      color: var(--red);
+      font-size: 24px;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .trust-item small {
+      display: block;
+      color: #aaa;
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    /* GENERAL SECTIONS */
+
+    .section {
+      max-width: 1240px;
+      padding: 100px 28px;
+      margin: auto;
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 45px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(43px, 6vw, 69px);
+      line-height: .94;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .section-heading h2 span {
+      color: var(--red);
+    }
+
+    .section-heading p {
+      color: #686868;
+      font-size: 14px;
+      line-height: 1.8;
+      max-width: 590px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      border: 1px solid #deded9;
+      background: white;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+      transition: .25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--red);
+      box-shadow: 0 15px 40px #0000000c;
+    }
+
+    .service-number {
+      position: absolute;
+      right: 20px;
+      top: 12px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 70px;
+      color: #f1f0ec;
+      font-weight: 900;
+    }
+
+    .service-icon {
+      font-size: 34px;
+      margin-bottom: 35px;
+      position: relative;
+    }
+
+    .service-card h3 {
+      font-size: 28px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .service-card p {
+      color: #777;
+      font-size: 13px;
+      line-height: 1.8;
+      min-height: 70px;
+    }
+
+    .service-link {
+      display: inline-block;
+      margin-top: 22px;
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* BOXING SECTION */
+
+    .boxing {
+      background: var(--dark);
+      color: white;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .boxing-inner {
+      max-width: 1240px;
+      padding: 100px 28px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .boxing-art {
+      min-height: 440px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        linear-gradient(135deg, rgba(237,48,43,.14), transparent 65%),
+        #191919;
+      border: 1px solid #333;
+      overflow: hidden;
+    }
+
+    .boxing-art::before,
+    .boxing-art::after {
+      content: "";
+      position: absolute;
+      width: 290px;
+      height: 290px;
+      border: 1px solid #ffffff12;
+      border-radius: 50%;
+    }
+
+    .boxing-art::after {
+      width: 390px;
+      height: 390px;
+    }
+
+    .glove {
+      font-size: clamp(100px, 14vw, 180px);
+      filter: grayscale(1);
+      transform: rotate(-20deg);
+      z-index: 1;
+      text-shadow: 10px 15px 0 #ed302b;
+    }
+
+    .round-label {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      color: #aaa;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      z-index: 2;
+    }
+
+    .round-label strong {
+      color: var(--red);
+    }
+
+    .boxing-copy h2 {
+      font-size: clamp(48px, 6vw, 77px);
+      line-height: .9;
+      margin-bottom: 25px;
+    }
+
+    .boxing-copy h2 span {
+      color: var(--red);
+    }
+
+    .boxing-copy p {
+      color: #aaa;
+      font-size: 14px;
+      line-height: 1.9;
+      margin-bottom: 17px;
+    }
+
+    .boxing-quote {
+      margin-top: 28px;
+      border-left: 3px solid var(--red);
+      padding: 10px 0 10px 20px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 25px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* PROCESS */
+
+    .process {
+      background: #ecebe6;
+    }
+
+    .process-inner {
+      max-width: 1240px;
+      padding: 85px 28px;
+      margin: auto;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 35px;
+    }
+
+    .step {
+      border-top: 3px solid var(--red);
+      padding-top: 20px;
+    }
+
+    .step-num {
+      font-family: "Barlow Condensed", sans-serif;
+      color: #bdbdb7;
+      font-size: 45px;
+      font-weight: 900;
+    }
+
+    .step h3 {
+      font-size: 25px;
+      margin: 10px 0;
+    }
+
+    .step p {
+      color: #686868;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      background: white;
+    }
+
+    .contact-inner {
+      max-width: 1240px;
+      padding: 100px 28px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 80px;
+    }
+
+    .contact-copy h2 {
+      font-size: clamp(50px, 6vw, 75px);
+      line-height: .9;
+      margin-bottom: 25px;
+    }
+
+    .contact-copy h2 span {
+      color: var(--red);
+    }
+
+    .contact-copy > p {
+      color: #777;
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .contact-detail {
+      padding: 17px 0;
+      border-top: 1px solid #e3e3df;
+    }
+
+    .contact-detail small {
+      color: #888;
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .contact-detail p {
+      margin-top: 6px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .contact-form {
+      padding: 35px;
+      background: #f5f4f0;
+    }
+
+    .contact-form h3 {
+      font-size: 33px;
+      margin-bottom: 8px;
+    }
+
+    .form-intro {
+      font-size: 12px;
+      color: #777;
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d8d8d2;
+      background: white;
+      color: #222;
+      border-radius: 0;
+      outline: none;
+      font-size: 13px;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--red);
+    }
+
+    .field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .contact-form .btn {
+      width: 100%;
+    }
+
+    .form-status {
+      margin-top: 15px;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #111;
+      color: white;
+      padding: 40px 28px;
+    }
+
+    .footer-inner {
+      max-width: 1184px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .footer-tagline {
+      color: #999;
+      font-size: 11px;
+      margin-top: 9px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 11px;
+      color: #bbb;
+    }
+
+    .footer-links a:hover {
+      color: var(--red);
+    }
+
+    .copyright {
+      max-width: 1184px;
+      margin: 30px auto 0;
+      border-top: 1px solid #303030;
+      padding-top: 20px;
+      color: #777;
+      font-size: 10px;
+      line-height: 1.8;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #111;
+        padding: 22px 28px 28px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 22px;
+        border-bottom: 1px solid #333;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero {
+        min-height: 620px;
+      }
+
+      .hero-stamp {
+        right: 5%;
+        bottom: 24px;
+        width: 105px;
+        height: 105px;
+        font-size: 14px;
+      }
+
+      .trust-bar {
+        grid-template-columns: 1fr;
+        padding: 20px 28px;
+      }
+
+      .trust-item {
+        justify-content: flex-start;
+      }
+
+      .services {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .boxing-inner,
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .boxing-art {
+        min-height: 320px;
+      }
+
+      .steps {
+        gap: 22px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav {
+        padding: 12px 18px;
+      }
+
+      .logo-name {
+        font-size: 20px;
+      }
+
+      .hero-inner {
+        padding: 75px 20px 125px;
+      }
+
+      h1 {
+        font-size: clamp(57px, 15vw, 83px);
+      }
+
+      .hero-copy {
+        font-size: 14px;
+      }
+
+      .section,
+      .boxing-inner,
+      .process-inner,
+      .contact-inner {
+        padding: 70px 20px;
+      }
+
+      .services,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card p {
+        min-height: auto;
+      }
+
+      .boxing-art {
+        min-height: 260px;
+      }
+
+      .contact-form {
+        padding: 23px 18px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .hero-stamp {
+        display: none;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- SECTION 1: The Screen-Filling Entry -->
+  <div class="topbar">
+    The comfort fight starts here. Wortman/Darling HVAC.
+  </div>
 
-    <section class="welcome-section">
-
-        <h1>Wil Wortman</h1>
-
-        <p>Something is cooking.</p>
-
-        <div class="scroll-indicator">
-            <span>Scroll Down</span>
-            <div class="mouse-icon"></div>
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo" href="#home" aria-label="Wortman Darling HVAC home">
+        <div class="logo-mark">W/D</div>
+        <div>
+          <div class="logo-name">WORTMAN<span>/</span>DARLING</div>
+          <span class="logo-sub">HEATING · COOLING · HVAC</span>
         </div>
+      </a>
 
-    </section>
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Toggle navigation" aria-expanded="false">
+        MENU ☰
+      </button>
 
+      <div class="nav-links" id="navLinks">
+        <a href="#services">Services</a>
+        <a href="#about">Our Approach</a>
+        <a href="#process">How It Works</a>
+        <a href="#contact" class="nav-cta">Get an Estimate ↗</a>
+      </div>
+    </nav>
+  </header>
 
-    <!-- SECTION 2: The Core Reveal -->
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-bg"></div>
 
-    <section class="main-content">
+      <div class="hero-inner">
+        <div class="eyebrow">Your home. Our corner.</div>
 
-        <h2 class="reveal">
-            Things are coming soon.
-        </h2>
+        <h1>
+          DON'T LET<br>
+          THE HEAT<br>
+          <span class="outline">WIN.</span><br>
+          <span class="red">FIGHT BACK.</span>
+        </h1>
 
-        <p class="reveal">
-            I'm currently building out a brand new digital space.
-            Until then, you can stick around and click this button
-            out of absolute boredom, or hit me up below.
+        <p class="hero-copy">
+          When your heating or cooling goes down, you need a team
+          that comes out swinging. Wortman/Darling HVAC is here to
+          help you get comfortable and keep your home ready for
+          whatever the weather throws your way.
         </p>
 
-        <!-- Interactive Elements Block -->
-
-        <div class="interactive-container reveal">
-
-            <button class="bored-btn" id="boredBtn">
-                Hit Me
-            </button>
-
-            <div class="click-counter" id="counterText">
-                Button clicked 0 times
-            </div>
-
+        <div class="hero-actions">
+          <a href="#contact" class="btn">Request an Estimate ↗</a>
+          <a href="#services" class="btn btn-outline">Explore Services</a>
         </div>
 
-
-        <!-- Social Connections -->
-
-        <div class="social-links reveal">
-
-            <!-- Replace these with your actual profile links -->
-
-            <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener"
-                class="social-link"
-            >
-                Instagram
-            </a>
-
-            <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener"
-                class="social-link"
-            >
-                LinkedIn
-            </a>
-
+        <div class="hero-note">
+          <span>✦</span>
+          <strong>Comfort in your corner.</strong>
+          <span>✦</span>
+          <span style="color:#aaa;font-size:10px">
+            Every season. Every round.
+          </span>
         </div>
+      </div>
 
+      <div class="hero-stamp">
+        BUILT TO<br>
+        <span>GO THE</span><br>
+        DISTANCE
+      </div>
     </section>
 
-
-    <!-- JAVASCRIPT GOES BELOW -->
-    <script>
-
-        // ==========================================
-        // SCROLL REVEAL LOGIC
-        // ==========================================
-
-        function revealElements() {
-
-            const reveals = document.querySelectorAll('.reveal');
-
-            reveals.forEach(element => {
-
-                const windowHeight = window.innerHeight;
-                const elementTop = element.getBoundingClientRect().top;
-
-                const elementVisible = 100;
-
-                if (elementTop < windowHeight - elementVisible) {
-                    element.classList.add('active');
-                }
-
-            });
-
-        }
-
-
-        // Check when the user scrolls
-
-        window.addEventListener('scroll', revealElements);
-
-
-        // Check immediately when the page loads
-
-        revealElements();
-
-
-        // ==========================================
-        // BOREDOM BUTTON
-        // ==========================================
-
-        const btn = document.getElementById('boredBtn');
-        const counterText = document.getElementById('counterText');
-
-        let count = 0;
-
-
-        // Different messages depending on click count
-
-        const dynamicPhrases = [
-
-            "Button clicked {n} times",
-
-            "Still clicked {n} times",
-
-            "Okay, {n} times is a lot",
-
-            "Are you trying to break it? ({n})",
-
-            "Fine, you win. It's exactly {n} clicks.",
-
-            "Legendary status unlocked: {n} clicks!"
-
-        ];
-
-
-        // ==========================================
-        // BUTTON CLICK EVENT
-        // ==========================================
-
-        btn.addEventListener('click', (e) => {
-
-            // Increase click counter
-
-            count++;
-
-
-            // Update counter text
-
-            if (count < 5) {
-
-                counterText.innerText =
-                    dynamicPhrases[0].replace("{n}", count);
-
-            }
-
-            else if (count < 15) {
-
-                counterText.innerText =
-                    dynamicPhrases[1].replace("{n}", count);
-
-            }
-
-            else if (count < 30) {
-
-                counterText.innerText =
-                    dynamicPhrases[2].replace("{n}", count);
-
-            }
-
-            else if (count < 50) {
-
-                counterText.innerText =
-                    dynamicPhrases[3].replace("{n}", count);
-
-            }
-
-            else if (count < 100) {
-
-                counterText.innerText =
-                    dynamicPhrases[4].replace("{n}", count);
-
-            }
-
-            else {
-
-                counterText.innerText =
-                    dynamicPhrases[5].replace("{n}", count);
-
-            }
-
-
-            // ==========================================
-            // CREATE PARTICLES
-            // ==========================================
-
-            const rect = btn.getBoundingClientRect();
-
-            const container = btn.parentElement;
-
-
-            for (let i = 0; i < 12; i++) {
-
-                const particle = document.createElement('div');
-
-                particle.classList.add('particle');
-
-
-                // Random particle size
-
-                const size = Math.random() * 6 + 4;
-
-                particle.style.width = `${size}px`;
-
-                particle.style.height = `${size}px`;
-
-
-                // Random explosion direction
-
-                const angle = Math.random() * Math.PI * 2;
-
-                const distance = Math.random() * 80 + 40;
-
-                const x = Math.cos(angle) * distance;
-
-                const y = Math.sin(angle) * distance;
-
-
-                particle.style.setProperty(
-                    '--x',
-                    `${x}px`
-                );
-
-                particle.style.setProperty(
-                    '--y',
-                    `${y}px`
-                );
-
-
-                // Position particle where mouse clicked
-
-                particle.style.left =
-                    `${e.clientX - rect.left}px`;
-
-                particle.style.top =
-                    `${e.clientY - rect.top}px`;
-
-
-                // Add particle to container
-
-                container.appendChild(particle);
-
-
-                // Remove particle after animation
-
-                setTimeout(() => {
-
-                    particle.remove();
-
-                }, 600);
-
-            }
-
+    <div class="fight-strip" aria-label="Our promise">
+      <div class="ticker">
+        <span>Comfort is the name of the game <b>✦</b></span>
+        <span>Heat doesn't stand a chance <b>✦</b></span>
+        <span>Ready for every round <b>✦</b></span>
+        <span>Comfort is the name of the game <b>✦</b></span>
+        <span>Heat doesn't stand a chance <b>✦</b></span>
+        <span>Ready for every round <b>✦</b></span>
+      </div>
+    </div>
+
+    <div class="trust-bar">
+      <div class="trust-item">
+        <span class="trust-icon">⚙</span>
+        <div>
+          <strong>Heating & Cooling</strong>
+          <small>Solutions for year-round comfort</small>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <span class="trust-icon">⌁</span>
+        <div>
+          <strong>Focused on the Fix</strong>
+          <small>Practical solutions for your space</small>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <span class="trust-icon">✦</span>
+        <div>
+          <strong>In Your Corner</strong>
+          <small>Service with your comfort in mind</small>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" id="services">
+      <div class="section-heading reveal">
+        <div class="eyebrow">Step into the ring</div>
+        <h2>WE HANDLE THE<br><span>HEAVY HEATING.</span></h2>
+        <p>
+          Whether your system needs attention or you're planning
+          an upgrade, explore our HVAC services and tell us what
+          you need. We'll help you determine the next step.
+        </p>
+      </div>
+
+      <div class="services">
+        <article class="service-card reveal">
+          <span class="service-number">01</span>
+          <div class="service-icon">❄</div>
+          <h3>Air Conditioning</h3>
+          <p>
+            Keep your cool when temperatures climb. Ask us about
+            AC troubleshooting, maintenance, repairs, and new
+            system options.
+          </p>
+          <a class="service-link" href="#contact">Get in touch ↗</a>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-number">02</span>
+          <div class="service-icon">♨</div>
+          <h3>Heating Systems</h3>
+          <p>
+            Don't let the cold get the upper hand. Get in touch
+            about heating system issues, upkeep, repairs, and
+            replacement options.
+          </p>
+          <a class="service-link" href="#contact">Get in touch ↗</a>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-number">03</span>
+          <div class="service-icon">⚙</div>
+          <h3>Maintenance</h3>
+          <p>
+            A little preparation can go a long way. Ask about
+            routine system maintenance and ways to keep your
+            equipment running efficiently.
+          </p>
+          <a class="service-link" href="#contact">Get in touch ↗</a>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-number">04</span>
+          <div class="service-icon">⌂</div>
+          <h3>New Installations</h3>
+          <p>
+            Thinking about a new heating or cooling system?
+            Let's discuss your space, comfort needs, and
+            installation options.
+          </p>
+          <a class="service-link" href="#contact">Get in touch ↗</a>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-number">05</span>
+          <div class="service-icon">◎</div>
+          <h3>Troubleshooting</h3>
+          <p>
+            Strange noises, inconsistent temperatures, or a
+            system that won't cooperate? Tell us what's going
+            on so we can discuss the right next step.
+          </p>
+          <a class="service-link" href="#contact">Get in touch ↗</a>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-number">06</span>
+          <div class="service-icon">✦</div>
+          <h3>Your Comfort</h3>
+          <p>
+            Every home is different. We'll work with you to
+            understand your priorities and explore a solution
+            that fits your needs.
+          </p>
+          <a class="service-link" href="#contact">Get in touch ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="boxing" id="about">
+      <div class="boxing-inner">
+        <div class="boxing-art reveal">
+          <div class="glove" aria-label="Boxing glove" role="img">🥊</div>
+          <div class="round-label">
+            <strong>W/D HVAC</strong> — READY FOR THE NEXT ROUND
+          </div>
+        </div>
+
+        <div class="boxing-copy reveal">
+          <div class="eyebrow">A little fight in everything we do</div>
+          <h2>WE DON'T<br>BACK DOWN.<br><span>WE SHOW UP.</span></h2>
+
+          <p>
+            Boxing teaches you to stay focused, prepare for the
+            challenge, and keep working when the pressure is on.
+            HVAC isn't much different.
+          </p>
+
+          <p>
+            When your house is freezing in January or your AC
+            quits in July, you want people who take the problem
+            seriously. That's the attitude behind Wortman/Darling:
+            put in the work, focus on the details, and keep your
+            comfort in the corner.
+          </p>
+
+          <div class="boxing-quote">
+            "THE ONLY THING WE WANT TO SEE GET KNOCKED OUT
+            IS YOUR HVAC PROBLEM."
+          </div>
+
+          <div style="margin-top:30px">
+            <a href="#contact" class="btn">Let's Talk HVAC ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="process-inner">
+        <div class="section-heading reveal">
+          <div class="eyebrow">No unnecessary rounds</div>
+          <h2>THREE STEPS.<br><span>ONE GAME PLAN.</span></h2>
+          <p>
+            Getting started shouldn't be complicated. Here's
+            how to begin working with Wortman/Darling HVAC.
+          </p>
+        </div>
+
+        <div class="steps">
+          <article class="step reveal">
+            <div class="step-num">01 / FIRST ROUND</div>
+            <h3>Tell Us What's Wrong</h3>
+            <p>
+              Describe your heating or cooling issue, your
+              project, or what you'd like to improve.
+            </p>
+          </article>
+
+          <article class="step reveal">
+            <div class="step-num">02 / THE GAME PLAN</div>
+            <h3>Discuss Your Options</h3>
+            <p>
+              We'll discuss your needs and the appropriate
+              next steps, including an estimate when available.
+            </p>
+          </article>
+
+          <article class="step reveal">
+            <div class="step-num">03 / FIGHT FOR COMFORT</div>
+            <h3>Get Back to Comfortable</h3>
+            <p>
+              Once the scope and details are agreed upon,
+              the goal is simple: get your comfort back on track.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-inner">
+        <div class="contact-copy reveal">
+          <div class="eyebrow">Your next move</div>
+          <h2>LET'S GET<br>YOU BACK<br><span>IN COMFORT.</span></h2>
+
+          <p>
+            Have a question, need HVAC work, or want to discuss
+            a new system? Send us a message with a few details
+            about your project.
+          </p>
+
+          <div class="contact-detail">
+            <small>Company</small>
+            <p>Wortman/Darling HVAC</p>
+          </div>
+
+          <div class="contact-detail">
+            <small>Phone</small>
+            <p>PHONE NUMBER GOES HERE</p>
+          </div>
+
+          <div class="contact-detail">
+            <small>Service Area</small>
+            <p>ADD YOUR SERVICE AREA HERE</p>
+          </div>
+
+          <p style="font-size:11px;margin-top:20px">
+            Call or message us to discuss availability and
+            the services offered in your area.
+          </p>
+        </div>
+
+        <form class="contact-form reveal" id="estimateForm">
+          <h3>GET IN OUR CORNER.</h3>
+          <p class="form-intro">
+            Tell us a little about the job. We'll need your
+            actual contact details configured before this form
+            can deliver messages.
+          </p>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Your Name *</label>
+              <input id="name" name="name" required
+                autocomplete="name" placeholder="John Smith">
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone Number *</label>
+              <input id="phone" name="phone" required
+                type="tel" autocomplete="tel"
+                placeholder="(555) 555-5555">
+            </div>
+
+            <div class="field full">
+              <label for="email">Email Address</label>
+              <input id="email" name="email" type="email"
+                autocomplete="email" placeholder="you@example.com">
+            </div>
+
+            <div class="field full">
+              <label for="service">What Do You Need? *</label>
+              <select id="service" name="service" required>
+                <option value="">Choose a service</option>
+                <option>Air conditioning</option>
+                <option>Heating</option>
+                <option>Maintenance</option>
+                <option>New installation</option>
+                <option>Troubleshooting / repair</option>
+                <option>Other / not sure yet</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="details">Tell Us About the Job</label>
+              <textarea id="details" name="details"
+                placeholder="What's going on with your system?"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn">
+            Prepare My Request ↗
+          </button>
+
+          <p class="form-status" id="formStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <a class="logo" href="#home">
+          <div class="logo-mark">W/D</div>
+          <div>
+            <div class="logo-name">WORTMAN<span>/</span>DARLING</div>
+            <span class="logo-sub">HEATING · COOLING · HVAC</span>
+          </div>
+        </a>
+        <p class="footer-tagline">
+          Comfort in your corner. Ready for every round.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">Our Approach</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      © <span id="year"></span> Wortman/Darling HVAC. All rights reserved.
+      <br>
+      Please verify company details, service offerings, and contact
+      information before publishing.
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "CLOSE ✕" : "MENU ☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "MENU ☰";
+      });
+    });
+
+    // Reveal sections as they enter the screen
+    const revealItems = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
         });
+      }, { threshold: 0.12 });
 
-    </script>
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add("visible"));
+    }
+
+    // Automatic copyright year
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Demo form: prepare an email draft rather than pretending
+    // a message was delivered to the business.
+    document.getElementById("estimateForm").addEventListener("submit", event => {
+      event.preventDefault();
+
+      const form = event.currentTarget;
+      const data = new FormData(form);
+
+      const name = data.get("name");
+      const phone = data.get("phone");
+      const email = data.get("email") || "Not provided";
+      const service = data.get("service");
+      const details = data.get("details") || "No additional details";
+
+      const subject = encodeURIComponent(
+        "HVAC Request - " + service
+      );
+
+      const body = encodeURIComponent(
+        "Wortman/Darling HVAC website inquiry\n\n" +
+        "Name: " + name + "\n" +
+        "Phone: " + phone + "\n" +
+        "Email: " + email + "\n" +
+        "Service: " + service + "\n" +
+        "Details: " + details
+      );
+
+      const status = document.getElementById("formStatus");
+
+      status.textContent =
+        "Your email app should open with your request prepared. " +
+        "If it doesn't, contact the company directly.";
+
+      // Replace this address with the real business email.
+      const businessEmail = "REPLACE_WITH_BUSINESS_EMAIL";
+
+      if (businessEmail.includes("@")) {
+        window.location.href =
+          "mailto:" + businessEmail +
+          "?subject=" + subject +
+          "&body=" + body;
+      } else {
+        const text = [
+          "Wortman/Darling HVAC website inquiry",
+          "Name: " + name,
+          "Phone: " + phone,
+          "Email: " + email,
+          "Service: " + service,
+          "Details: " + details
+        ].join("\n");
+
+        const blob = new Blob([text], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "hvac-request.txt";
+        link.click();
+        URL.revokeObjectURL(url);
+
+        status.textContent =
+          "A request file was downloaded. This demo does not send " +
+          "the inquiry to the company.";
+      }
+    });
+  </script>
 
 </body>
 </html>
+
 
