@@ -4,894 +4,381 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Iian Darling — The Barrington Files</title>
+<title>Iian Darling | The Officially Unofficial Website</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800;900&display=swap');
-
 :root {
-  --red: #ff3c35;
-  --black: #101010;
-  --panel: #1b1b1b;
-  --white: #f5f3ee;
-  --gray: #aaa;
+  --bg: #0b0b10;
+  --panel: #171720;
+  --text: #f7f5ff;
+  --muted: #aaa8bb;
+  --accent: #b7ff5a;
+  --purple: #a78bfa;
 }
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
+* { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-
 body {
-  background: var(--black);
-  color: var(--white);
-  font-family: Inter, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
 }
-
-button, input { font: inherit; }
-button { cursor: pointer; }
-
+button, a { font: inherit; }
 a { color: inherit; text-decoration: none; }
-
+button { cursor: pointer; }
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 7%;
-  border-bottom: 1px solid #333;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 7%; border-bottom: 1px solid #ffffff15;
+  position: sticky; top: 0; background: #0b0b10dd;
+  backdrop-filter: blur(14px); z-index: 10;
 }
-
-.brand {
-  font: 29px Anton, sans-serif;
-  letter-spacing: 1px;
-}
-
-.brand span { color: var(--red); }
-
-.navlinks {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-}
-
-.navlinks a {
-  font-size: 11px;
-  color: #bbb;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.navlinks a:hover { color: var(--red); }
-
-.tag {
-  display: inline-block;
-  background: var(--red);
-  color: white;
-  padding: 12px 16px;
-  font-weight: 900;
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border: none;
-}
-
+.logo { font-weight: 900; letter-spacing: -1px; }
+.logo span { color: var(--accent); }
+.navlinks { display: flex; gap: 22px; color: var(--muted); font-size: 14px; }
+.navlinks a:hover { color: var(--accent); }
 .hero {
-  min-height: 660px;
-  padding: 95px 7%;
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse at 80% 50%, #631818 0%, transparent 35%),
-    linear-gradient(120deg, #111 40%, #1d1010);
+  min-height: 83vh; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  padding: 90px 20px; position: relative; overflow: hidden;
 }
-
-.hero::after {
-  content: "ID";
-  position: absolute;
-  right: 3%;
-  top: -140px;
-  font: 700px/.95 Anton, sans-serif;
-  color: #ffffff05;
-  transform: rotate(-9deg);
+.glow {
+  position: absolute; width: 500px; height: 500px;
+  background: #a78bfa20; border-radius: 50%; filter: blur(100px);
+  pointer-events: none;
 }
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 900px;
+.pill {
+  border: 1px solid #b7ff5a55; color: var(--accent);
+  padding: 8px 15px; border-radius: 99px; font-size: 12px;
+  text-transform: uppercase; letter-spacing: 2px;
 }
-
-.kicker {
-  color: var(--red);
-  font-size: 10px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  font-weight: 900;
-  margin-bottom: 24px;
-}
-
-h1, h2, h3 {
-  font-family: Anton, Impact, sans-serif;
-  font-weight: 400;
-  text-transform: uppercase;
-}
-
 h1 {
-  font-size: clamp(76px, 13vw, 155px);
-  line-height: .81;
-  letter-spacing: -2px;
+  font-size: clamp(55px, 11vw, 120px); line-height: .94;
+  letter-spacing: -7px; margin: 30px 0 20px; position: relative;
 }
-
-.red { color: var(--red); }
-
-.stroke {
-  color: transparent;
-  -webkit-text-stroke: 2px white;
+h1 span {
+  color: transparent; -webkit-text-stroke: 1.5px var(--accent);
 }
-
-.hero p {
-  color: #bbb;
-  max-width: 500px;
-  font-size: 14px;
-  line-height: 1.9;
-  margin-top: 30px;
-}
-
-.actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-
+.subtitle { color: var(--muted); font-size: 18px; max-width: 550px; line-height: 1.8; }
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 25px; }
 .btn {
-  padding: 16px 21px;
-  background: var(--red);
-  border: 1px solid var(--red);
-  color: white;
-  font-size: 10px;
-  letter-spacing: 1px;
-  font-weight: 900;
-  text-transform: uppercase;
-  transition: .2s;
+  border: 0; background: var(--accent); color: #111;
+  padding: 14px 21px; border-radius: 9px; font-weight: 800;
+  transition: transform .2s, opacity .2s;
 }
-
-.btn:hover {
-  background: white;
-  border-color: white;
-  color: black;
-  transform: translateY(-3px);
-}
-
-.btn.alt {
-  background: transparent;
-  border-color: #555;
-}
-
-.stamp {
-  position: absolute;
-  z-index: 3;
-  right: 10%;
-  bottom: 70px;
-  width: 140px;
-  height: 140px;
-  border: 3px solid var(--red);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  font: 23px/1 Anton, sans-serif;
-  transform: rotate(12deg);
-}
-
-.stamp span { color: var(--red); }
-
-.ticker {
-  overflow: hidden;
-  white-space: nowrap;
-  background: var(--red);
-  padding: 15px 0;
-  font: 22px Anton, sans-serif;
-  letter-spacing: 2px;
-}
-
-.ticker-track {
-  display: inline-block;
-  animation: scroll 25s linear infinite;
-}
-
-.ticker-track span { margin: 0 25px; }
-
-@keyframes scroll {
-  to { transform: translateX(-50%); }
-}
-
-.section {
-  max-width: 1400px;
-  margin: auto;
-  padding: 90px 7%;
-}
-
-.heading { margin-bottom: 40px; }
-
-.heading h2 {
-  font-size: clamp(48px, 7vw, 83px);
-  line-height: .93;
-}
-
-.heading p {
-  margin-top: 18px;
-  color: var(--gray);
-  max-width: 570px;
-  font-size: 13px;
-  line-height: 1.9;
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border: 1px solid #333;
-}
-
-.stat {
-  padding: 25px;
-  border-right: 1px solid #333;
-}
-
-.stat:last-child { border-right: 0; }
-
-.stat strong {
-  display: block;
-  color: var(--red);
-  font: 48px Anton, sans-serif;
-}
-
-.stat small {
-  display: block;
-  margin-top: 8px;
-  color: #aaa;
-  font-size: 9px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-weight: 900;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-}
-
+.btn:hover { transform: translateY(-3px); }
+.btn.secondary { background: #ffffff0c; color: white; border: 1px solid #ffffff25; }
+section { padding: 85px 8%; max-width: 1300px; margin: auto; }
+.eyebrow { color: var(--accent); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; }
+h2 { font-size: clamp(32px, 5vw, 55px); letter-spacing: -2px; margin: 12px 0; }
+.intro { color: var(--muted); line-height: 1.8; max-width: 650px; }
+.grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 30px; }
 .card {
-  background: var(--panel);
-  border: 1px solid #333;
-  padding: 28px;
-  transition: .25s;
+  padding: 25px; border-radius: 17px; background: var(--panel);
+  border: 1px solid #ffffff10; transition: transform .2s,border-color .2s;
 }
-
-.card:hover {
-  transform: translateY(-5px);
-  border-color: var(--red);
+.card:hover { transform: translateY(-5px); border-color: #b7ff5a66; }
+.emoji { font-size: 32px; }
+.card h3 { margin-bottom: 8px; }
+.card p { color: var(--muted); line-height: 1.7; font-size: 14px; }
+.banner {
+  border: 1px solid #ffffff15; background:
+  radial-gradient(ellipse at top right,#a78bfa25,transparent 60%),var(--panel);
+  padding: 35px; border-radius: 22px; margin-top: 30px;
 }
-
-.emoji { font-size: 32px; margin-bottom: 22px; }
-
-.card h3 {
-  font-size: 27px;
-  margin-bottom: 12px;
+.quiz { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.quiz button {
+  background: #ffffff0b; color: white; border: 1px solid #ffffff25;
+  padding: 12px 16px; border-radius: 9px;
 }
-
-.card p {
-  color: #aaa;
-  font-size: 12px;
-  line-height: 1.9;
+.quiz button:hover,.quiz button:focus { background: var(--accent); color: #111; }
+#result { color: var(--accent); min-height: 30px; margin-top: 20px; font-weight: 700; }
+.counter { font-size: 55px; font-weight: 900; color: var(--accent); }
+footer { border-top: 1px solid #ffffff15; text-align: center; padding: 40px 20px; color: var(--muted); }
+#topBtn {
+  position: fixed; bottom: 20px; right: 20px; z-index: 5;
+  border: 0; background: var(--accent); border-radius: 50%;
+  width: 46px; height: 46px; font-size: 20px; display: none;
 }
-
-.label {
-  font-size: 9px;
-  color: var(--red);
-  font-weight: 900;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
+.reveal { opacity: 0; transform: translateY(20px); transition: .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+body.party { --accent: #ff74c8; --purple: #67e8f9; }
+@media(max-width:750px) {
+  .grid { grid-template-columns: 1fr; }
+  .navlinks { gap: 12px; font-size: 12px; }
+  h1 { letter-spacing: -3px; }
+  section { padding: 65px 6%; }
 }
-
-.games {
-  background: #f3f2ed;
-  color: #111;
-  max-width: none;
-}
-
-.games-inner {
-  max-width: 1250px;
-  margin: auto;
-}
-
-.games .heading p { color: #666; }
-
-.game-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 17px;
-}
-
-.game {
-  padding: 28px;
-  background: white;
-  border: 1px solid #ddd;
-  min-width: 0;
-}
-
-.game h3 {
-  font-size: 31px;
-  margin-bottom: 10px;
-}
-
-.game > p {
-  font-size: 12px;
-  line-height: 1.9;
-  color: #666;
-  margin-bottom: 20px;
-}
-
-.result {
-  background: #f0efeb;
-  border-left: 4px solid var(--red);
-  padding: 20px;
-  margin-top: 20px;
-  min-height: 88px;
-  font-size: 13px;
-  line-height: 1.8;
-  font-weight: 700;
-}
-
-.game-button {
-  background: #111;
-  color: white;
-  border: 0;
-  padding: 14px 18px;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.game-button:hover { background: var(--red); }
-
-.arena {
-  grid-column: 1 / -1;
-  background: #161616;
-  color: white;
-  padding: 30px;
-  text-align: center;
-}
-
-.arena .result {
-  color: #111;
-  text-align: left;
-}
-
-.fighters {
-  font-size: 68px;
-  margin: 25px 0;
-}
-
-.fighters span { display: inline-block; }
-
-.bar {
-  height: 12px;
-  background: #444;
-  margin: 10px 0;
-}
-
-.bar-fill {
-  height: 100%;
-  width: 100%;
-  background: var(--red);
-  transition: width .25s;
-}
-
-.health-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 10px;
-  font-weight: 900;
-}
-
-#fightMessage {
-  font-size: 12px;
-  color: #ccc;
-  line-height: 1.8;
-  margin: 20px 0;
-  min-height: 42px;
-}
-
-.lore {
-  margin-top: 18px;
-  padding: 32px;
-  border: 1px solid #333;
-  background: radial-gradient(circle at 100% 0%, #581414, transparent 45%), #191919;
-}
-
-.lore h3 { font-size: 34px; margin-bottom: 12px; }
-
-.lore p {
-  color: #bbb;
-  font-size: 13px;
-  line-height: 1.9;
-}
-
-.lore button { margin-top: 20px; }
-
-.quote {
-  background: var(--red);
-  padding: 90px 7%;
-  text-align: center;
-}
-
-.quote p {
-  font: clamp(38px, 6vw, 75px)/1 Anton, sans-serif;
-  max-width: 1000px;
-  margin: auto;
-}
-
-.quote small {
-  display: block;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 3px;
-  margin-top: 25px;
-}
-
-footer {
-  padding: 38px 7%;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  font-size: 11px;
-  color: #888;
-}
-
-footer strong {
-  color: white;
-  font: 25px Anton, sans-serif;
-}
-
-footer strong span { color: var(--red); }
-
-#toast {
-  position: fixed;
-  bottom: 22px;
-  left: 50%;
-  transform: translate(-50%, 120px);
-  background: var(--red);
-  padding: 14px 20px;
-  color: white;
-  font-size: 11px;
-  font-weight: 900;
-  transition: transform .25s;
-  z-index: 50;
-  max-width: 90%;
-  text-align: center;
-}
-
-#toast.show { transform: translate(-50%, 0); }
-
-@media(max-width: 750px) {
-  .hero { min-height: 600px; padding: 75px 22px 110px; }
-  .stamp { right: 5%; bottom: 20px; width: 100px; height: 100px; font-size: 17px; }
-  .section { padding: 70px 22px; }
-  .stats { grid-template-columns: 1fr 1fr; }
-  .stat:nth-child(2) { border-right: none; }
-  .stat:nth-child(-n+2) { border-bottom: 1px solid #333; }
-  .cards { grid-template-columns: 1fr 1fr; }
-  .game-grid { grid-template-columns: 1fr; }
-  .arena { grid-column: auto; }
-}
-
-@media(max-width: 500px) {
-  nav { padding: 18px; }
-  .navlinks { gap: 12px; }
-  .navlinks a:not(.tag) { display: none; }
-  h1 { font-size: 75px; }
-  .stamp { display: none; }
-  .cards { grid-template-columns: 1fr; }
-  .game { padding: 22px; }
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { scroll-behavior: auto !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
 }
 </style>
 </head>
-
 <body>
 
 <nav>
-  <a class="brand" href="#home">IIAN<span>™</span> DARLING</a>
+  <a href="#" class="logo">I.DARLING<span>.</span></a>
   <div class="navlinks">
-    <a href="#profile">Profile</a>
-    <a href="#lore">Lore</a>
-    <a class="tag" href="#games">Enter the Game ↗</a>
+    <a href="#about">About</a>
+    <a href="#lore">The Lore</a>
+    <a href="#quiz">Quiz</a>
   </div>
 </nav>
 
-<header class="hero" id="home">
-  <div class="hero-content">
-    <div class="kicker">The Barrington files · Illinois</div>
-    <h1>
-      MEET<br>
-      <span class="stroke">THE</span><br>
-      <span class="red">DARRLING.</span>
-    </h1>
-    <p>
-      Welcome to the unofficial Iian Darling experience.
-      Part character profile, part arcade machine, part completely
-      unnecessary investigation into the lore of a man from Barrington.
-    </p>
-    <div class="actions">
-      <a href="#profile" class="btn">Inspect the Character ↓</a>
-      <a href="#games" class="btn alt">Start a Challenge 🎮</a>
-    </div>
+<header class="hero">
+  <div class="glow"></div>
+  <div class="pill">📍 Barrington, Illinois</div>
+  <h1>IIAN<br><span>DARLING.</span></h1>
+  <p class="subtitle">
+    One name. Multiple storylines. An entire website dedicated to the
+    officially unofficial Iian Darling experience.
+  </p>
+  <div class="actions">
+    <a class="btn" href="#about">Enter the lore ↓</a>
+    <button class="btn secondary" onclick="randomFact()">Reveal a mystery</button>
   </div>
-  <div class="stamp">BARRINGTON<br><span>CLASSIFIED</span><br>ISH</div>
+  <p id="mystery" aria-live="polite" style="color:var(--purple);margin-top:24px"></p>
 </header>
 
-<div class="ticker">
-  <div class="ticker-track">
-    <span>IIAN DARLING</span> ✦ <span>BARRINGTON ENERGY</span> ✦
-    <span>THE LORE NEVER ENDS</span> ✦ <span>MAIN CHARACTER?</span> ✦
-    <span>IIAN DARLING</span> ✦ <span>BARRINGTON ENERGY</span> ✦
-    <span>THE LORE NEVER ENDS</span> ✦ <span>MAIN CHARACTER?</span> ✦
-  </div>
-</div>
+<section id="about" class="reveal">
+  <div class="eyebrow">01 / The introduction</div>
+  <h2>A website. About a guy.</h2>
+  <p class="intro">
+    Welcome to the internet's extremely unofficial destination for all
+    things Iian Darling. This page is a customizable tribute, built for
+    entertainment rather than a verified biography. The facts are yours
+    to fill in; the dramatic presentation is already handled.
+  </p>
 
-<section class="section" id="profile">
-  <div class="heading">
-    <div class="kicker">Character selection screen</div>
-    <h2>THE <span class="red">PROFILE.</span></h2>
-    <p>
-      These are fictional video-game stats created purely for laughs.
-      They are not factual measurements of Iian's personality or abilities.
-    </p>
-  </div>
-
-  <div class="stats">
-    <div class="stat"><strong data-target="96">0</strong><small>Barrington Aura</small></div>
-    <div class="stat"><strong data-target="88">0</strong><small>Main Character Energy</small></div>
-    <div class="stat"><strong data-target="99">0</strong><small>Confidence Level</small></div>
-    <div class="stat"><strong data-target="???">0</strong><small>Unexplained Lore</small></div>
-  </div>
-
-  <div class="cards" style="margin-top:18px">
+  <div class="grid">
     <article class="card">
       <div class="emoji">📍</div>
-      <div class="label">ORIGIN STORY</div>
-      <h3>Barrington, Illinois</h3>
-      <p>
-        Suburban origins. Mysterious aura. A cinematic universe
-        that definitely did not need its own website, yet here we are.
-      </p>
+      <h3>Home Base</h3>
+      <p>Barrington, Illinois. Suburban coordinates. Main-character potential.</p>
     </article>
-
     <article class="card">
-      <div class="emoji">🎮</div>
-      <div class="label">SPECIAL ABILITY</div>
-      <h3>Side Quest</h3>
-      <p>
-        Allegedly capable of turning a normal day into a story
-        that requires at least three follow-up questions.
-      </p>
+      <div class="emoji">🧩</div>
+      <h3>The Mystery</h3>
+      <p>There's more to the story. Unfortunately, this website's research budget is $0.</p>
     </article>
-
     <article class="card">
-      <div class="emoji">🕶️</div>
-      <div class="label">CHARACTER CLASS</div>
-      <h3>Unknown Build</h3>
-      <p>
-        Stats are still loading. The developers have declined to
-        explain the current meta.
-      </p>
+      <div class="emoji">⭐</div>
+      <h3>The Legacy</h3>
+      <p>Still under construction. Check back when the lore gets updated.</p>
     </article>
   </div>
 </section>
 
-<section class="section" id="lore">
-  <div class="heading">
-    <div class="kicker">Restricted access</div>
-    <h2>THE <span class="red">DARLING FILES.</span></h2>
-    <p>
-      The following stories are made-up comedy lore. Press the
-      button to unlock a randomly generated episode.
-    </p>
+<section id="lore" class="reveal">
+  <div class="eyebrow">02 / The lore</div>
+  <h2>Choose your storyline.</h2>
+  <p class="intro">Click a card. Discover absolutely nothing—or maybe something useful.</p>
+
+  <div class="grid">
+    <article class="card">
+      <div class="emoji">🎬</div>
+      <h3>The Origin Story</h3>
+      <p>Every legend has a beginning. This one needs someone to write it.</p>
+      <button class="btn secondary" onclick="showStory('origin')">Open file →</button>
+    </article>
+    <article class="card">
+      <div class="emoji">📊</div>
+      <h3>Character Stats</h3>
+      <p>A completely unscientific character profile generator.</p>
+      <button class="btn secondary" onclick="showStory('stats')">Run analysis →</button>
+    </article>
+    <article class="card">
+      <div class="emoji">🔮</div>
+      <h3>The Future</h3>
+      <p>Predictions made with zero access to the future.</p>
+      <button class="btn secondary" onclick="showStory('future')">See forecast →</button>
+    </article>
   </div>
 
-  <div class="lore">
-    <div class="kicker">New evidence discovered</div>
-    <h3>THE IIAN ARCHIVES</h3>
-    <p id="loreOutput">
-      The archive is sealed. Nobody knows why. Click below to
-      unlock a brand-new entry from the fictional Darling universe.
-    </p>
-    <button class="btn" id="loreBtn">Unlock a File ↗</button>
-  </div>
-</section>
-
-<section class="section games" id="games">
-  <div class="games-inner">
-    <div class="heading">
-      <div class="kicker">Interactive entertainment department</div>
-      <h2>CHOOSE YOUR <span class="red">DESTINY.</span></h2>
-      <p>
-        Three games. Zero practical benefits. Potentially
-        unreasonable amounts of entertainment.
-      </p>
-    </div>
-
-    <div class="game-grid">
-      <div class="game">
-        <h3>🔥 Roast Generator</h3>
-        <p>
-          A lighthearted roast machine for the main character
-          of today's completely unofficial documentary.
-        </p>
-        <button class="game-button" id="roastBtn">Roast Iian</button>
-        <div class="result" id="roastResult">
-          The roast is warming up. This could get mildly disrespectful.
-        </div>
-      </div>
-
-      <div class="game">
-        <h3>🎲 Fate Simulator</h3>
-        <p>
-          Roll the dice to find out what kind of energy you're
-          bringing to the fictional Barrington leaderboard.
-        </p>
-        <button class="game-button" id="rollBtn">Roll for Destiny</button>
-        <div class="result" id="rollResult">
-          Destiny is buffering. Please stand by.
-        </div>
-      </div>
-
-      <div class="game arena">
-        <div class="kicker">Main event · Arcade mode</div>
-        <h3>IIAN VS. THE FINAL BOSS</h3>
-        <p>
-          A fictional boss fight. Reduce the boss's health to
-          zero to win. No real combat skills are involved.
-        </p>
-
-        <div class="fighters">
-          <span id="heroFighter">🕶️</span>
-          <span style="font:35px Anton,sans-serif">VS</span>
-          <span id="bossFighter">👾</span>
-        </div>
-
-        <div class="health-label">
-          <span>THE BARRINGTON BOSS</span>
-          <span id="healthNumber">100 HP</span>
-        </div>
-        <div class="bar"><div class="bar-fill" id="healthFill"></div></div>
-
-        <div id="fightMessage">
-          The boss has appeared. The soundtrack is suspiciously dramatic.
-        </div>
-
-        <button class="btn" id="attackBtn">ATTACK 👊</button>
-        <button class="btn alt" id="resetBtn">REMATCH ↻</button>
-      </div>
-
-      <div class="game" style="grid-column:1/-1">
-        <h3>📊 The Darling Meter</h3>
-        <p>
-          Adjust the slider to determine the current level of
-          fictional Iian energy in the room.
-        </p>
-        <input id="meter" type="range" min="0" max="100" value="50"
-          style="width:100%;accent-color:#ff3c35">
-        <div class="result" id="meterResult">
-          50% — A respectable amount of unexplained main-character energy.
-        </div>
-      </div>
-    </div>
+  <div class="banner" id="story" aria-live="polite">
+    <div class="eyebrow">Classified information</div>
+    <h3 id="storyTitle">Awaiting your selection...</h3>
+    <p id="storyText" class="intro">Select a storyline above to unlock this panel.</p>
   </div>
 </section>
 
-<section class="quote">
-  <p>"SOME PEOPLE HAVE A BACKSTORY. IIAN HAS AN ENTIRE FRANCHISE."</p>
-  <small>THE UNOFFICIAL BARRINGTON MOTTO</small>
+<section id="quiz" class="reveal">
+  <div class="eyebrow">03 / Audience participation</div>
+  <h2>How well do you know Iian?</h2>
+  <p class="intro">
+    This is a joke quiz, not a real personality assessment. Pick your
+    answer and see your completely unofficial result.
+  </p>
+
+  <div class="banner">
+    <h3 id="question">Question 1: What is this website's primary purpose?</h3>
+    <div class="quiz" id="answers">
+      <button onclick="answer(0)">A. Serious journalism</button>
+      <button onclick="answer(1)">B. Internet entertainment</button>
+      <button onclick="answer(2)">C. Government research</button>
+    </div>
+    <div id="result" aria-live="polite"></div>
+    <button class="btn" id="next" onclick="nextQuestion()" style="display:none;margin-top:12px">Next question →</button>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="eyebrow">04 / The community</div>
+  <h2>Make the site better.</h2>
+  <p class="intro">Add real, non-sensitive facts, favorite hobbies, memorable stories, or inside jokes with Iian's permission.</p>
+  <div class="banner">
+    <h3>🎨 Activate alternate universe mode</h3>
+    <p class="intro">Change the website's accent colors for a different vibe.</p>
+    <button class="btn" onclick="document.body.classList.toggle('party')">Switch the universe ✨</button>
+    <button class="btn secondary" onclick="confetti()">Deploy celebration 🎉</button>
+  </div>
 </section>
 
 <footer>
-  <div>
-    <strong>IIAN<span style="color:#ff3c35">™</span> DARLING</strong>
-    <p style="margin-top:7px">The files remain unofficial.</p>
-  </div>
-  <div>Built for laughs · Barrington, Illinois</div>
+  <p><strong>I.DARLING.</strong> — The officially unofficial website.</p>
+  <p>Made for fun. Not an official page or verified biography.</p>
+  <p>© <span id="year"></span> | Built with HTML, CSS & JavaScript.</p>
 </footer>
 
-<div id="toast" role="status" aria-live="polite"></div>
+<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <script>
-// Animate profile stats when the profile is visible.
-const statObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
+document.getElementById("year").textContent = new Date().getFullYear();
 
-    const el = entry.target;
-    const target = el.dataset.target;
-
-    if (target === "???") {
-      el.textContent = "???";
-    } else {
-      const max = Number(target);
-      let value = 0;
-      const timer = setInterval(() => {
-        value += 4;
-        if (value >= max) {
-          value = max;
-          clearInterval(timer);
-        }
-        el.textContent = value;
-      }, 22);
-    }
-
-    statObserver.unobserve(el);
-  });
-}, { threshold: 0.5 });
-
-document.querySelectorAll("[data-target]").forEach(el => {
-  statObserver.observe(el);
-});
-
-// Lore generator.
-const loreEntries = [
-  "FILE 001: Iian allegedly entered a room with the confidence of a man who already knew the Wi-Fi password.",
-  "FILE 002: A suburban side quest began at an ordinary hour. Nobody knows when it ended.",
-  "FILE 003: The developers attempted to assign Iian a character class. The game crashed.",
-  "FILE 004: A mysterious Barrington weather event was reported. It was later determined to be dramatic background music.",
-  "FILE 005: Rumors suggest the final boss has been avoiding Iian's character selection screen.",
-  "FILE 006: Iian's fictional aura was measured at 98%. The remaining 2% is currently under investigation.",
-  "FILE 007: The prophecy states that one day, someone will explain all the lore. That day is not today.",
-  "FILE 008: A side quest appeared. It offered no reward, no directions, and an unnecessarily complicated backstory."
+const mysteries = [
+  "Mystery level: unnecessarily high. 🕵️",
+  "The files are classified. Mostly because there are no files.",
+  "Barrington has entered the chat.",
+  "This button has a better work-life balance than you.",
+  "Breaking news: a button was clicked. More at 11."
 ];
 
-document.getElementById("loreBtn").addEventListener("click", () => {
-  document.getElementById("loreOutput").textContent =
-    loreEntries[Math.floor(Math.random() * loreEntries.length)];
-  toast("ARCHIVE FILE UNLOCKED 📁");
-});
-
-// Roast generator.
-const roastStarts = [
-  "Iian has the energy of",
-  "Iian's character build is basically",
-  "If Iian were a loading screen, he'd be",
-  "Iian walks into a room like",
-  "The Iian cinematic universe has the budget of",
-  "Iian's special move is"
-];
-
-const roastEnds = [
-  "a side quest that somehow became the main story.",
-  "a software update nobody remembers agreeing to.",
-  "an NPC who accidentally became the final boss.",
-  "a group project with no agenda and maximum confidence.",
-  "a director's cut of a movie that was never released.",
-  "a GPS that says 'good luck, bro' and logs off.",
-  "a loading bar that stops at 99% for dramatic effect.",
-  "a PowerPoint presentation with 74 slides and no conclusion."
-];
-
-document.getElementById("roastBtn").addEventListener("click", () => {
-  const start = roastStarts[Math.floor(Math.random() * roastStarts.length)];
-  const end = roastEnds[Math.floor(Math.random() * roastEnds.length)];
-
-  document.getElementById("roastResult").textContent = start + " " + end;
-  toast("FRIENDLY FIRE 🔥");
-});
-
-// Fate simulator.
-const fates = [
-  "LEGENDARY: The soundtrack changes when you enter the room.",
-  "RARE: You have unlocked the ability to turn one errand into five.",
-  "EPIC: Every traffic light turns green. The universe has selected you.",
-  "COMMON: You forgot why you opened the refrigerator.",
-  "MYTHIC: Your group chat messages are being studied by future historians.",
-  "CURSED: Your phone is at 2%, and your charger is in another dimension.",
-  "UNCOMMON: The side quest has found you. You cannot decline.",
-  "CHAOTIC: You have 38 browser tabs open in your brain."
-];
-
-document.getElementById("rollBtn").addEventListener("click", () => {
-  document.getElementById("rollResult").textContent =
-    fates[Math.floor(Math.random() * fates.length)];
-  toast("FATE HAS BEEN ROLLED 🎲");
-});
-
-// Final boss battle.
-let bossHealth = 100;
-let battleOver = false;
-
-function renderHealth() {
-  document.getElementById("healthFill").style.width = bossHealth + "%";
-  document.getElementById("healthNumber").textContent = bossHealth + " HP";
+function randomFact() {
+  document.getElementById("mystery").textContent =
+    mysteries[Math.floor(Math.random() * mysteries.length)];
 }
 
-document.getElementById("attackBtn").addEventListener("click", () => {
-  if (battleOver) {
-    document.getElementById("fightMessage").textContent =
-      "The round is over. Hit REMATCH to start again.";
+const stories = {
+  origin: {
+    title: "FILE 001: THE ORIGIN",
+    text: "Location: Barrington, Illinois. Other details remain unverified. Add an actual favorite memory or origin story here."
+  },
+  stats: {
+    title: "CHARACTER ANALYSIS COMPLETE",
+    text: "Confidence: loading. Lore: incomplete. Main-character status: pending peer review. These are jokes, not actual personal statistics."
+  },
+  future: {
+    title: "FORECAST: THE UNKNOWN",
+    text: "Probability of more website updates: entirely dependent on whoever edits this file. Confidence interval: nonexistent."
+  }
+};
+
+function showStory(type) {
+  document.getElementById("storyTitle").textContent = stories[type].title;
+  document.getElementById("storyText").textContent = stories[type].text;
+  document.getElementById("story").scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+const questions = [
+  {
+    q: "Question 1: What is this website's primary purpose?",
+    a: ["A. Serious journalism","B. Internet entertainment","C. Government research"],
+    correct: 1,
+    win: "Correct. Finally, some responsible internet usage.",
+    lose: "Good guess. Unfortunately, the journalism department is one person and a laptop."
+  },
+  {
+    q: "Question 2: How much of this website is verified biography?",
+    a: ["A. All of it","B. Exactly 83%","C. Only the details actually confirmed"],
+    correct: 2,
+    win: "Correct. We do not manufacture lore and call it fact.",
+    lose: "Nope. The dramatic graphics do not count as evidence."
+  },
+  {
+    q: "Question 3: What should happen next?",
+    a: ["A. Add real stories with permission","B. Keep clicking buttons forever","C. Both"],
+    correct: 2,
+    win: "A balanced answer. The website committee approves.",
+    lose: "An understandable choice. But there are more buttons."
+  }
+];
+
+let current = 0;
+function answer(choice) {
+  const q = questions[current];
+  document.getElementById("result").textContent =
+    choice === q.correct ? q.win : q.lose;
+  document.querySelectorAll("#answers button").forEach((b,i) => {
+    b.disabled = true;
+    b.style.opacity = ".65";
+  });
+  document.getElementById("next").style.display = "inline-block";
+}
+function renderQuestion() {
+  const q = questions[current];
+  document.getElementById("question").textContent = q.q;
+  document.getElementById("answers").innerHTML = "";
+  q.a.forEach((label,i) => {
+    const button = document.createElement("button");
+    button.textContent = label;
+    button.onclick = () => answer(i);
+    document.getElementById("answers").appendChild(button);
+  });
+  document.getElementById("result").textContent = "";
+  document.getElementById("next").style.display = "none";
+}
+function nextQuestion() {
+  current++;
+  if (current >= questions.length) {
+    document.getElementById("question").textContent = "Quiz complete. You have officially participated.";
+    document.getElementById("answers").innerHTML = "";
+    document.getElementById("result").textContent = "Your score: participation trophy unlocked 🏆";
+    document.getElementById("next").textContent = "Play again ↻";
+    document.getElementById("next").onclick = () => {
+      current = 0;
+      document.getElementById("next").textContent = "Next question →";
+      document.getElementById("next").onclick = nextQuestion;
+      renderQuestion();
+    };
     return;
   }
-
-  const damage = Math.floor(Math.random() * 20) + 10;
-  bossHealth = Math.max(0, bossHealth - damage);
-
-  const messages = [
-    "Direct hit! The boss has reconsidered its career.",
-    "Critical damage! The imaginary crowd has gone wild.",
-    "A devastating combo. Somewhere, a keyboard has been slammed.",
-    "The boss is losing confidence. Its health insurance does not cover this.",
-    "Clean strike! The soundtrack just got 40% more dramatic."
-  ];
-
-  if (bossHealth <= 0) {
-    document.getElementById("bossFighter").textContent = "💥";
-    document.getElementById("fightMessage").textContent =
-      "VICTORY! Iian defeats the Barrington Boss. The sequel has been greenlit.";
-    document.getElementById("attackBtn").textContent = "VICTORY";
-    battleOver = true;
-    toast("BOSS DEFEATED 🏆");
-  } else {
-    document.getElementById("fightMessage").textContent =
-      messages[Math.floor(Math.random() * messages.length)] +
-      " Damage: " + damage + ".";
-  }
-
-  renderHealth();
-});
-
-document.getElementById("resetBtn").addEventListener("click", () => {
-  bossHealth = 100;
-  battleOver = false;
-  document.getElementById("bossFighter").textContent = "👾";
-  document.getElementById("attackBtn").textContent = "ATTACK 👊";
-  document.getElementById("fightMessage").textContent =
-    "The rematch begins. The boss has been training in a fictional gym.";
-  renderHealth();
-  toast("REMATCH STARTED");
-});
-
-// Interactive energy meter.
-const meterMessages = [
-  "You are currently a screensaver. Please reboot.",
-  "Casual energy. A side quest may appear.",
-  "Respectable aura. The soundtrack has started.",
-  "High-level protagonist behavior. The plot is thickening.",
-  "MAXIMUM DARLING ENERGY. The developers have lost control."
-];
-
-document.getElementById("meter").addEventListener("input", event => {
-  const value = Number(event.target.value);
-  const index = Math.min(4, Math.floor(value / 20));
-
-  document.getElementById("meterResult").textContent =
-    value + "% — " + meterMessages[index];
-});
-
-// Temporary pop-up notifications.
-let toastTimer;
-
-function toast(message) {
-  const el = document.getElementById("toast");
-  el.textContent = message;
-  el.classList.add("show");
-
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => {
-    el.classList.remove("show");
-  }, 1700);
+  renderQuestion();
 }
-</script>
 
+function confetti() {
+  const symbols = ["🎉","✨","⭐","🎊","💚"];
+  for (let i = 0; i < 45; i++) {
+    const el = document.createElement("span");
+    el.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+    el.style.cssText = `
+      position:fixed;left:${Math.random()*100}vw;top:-40px;
+      font-size:${16+Math.random()*24}px;z-index:999;
+      pointer-events:none;transition:transform 2s ease-in,opacity 2s;
+    `;
+    document.body.appendChild(el);
+    requestAnimationFrame(() => {
+      el.style.transform = `translateY(${innerHeight+100}px) rotate(${Math.random()*900}deg)`;
+      el.style.opacity = "0";
+    });
+    setTimeout(() => el.remove(), 2200);
+  }
+}
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.12});
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+window.addEventListener("scroll", () => {
+  document.getElementById("topBtn").style.display =
+    window.scrollY > 500 ? "block" : "none";
+});
+</script>
 </body>
 </html>
-
